@@ -14,6 +14,30 @@ The list of recorded events inside a trace file can be read manually like a log 
 
 The main interface for tracing control is a single command-line tool named `lttng`. The latter can create several **recording sessions**, enable and disable recording rules on the fly, filter events efficiently with custom user expressions, start and stop tracing, and much more. LTTng can write the traces on the file system or send them over the network, and keep them totally or partially. You can make LTTng execute user-defined actions when LTTng emits an event. you can view the traces once tracing becomes inactive (offline tracing analysis) or as LTTng record events (online tracing analysis).
 
+**Core concepts**
+
+- An **instrumentation point** is a point, within a piece of software, which, when executed created a LTTng event. 
+- An **event rule** is a set of conditions to match a set of events.
+- When LTTng creates an event E, an event rule ER is said to match E when E satisfies all the conditions of ER. This concept is similar to a regular expression which matches a set of strings.
+- When an event rule matches an event, LTTng *emits* the event, therefore attempting to execute one or more actions. 
+
+- A tracepoint provider header file (.h) contains the tracepoint definitions of a tracepoint provider.
+
+- Tracepoint provider is a set of compiled functions which provides tracepoints to an application.
+
+- A tracepoint provider package is an object file (`.o`) or a shared library (`.so`) which contains one or more tracepoint providers. Its source files are:
+
+* One or more tracepoint provider header (`.h`).
+* A trace provider package source (`.c`)  
+
+- Those functions can make LTTng emits events with user-defined fields and serialize those events as event records to one or more LTTng-UST channel sub-buffers. The `lttng_ust_tracepoint()` macro, which you insert in the source code of a user application, calls those functions (the set of compiled functions).
+
+
+
+
+
+
+
 # References
 
 1. [The LTTng Documentation](https://lttng.org/docs/v2.13/#doc-nuts-and-bolts)
