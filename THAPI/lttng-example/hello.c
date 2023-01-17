@@ -28,8 +28,7 @@ int main(int argc, char *argv[]){
      * C identifiers, NOT strings: they're in fact parts of variables
      * that the macros in `hello-tp.h` create.
      */
-    lttng_ust_tracepoint(my_provider, tracepoint_test, 23,
-                         "hi there!");
+    lttng_ust_tracepoint(my_provider, tracepoint_test, 23,"hi there!");
 
     for (i = 0; i < argc; i++) {
         lttng_ust_tracepoint(my_provider, tracepoint_test, i, argv[i]);
