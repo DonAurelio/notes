@@ -14,13 +14,15 @@
 
 <img src="./img/perceptron.png" alt="Perceptron" width="600">
 
+**Animation 1.** Forward (predict) and Backward (learn)
+
+<img src="./img/forward_backward.gif" alt="Forward and Backward animation" width="600">
+
 **Figure 2.** Forward (predict) and Backward (learn)
 
 <img src="./img/forward_backward.png" alt="Forward and Backward" width="600">
 
-**Animation 1.** Forward (predict) and Backward (learn)
 
-<img src="./img/forward_backward.gif" alt="Forward and Backward animation" width="600">
 
 # References
 
