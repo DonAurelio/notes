@@ -22,8 +22,6 @@
 
 <img src="./img/forward_backward.png" alt="Forward and Backward" width="600">
 
-
-
 # References
 
 1. [Deep Learning with PyTorch: A 60 Minute Blitz](https://docs.pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html)
