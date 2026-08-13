@@ -5,9 +5,7 @@
 * These functions are defined by parameters, e.g., weights and biases.
 * Input/output data and parameters are **tensors**.
 * Training a NN happens in two steps:
-
     - Forward Propagation (**predict**): In forward prop, the NN makes its best guess about the correct output. It runs the input data through each of its functions to make this guess.
-
     - Backward Propagation (**learn**): In backprop, the NN adjusts its parameters (weights) proportionate to the error in its guess. It does this by traversing backwards from the output, collecting the derivatives of the error with respect to the parameters of the functions (gradients), and optimizing the parameters using gradient descent. For a more detailed walkthrough of backprop, check out this video from [3Blue1Brown](https://www.youtube.com/watch?v=tIeHLnjs5U8).
 
 **Figure 1.** Perceptron

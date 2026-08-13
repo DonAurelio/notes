@@ -9,19 +9,17 @@ ___
 * Neural networks can be constructed using the `torch.nn` package.
 * While raw PyTorch tensors and autograd provide the mathematical backend, `torch.nn` acts as a high-level abstraction layer that encapsulates data state, learnable weights, and common architectural patterns.
 * `torch.nn.Module` is the fundamental base class used to build and organize all neural network models and layers.
-
-**Code 1** is a simple feed-forward network (see **Figure 1**). It takes the input, feeds it through several layers (one in this case) one after the other, and then finally gives the output.
-
-A typical training procedure for a neural network is as follows:
-
-- Define the neural network that has some learnable parameters (or weights)
-- Iterate over a dataset of inputs
-- Process input through the network
-- Compute the loss (how far is the output from being correct)
-- Propagate gradients back into the network’s parameters
-- Update the weights of the network, typically using a simple update rule: `weight = weight - learning_rate * gradient`
+* A typical training procedure for a neural network is as follows:
+    - Define the neural network that has some learnable parameters (or weights)
+    - Iterate over a dataset of inputs
+    - Process input through the network
+    - Compute the loss (how far is the output from being correct)
+    - Propagate gradients back into the network’s parameters
+    - Update the weights of the network, typically using a simple update rule: `weight = weight - learning_rate * gradient`
 
 ___
+
+**Code 1** is a simple feed-forward network (see **Figure 1**). It takes the input, feeds it through several layers (one in this case) one after the other, and then finally gives the output.
 
 **Code 1.** Single-Layer Feedforward Network
 
