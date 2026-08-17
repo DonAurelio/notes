@@ -2,8 +2,9 @@
 
 ### Overview: from Python call to computed result
 
-* When Python code calls a tensor operation (directly, or through a `torch.nn` layer), that call does not go straight to a CPU or GPU kernel. It passes through several layers first.
-* A high-level call like `F.linear(x, w, b)` resolves to a single, low-level operation in ATen's flat operator namespace (e.g. `aten::linear`).
+* When Python code calls a tensor operation — directly (e.g. `x + y`), or through a `torch.nn` layer (e.g. `model(x)`) — that call does not go straight to a CPU or GPU kernel. It passes through several layers first.
+* Calling a model, e.g. `model(x)`, triggers that model's `forward()` method, which issues its own sequence of tensor-op calls — one `model(x)` call is really a chain of smaller calls (e.g. `self.linear(x)`, then `torch.relu(...)`), each of which goes through the same process described below.
+* Each of those calls resolves to a single, low-level operation in ATen's flat operator namespace — a high-level call like `F.linear(x, w, b)` resolves to `aten::linear` (or, as shown in Figure 1, `aten::addmm`).
 * Every tensor carries a **dispatch key set** — a small set of tags describing things like its device (`CPU`, `CUDA`) and whether it needs gradient tracking (`Autograd`).
 * The **ATen dispatcher** looks at that op and that key set, and runs the kernel registered for the **highest-priority key**. For a CPU tensor with `requires_grad=True`, that is the `Autograd` key, not `CPU`.
 * Crucially, the `Autograd` kernel does not compute the result itself. It records what is needed for the backward pass (building a `grad_fn` node), and then **redispatches** — it re-enters the dispatcher, this time excluding the keys already handled, so the next key in line (`CPU`) gets its turn and actually computes the result.
