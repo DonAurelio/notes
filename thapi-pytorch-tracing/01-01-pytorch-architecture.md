@@ -15,13 +15,17 @@
 
 ```mermaid
 flowchart TD
-    A["User code: model(x)"] --> B["torch.nn / functional API call"]
-    B --> C["Resolved to one ATen op, e.g. aten::add"]
+    A["User code (torch.nn.Module)\nmodel = MyModel()\noutput = model(x)"] --> B["torch.nn.functional call\nF.linear(x, weight, bias)"]
+    B --> C["Resolved to one ATen op: aten::addmm"]
     C --> D{{"Dispatcher: pick highest-priority key\nin the tensor's dispatch key set"}}
     D -->|"Autograd key"| E["Autograd kernel:\nrecord grad_fn, save tensors for backward"]
     E -->|"redispatch\n(Autograd key now excluded)"| D
     D -->|"CPU / CUDA key"| F["Backend kernel: compute the result"]
     F --> G["Result tensor returned up the call stack"]
+
+    D -.-> N["aten::addmm dispatch keys for weight/bias, highest priority first:\n1. AutocastCPU\n2. ADInplaceOrView\n3. AutogradCPU\n4. CPU (backend, runs last)"]
+    class N note
+    classDef note fill:#fff8dc,stroke:#b8a24a,stroke-dasharray: 4 3,text-align:left
 ```
 
 * Each box in Figure 1 is expanded into its own section below, in the order a call actually passes through them: `torch.nn`/functional API first, then Autograd, then ATen and the dispatcher itself, then the C10 data structures the dispatcher operates on, and finally the backend kernels a redispatch chain bottoms out into.
@@ -63,10 +67,27 @@ class MyModel(nn.Module):
         """ Connect the layers """ 
         return torch.relu(self.linear(x))
 
+torch.manual_seed(0)
 model = MyModel()
-
 print(model)
+
+x = torch.randn(1, 10)
+output = model(x)
+print("output:", output)
+print("output.grad_fn:", output.grad_fn)
 ```
+
+**Output**
+
+```
+MyModel(
+  (linear): Linear(in_features=10, out_features=5, bias=True)
+)
+output: tensor([[0.0000, 0.5173, 0.2658, 0.0000, 0.7478]], grad_fn=<ReluBackward0>)
+output.grad_fn: <ReluBackward0 object at 0x1089db940>
+```
+
+`model(x)` is the call Figure 1 depicts as "User code". Note that `output.grad_fn` is already `ReluBackward0` — not `Relu`, but its Autograd node — a first hint of the Autograd section coming up below. It also means `model(x)` is not one single ATen operation: it's `self.linear(x)` (a `nn.Linear`, wrapping `F.linear` — see the next section) *followed by* `torch.relu(...)`. Figure 1's "one ATen op" box therefore repeats once per op in that sequence; the ATen section further down unpacks exactly which ops `model(x)` breaks down into.
 
 **Figure 2.** Single-Layer Feedforward Network
 
