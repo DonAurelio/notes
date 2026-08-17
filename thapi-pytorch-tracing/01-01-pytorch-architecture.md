@@ -2,6 +2,7 @@
 
 ### Overview: from Python call to computed result
 
+* This overview and Figure 1 are based on **Code 1**, below — the `MyModel` class and its `model(x)` call.
 * When Python code calls a tensor operation — directly (e.g. `x + y`), or through a `torch.nn` layer (e.g. `model(x)`) — that call does not go straight to a CPU or GPU kernel. It passes through several layers first.
 * Calling a model, e.g. `model(x)`, triggers that model's `forward()` method, which issues its own sequence of tensor-op calls — one `model(x)` call is really a chain of smaller calls (e.g. `self.linear(x)`, then `torch.relu(...)`), each of which goes through the same process described below.
 * Each of those calls resolves to a single, low-level operation in ATen's flat operator namespace — a high-level call like `F.linear(x, w, b)` resolves to `aten::linear` (or, as shown in Figure 1, `aten::addmm`).
@@ -29,7 +30,7 @@ flowchart TD
     classDef note fill:#fff8dc,stroke:#b8a24a,stroke-dasharray: 4 3,text-align:left
 ```
 
-* Each box in Figure 1 is expanded into its own section below, in the order a call actually passes through them: `torch.nn`/functional API first, then Autograd, then ATen and the dispatcher itself, then the C10 data structures the dispatcher operates on, and finally the backend kernels a redispatch chain bottoms out into.
+* Each box in Figure 1 is expanded into its own section below: `torch.nn`/functional API first, then the ATen dispatcher — including Autograd, which is one of its dispatch keys, not a separate stage — then the C10 data structures it operates on, and finally the backend kernels that produce the final result.
 
 ___
 
