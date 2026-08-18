@@ -6,8 +6,8 @@
 * When Python code calls a tensor operation — directly (e.g. `x + y`), or through a `torch.nn` layer (e.g. `model(x)`) — that call does not go straight to a CPU or GPU kernel. It passes through several layers first.
 * Calling a model, e.g. `model(x)`, triggers that model's `forward()` method, which issues its own sequence of tensor-op calls — one `model(x)` call is really a chain of smaller calls (e.g. `self.linear(x)`, then `torch.relu(...)`), each of which goes through the same process described below.
 * Each of those calls resolves to a single, low-level operation in ATen's flat operator namespace — a high-level call like `F.linear(x, w, b)` resolves to `aten::linear` (or, as shown in Figure 1, `aten::addmm`).
-* Every tensor carries a **dispatch key set** — a small set of tags describing things like its device (`CPU`, `CUDA`) and whether it needs gradient tracking (`Autograd`).
-* The **ATen dispatcher** looks at that op and that key set, and runs the kernel registered for the **highest-priority key**. For a CPU tensor with `requires_grad=True`, that is the `Autograd` key, not `CPU`.
+* Every tensor carries a **dispatch key set** — a small set of tags describing things like its device (`CPU`, `CUDA`) and whether it needs gradient tracking (`Autograd`). An op like `aten::addmm` takes several tensors (`x`, `weight`, `bias`), so the dispatcher works from the **union** of all their key sets, not just one tensor's.
+* The **ATen dispatcher** looks at that op and that combined key set, and runs the kernel registered for the **highest-priority key present**. If any input tensor has `requires_grad=True`, that key is `Autograd`, not `CPU`.
 * Crucially, the `Autograd` kernel does not compute the result itself. It records what is needed for the backward pass (building a `grad_fn` node), and then **redispatches** — it re-enters the dispatcher, this time excluding the keys already handled, so the next key in line (`CPU`) gets its turn and actually computes the result.
 * So dispatching is not a one-way trip down a stack of layers — it is a single call that can loop through the dispatcher more than once, one key at a time, before a backend kernel finally produces a value.
 
@@ -40,13 +40,6 @@ ___
 * While raw PyTorch tensors and autograd provide the mathematical backend, `torch.nn` acts as a high-level abstraction layer that encapsulates data state, learnable weights, and common architectural patterns.
 * `torch.nn.Module` is the fundamental base class used to build and organize all neural network models and layers.
 * An `nn.Module` contains layers, and a method `forward(input)` that returns the `output`.
-* A typical training procedure for a neural network is as follows:
-    - Define the neural network that has some learnable parameters (or weights)
-    - Iterate over a dataset of inputs
-    - Process input through the network
-    - Compute the loss (how far is the output from being correct)
-    - Propagate gradients back into the network’s parameters
-    - Update the weights of the network, typically using a simple update rule: `weight = weight - learning_rate * gradient`
 
 ___
 
@@ -93,7 +86,18 @@ output.grad_fn: <ReluBackward0 object at 0x1089db940>
 
 **Figure 2.** Single-Layer Feedforward Network
 
-<img src="./img/single_layer_feedforwad_network.png" alt="Perceptron" width="600">
+<img src="./img/single_layer_feedforward_network.svg" alt="Single-layer feedforward network: 10 inputs feed a Linear(10,5) layer computing z=Wx+b, then a ReLU activation a=max(0,z) produces the 5 outputs." width="900">
+
+Figure 2 draws out exactly what Code 1's `self.linear` and `torch.relu` compute: the weights (`w`) and biases (`b`) are the network's learnable parameters (`nn.Linear`'s internal state), and the arrows from input to output are one forward pass — `z = Σ w·x + b`, then `a = max(0, z)`. That "process input through the network" step is one part of a typical training procedure for a neural network:
+
+- Define the neural network that has some learnable parameters (or weights) ← the `w`/`b` in Figure 2, created by `nn.Linear(10, 5)`
+- Iterate over a dataset of inputs
+- **Process input through the network** ← Code 1's `model(x)`, visualized in Figure 2
+- Compute the loss (how far is the output from being correct)
+- **Propagate gradients back into the network's parameters** ← covered in the Autograd section below
+- Update the weights of the network, typically using a simple update rule: `weight = weight - learning_rate * gradient`
+
+This note focuses on what happens *during* the forward step — the dispatcher, dispatch keys, and backend kernels covered from here on all run underneath a single call like `model(x)`. The backward step is picked up conceptually in the Autograd section, but training loops and optimizers are outside this note's scope.
 
 ___
 

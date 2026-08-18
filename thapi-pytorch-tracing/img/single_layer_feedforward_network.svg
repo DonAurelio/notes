@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1110 640" role="img" aria-label="Single-layer feedforward network: 10 inputs feed a Linear(10,5) layer computing z=Wx+b, then a ReLU activation a=max(0,z) produces the 5 outputs.">
+<rect x="0" y="0" width="1110" height="640" fill="#ffffff"/>
+<rect x="20.0" y="55" width="177.0" height="500" fill="#f4f6f8"/>
+<text x="108.5" y="30" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="19" font-weight="600" fill="#1f3a5f">Input layer</text>
+<text x="108.5" y="49" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="13.5" fill="#1f3a5f">(10 features)</text>
+<rect x="367.0" y="55" width="227.4" height="500" fill="#f4f6f8"/>
+<text x="480.8" y="30" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="19" font-weight="600" fill="#1f3a5f">Linear layer</text>
+<text x="480.8" y="49" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="13.5" fill="#1f3a5f">(10 → 5): z = Wx + b</text>
+<rect x="634.5" y="55" width="219.6" height="500" fill="#f4f6f8"/>
+<text x="744.3" y="30" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="19" font-weight="600" fill="#1f3a5f">ReLU activation</text>
+<text x="744.3" y="49" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="13.5" fill="#1f3a5f">a = max(0, z)</text>
+<rect x="894.1" y="55" width="196.1" height="500" fill="#f4f6f8"/>
+<text x="992.1" y="30" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="19" font-weight="600" fill="#1f3a5f">Output layer</text>
+<text x="992.1" y="49" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="13.5" fill="#1f3a5f">(5 outputs): ŷ = a</text>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#222222"/></marker></defs>
+<line x1="126.5" y1="130" x2="460.8" y2="130" stroke="#c9c9c9" stroke-width="1"/>
+<line x1="126.5" y1="130" x2="460.8" y2="230" stroke="#c9c9c9" stroke-width="1"/>
+<line x1="126.5" y1="130" x2="460.8" y2="330" stroke="#c9c9c9" stroke-width="1"/>
+<line x1="126.5" y1="130" x2="460.8" y2="530" stroke="#c9c9c9" stroke-width="1"/>
+<line x1="126.5" y1="230" x2="460.8" y2="130" stroke="#c9c9c9" stroke-width="1"/>
+<line x1="126.5" y1="230" x2="460.8" y2="230" stroke="#c9c9c9" stroke-width="1"/>
+<line x1="126.5" y1="230" x2="460.8" y2="330" stroke="#c9c9c9" stroke-width="1"/>
+<line x1="126.5" y1="230" x2="460.8" y2="530" stroke="#c9c9c9" stroke-width="1"/>
+<line x1="126.5" y1="330" x2="460.8" y2="130" stroke="#c9c9c9" stroke-width="1"/>
+<line x1="126.5" y1="330" x2="460.8" y2="230" stroke="#c9c9c9" stroke-width="1"/>
+<line x1="126.5" y1="330" x2="460.8" y2="330" stroke="#c9c9c9" stroke-width="1"/>
+<line x1="126.5" y1="330" x2="460.8" y2="530" stroke="#c9c9c9" stroke-width="1"/>
+<line x1="126.5" y1="530" x2="460.8" y2="130" stroke="#c9c9c9" stroke-width="1"/>
+<line x1="126.5" y1="530" x2="460.8" y2="230" stroke="#c9c9c9" stroke-width="1"/>
+<line x1="126.5" y1="530" x2="460.8" y2="330" stroke="#c9c9c9" stroke-width="1"/>
+<line x1="126.5" y1="530" x2="460.8" y2="530" stroke="#c9c9c9" stroke-width="1"/>
+<line x1="126.5" y1="130" x2="460.8" y2="130" stroke="#3a5f8a" stroke-width="1.8"/>
+<line x1="126.5" y1="130" x2="460.8" y2="230" stroke="#3a5f8a" stroke-width="1.8"/>
+<line x1="126.5" y1="130" x2="460.8" y2="530" stroke="#3a5f8a" stroke-width="1.8"/>
+<text x="279.6" y="122" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#3a5f8a">w₁,₁</text>
+<text x="279.6" y="184.0" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#3a5f8a">w₁,₂</text>
+<text x="279.6" y="330.0" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#3a5f8a">w₁,₅</text>
+<line x1="506.8" y1="130" x2="720.3" y2="130" stroke="#222222" stroke-width="1.4" marker-end="url(#arrow)"/>
+<line x1="770.3" y1="130" x2="968.1" y2="130" stroke="#222222" stroke-width="1.4" marker-end="url(#arrow)"/>
+<line x1="506.8" y1="230" x2="720.3" y2="230" stroke="#222222" stroke-width="1.4" marker-end="url(#arrow)"/>
+<line x1="770.3" y1="230" x2="968.1" y2="230" stroke="#222222" stroke-width="1.4" marker-end="url(#arrow)"/>
+<line x1="506.8" y1="330" x2="720.3" y2="330" stroke="#222222" stroke-width="1.4" marker-end="url(#arrow)"/>
+<line x1="770.3" y1="330" x2="968.1" y2="330" stroke="#222222" stroke-width="1.4" marker-end="url(#arrow)"/>
+<line x1="506.8" y1="530" x2="720.3" y2="530" stroke="#222222" stroke-width="1.4" marker-end="url(#arrow)"/>
+<line x1="770.3" y1="530" x2="968.1" y2="530" stroke="#222222" stroke-width="1.4" marker-end="url(#arrow)"/>
+<circle cx="108.5" cy="130" r="18" fill="#ffffff" stroke="#222222" stroke-width="1.6"/>
+<text x="108.5" y="135" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#222222">x₁</text>
+<circle cx="480.8" cy="130" r="20" fill="#ffffff" stroke="#222222" stroke-width="1.6"/>
+<text x="480.8" y="135" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#222222">z₁</text>
+<text x="480.8" y="100" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#222222">z₁ = Σᵢ₌₁¹⁰ w₁,ᵢxᵢ + b₁</text>
+<circle cx="744.3" cy="130" r="20" fill="#ffffff" stroke="#222222" stroke-width="1.6"/>
+<text x="744.3" y="135" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#222222">a₁</text>
+<text x="744.3" y="100" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#222222">a₁ = max(0, z₁)</text>
+<circle cx="992.1" cy="130" r="20" fill="#ffffff" stroke="#222222" stroke-width="1.6"/>
+<text x="992.1" y="135" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#222222">ŷ₁</text>
+<text x="992.1" y="100" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#222222">ŷ₁ = a₁</text>
+<circle cx="108.5" cy="230" r="18" fill="#ffffff" stroke="#222222" stroke-width="1.6"/>
+<text x="108.5" y="235" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#222222">x₂</text>
+<circle cx="480.8" cy="230" r="20" fill="#ffffff" stroke="#222222" stroke-width="1.6"/>
+<text x="480.8" y="235" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#222222">z₂</text>
+<text x="480.8" y="200" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#222222">z₂ = Σᵢ₌₁¹⁰ w₂,ᵢxᵢ + b₂</text>
+<circle cx="744.3" cy="230" r="20" fill="#ffffff" stroke="#222222" stroke-width="1.6"/>
+<text x="744.3" y="235" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#222222">a₂</text>
+<text x="744.3" y="200" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#222222">a₂ = max(0, z₂)</text>
+<circle cx="992.1" cy="230" r="20" fill="#ffffff" stroke="#222222" stroke-width="1.6"/>
+<text x="992.1" y="235" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#222222">ŷ₂</text>
+<text x="992.1" y="200" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#222222">ŷ₂ = a₂</text>
+<circle cx="108.5" cy="330" r="18" fill="#ffffff" stroke="#222222" stroke-width="1.6"/>
+<text x="108.5" y="335" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#222222">x₃</text>
+<circle cx="480.8" cy="330" r="20" fill="#ffffff" stroke="#222222" stroke-width="1.6"/>
+<text x="480.8" y="335" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#222222">z₃</text>
+<text x="480.8" y="300" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#222222">z₃ = Σᵢ₌₁¹⁰ w₃,ᵢxᵢ + b₃</text>
+<circle cx="744.3" cy="330" r="20" fill="#ffffff" stroke="#222222" stroke-width="1.6"/>
+<text x="744.3" y="335" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#222222">a₃</text>
+<text x="744.3" y="300" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#222222">a₃ = max(0, z₃)</text>
+<circle cx="992.1" cy="330" r="20" fill="#ffffff" stroke="#222222" stroke-width="1.6"/>
+<text x="992.1" y="335" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#222222">ŷ₃</text>
+<text x="992.1" y="300" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#222222">ŷ₃ = a₃</text>
+<text x="108.5" y="438" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="24" fill="#222222">⋮</text>
+<text x="480.8" y="438" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="24" fill="#222222">⋮</text>
+<text x="744.3" y="438" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="24" fill="#222222">⋮</text>
+<text x="992.1" y="438" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="24" fill="#222222">⋮</text>
+<circle cx="108.5" cy="530" r="18" fill="#ffffff" stroke="#222222" stroke-width="1.6"/>
+<text x="108.5" y="535" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#222222">x₁₀</text>
+<circle cx="480.8" cy="530" r="20" fill="#ffffff" stroke="#222222" stroke-width="1.6"/>
+<text x="480.8" y="535" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#222222">z₅</text>
+<text x="480.8" y="500" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#222222">z₅ = Σᵢ₌₁¹⁰ w₅,ᵢxᵢ + b₅</text>
+<circle cx="744.3" cy="530" r="20" fill="#ffffff" stroke="#222222" stroke-width="1.6"/>
+<text x="744.3" y="535" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#222222">a₅</text>
+<text x="744.3" y="500" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#222222">a₅ = max(0, z₅)</text>
+<circle cx="992.1" cy="530" r="20" fill="#ffffff" stroke="#222222" stroke-width="1.6"/>
+<text x="992.1" y="535" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#222222">ŷ₅</text>
+<text x="992.1" y="500" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#222222">ŷ₅ = a₅</text>
+<text x="480.8" y="585" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="14" font-weight="600" fill="#1f3a5f">Biases</text>
+<text x="480.8" y="605" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="14" fill="#222222">b₁, b₂, b₃, b₄, b₅</text>
+</svg>
