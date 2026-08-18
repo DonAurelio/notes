@@ -1,6 +1,21 @@
 # PyTorch: Architecture
 
-### Overview: from Python call to computed result
+### Contents
+
+1. [Overview: from Python call to computed result](#1-overview-from-python-call-to-computed-result)
+2. [User code / torch.nn](#2-user-code--torchnn)
+3. [Functional API / torch.nn.functional](#3-functional-api--torchnnfunctional)
+4. [Autograd: building the backward graph](#4-autograd-building-the-backward-graph)
+5. [ATen: one flat namespace, one op per call](#5-aten-one-flat-namespace-one-op-per-call)
+6. [Dispatch keys and the redispatch loop](#6-dispatch-keys-and-the-redispatch-loop)
+7. [C10 core library](#7-c10-core-library)
+8. [Backend kernels](#8-backend-kernels)
+9. [References](#9-references)
+
+
+### 1. Overview: from Python call to computed result
+
+A high-level map of the whole path a tensor operation takes — from a Python call, through the ATen dispatcher and its dispatch keys, down to a backend kernel — illustrated by Figure 1 and grounded in Code 1, below.
 
 * This overview and Figure 1 are based on **Code 1**, below — the `MyModel` class and its `model(x)` call.
 * When Python code calls a tensor operation — directly (e.g. `x + y`), or through a `torch.nn` layer (e.g. `model(x)`) — that call does not go straight to a CPU or GPU kernel. It passes through several layers first.
@@ -11,9 +26,7 @@
 * Crucially, the `Autograd` kernel does not compute the result itself. It records what is needed for the backward pass (building a `grad_fn` node), and then **redispatches** — it re-enters the dispatcher, this time excluding the keys already handled, so the next key in line (`CPU`) gets its turn and actually computes the result.
 * So dispatching is not a one-way trip down a stack of layers — it is a single call that can loop through the dispatcher more than once, one key at a time, before a backend kernel finally produces a value.
 
-**Figure 1** shows this redispatch loop for one operation call.
-
-**Figure 1.** One ATen op call, dispatched through the Autograd key, then redispatched to the CPU key
+**Figure 1. One ATen op call, dispatched through the Autograd key, then redispatched to the CPU key.** Shows the redispatch loop for one operation call, based on Code 1's `model(x)`.
 
 ```mermaid
 flowchart TD
@@ -32,20 +45,18 @@ flowchart TD
 
 * Each box in Figure 1 is expanded into its own section below: `torch.nn`/functional API first, then the ATen dispatcher — including Autograd, which is one of its dispatch keys, not a separate stage — then the C10 data structures it operates on, and finally the backend kernels that produce the final result.
 
-___
 
-### User code / torch.nn
+### 2. User code / torch.nn
+
+Introduces `torch.nn`, the high-level module API used to define a network's structure and parameters, illustrated by Code 1 and Figure 2.
 
 * Neural networks can be constructed using the `torch.nn` package.
 * While raw PyTorch tensors and autograd provide the mathematical backend, `torch.nn` acts as a high-level abstraction layer that encapsulates data state, learnable weights, and common architectural patterns.
 * `torch.nn.Module` is the fundamental base class used to build and organize all neural network models and layers.
 * An `nn.Module` contains layers, and a method `forward(input)` that returns the `output`.
 
-___
 
-**Code 1** is a simple feed-forward network (see **Figure 2**). It takes the input, feeds it through several layers (one in this case) one after the other, and then finally gives the output.
-
-**Code 1.** Single-Layer Feedforward Network
+**Code 1. Single-Layer Feedforward Network.** A simple feed-forward network (see Figure 2) that takes the input, feeds it through several layers (one in this case) one after the other, and finally gives the output.
 
 ```python
 import torch
@@ -84,7 +95,7 @@ output.grad_fn: <ReluBackward0 object at 0x1089db940>
 
 `model(x)` is the call Figure 1 depicts as "User code". Note that `output.grad_fn` is already `ReluBackward0` — not `Relu`, but its Autograd node — a first hint of the Autograd section coming up below. It also means `model(x)` is not one single ATen operation: it's `self.linear(x)` (a `nn.Linear`, wrapping `F.linear` — see the next section) *followed by* `torch.relu(...)`. Figure 1's "one ATen op" box therefore repeats once per op in that sequence; the ATen section further down unpacks exactly which ops `model(x)` breaks down into.
 
-**Figure 2.** Single-Layer Feedforward Network
+**Figure 2. Single-Layer Feedforward Network.** Diagram of the forward pass Code 1 computes — the network's weights, biases, and the linear + ReLU steps that turn 10 inputs into 5 outputs.
 
 <img src="./img/single_layer_feedforward_network.svg" alt="Single-layer feedforward network: 10 inputs feed a Linear(10,5) layer computing z=Wx+b, then a ReLU activation a=max(0,z) produces the 5 outputs." width="900">
 
@@ -99,9 +110,10 @@ Figure 2 draws out exactly what Code 1's `self.linear` and `torch.relu` compute:
 
 This note focuses on what happens *during* the forward step — the dispatcher, dispatch keys, and backend kernels covered from here on all run underneath a single call like `model(x)`. The backward step is picked up conceptually in the Autograd section, but training loops and optimizers are outside this note's scope.
 
-___
 
-### Functional API / torch.nn.functional
+### 3. Functional API / torch.nn.functional
+
+Introduces `torch.nn.functional`, the stateless function-call API that `torch.nn` modules call internally to do their actual computation.
 
 * `torch.nn.functional` namespace provides stateless, purely functional interfaces for neural network operations.
 * Conventionally imported as import `torch.nn.functional as F`.
@@ -111,7 +123,7 @@ ___
 
 NOTE: A neural network is essentially a composition of nested functions (layers), each with its own parameters (weights and biases), that feed an input forward to produce an output. Parameters, inputs, and outputs are all represented as **tensors**.
 
-__Comparative example: `torch.nn` vs `torch.nn.functional`__
+**Code: `torch.nn` vs `torch.nn.functional`.** Comparative example contrasting the object-oriented `nn.Linear` with the stateless `F.linear`.
 
 ```python
 import torch
@@ -137,15 +149,16 @@ bias = torch.randn(2)
 output_func = F.linear(x, weight, bias)  # stateless: params passed in directly
 ```
 
-__Key difference illustrated:__
+**Key difference illustrated:**
 - `nn.Linear` is a **module** (a class instance) — once created, it *holds* `weight` and `bias` as internal parameters (`nn.Parameter` tensors), and you just call it like a function on subsequent inputs (`linear_layer(x)`).
 - `F.linear` is a **pure function** — it has no memory of any weight or bias. You must pass the tensors in explicitly on every call, and nothing is stored between calls.
 
 This is exactly why `nn.Linear` (and other `torch.nn` modules) are typically implemented *using* their functional counterparts under the hood — the module's `forward()` method just calls `F.linear(input, self.weight, self.bias)`, wrapping the stateless function with stateful parameter storage.
 
-___
 
-### Autograd: building the backward graph
+### 4. Autograd: building the backward graph
+
+Explains how PyTorch records a backward computation graph as operations run, and how `.backward()` walks it to compute gradients.
 
 * Every tensor created with `requires_grad=True`, or produced by an operation on such a tensor, can carry a **backward graph** — a record of how it was computed, used later to compute gradients.
 * This graph is **not** written down ahead of time. It is built dynamically, one node at a time, as each operation actually runs. PyTorch calls this "define-by-run": the graph only exists for the specific sequence of operations that was executed.
@@ -155,9 +168,7 @@ ___
 * Each `grad_fn` node links back to the `grad_fn` of whatever tensors fed into that operation, via `.next_functions`. Following these links backward from the final output traces the entire computation, step by step, in reverse.
 * Calling `.backward()` on a tensor walks this graph backward from that tensor, computing gradients along the way and accumulating them into the `.grad` attribute of every leaf tensor with `requires_grad=True`.
 
-**Code 2** builds a two-step computation and inspects the resulting graph before and after calling `.backward()`.
-
-**Code 2.** Inspecting the autograd graph
+**Code 2. Inspecting the autograd graph.** Builds a two-step computation and inspects the resulting graph before and after calling `.backward()`.
 
 ```python
 import torch
@@ -192,17 +203,16 @@ x.grad: tensor([2., 2., 2.])
 
 Note: nothing here mentions CPU, CUDA, or a dispatcher yet — the backward graph is a bookkeeping concept that sits on top of whichever backend actually computed the forward values. The next sections connect this bookkeeping to *how* it gets triggered on every single operation.
 
-___
 
-### ATen: one flat namespace, one op per call
+### 5. ATen: one flat namespace, one op per call
+
+Shows that every tensor operation, however it's spelled in Python, resolves to a single flat ATen operator — the uniform entry point the dispatcher operates on.
 
 * ATen ("A Tensor library") is PyTorch's core tensor library — it defines the actual tensor operations (`add`, `linear`, `matmul`, `relu`, ...) as a flat set of named operators, independent of any Python API sugar.
 * No matter which "front door" you use in Python — an operator (`a + b`), a function (`torch.add(a, b)`), or a `torch.nn.functional` call — they all resolve to a single call into this same namespace, exposed in Python as `torch.ops.aten.*`.
 * This is exactly why ATen is a good place to observe "every tensor operation": however varied the Python-level entry points are, they collapse into one uniform, well-defined operator per computation.
 
-**Code 3** shows three different Python spellings of the same addition all resolving to the identical ATen operator.
-
-**Code 3.** Three ways to call the same ATen op
+**Code 3. Three ways to call the same ATen op.** Shows three different Python spellings of the same addition all resolving to the identical ATen operator.
 
 ```python
 import torch
@@ -239,9 +249,10 @@ overload name: aten::add.Tensor(Tensor self, Tensor other, *, Scalar alpha=1) ->
 
 `torch.add`, the `+` operator, and the explicit `torch.ops.aten.add.Tensor` call all reach the exact same operator, `aten::add.Tensor`, with the same schema (its typed argument/return signature). Whatever Python spelling triggered it, from here on it's just "one ATen op call" — which is what gets handed to the dispatcher next.
 
-___
 
-### Dispatch keys and the redispatch loop
+### 6. Dispatch keys and the redispatch loop
+
+Explains how the ATen dispatcher picks a kernel per tensor operation based on the input tensors' combined dispatch keys, and how the Autograd key redispatches to a backend key like CPU.
 
 * An ATen op like `aten::add.Tensor` may perform several activities according to the properties of its input tensors.
 * These tensor properties are called **dispatch keys** — tags like `CPU`, `CUDA`, `MPS`, or `Autograd` — and the op has a *separate* kernel registered for each one.
@@ -252,9 +263,7 @@ ___
 * That backward node becomes the **result's** `grad_fn` — `x` and `y` themselves are untouched (leaf tensors stay `grad_fn=None`). The kernel then **redispatches**: it re-enters the dispatcher for the same op with `Autograd` now excluded, so `CPU` takes its turn and computes the result.
 * This is the mechanism behind Figure 1 at the top of this note: one Python-level call can trigger the dispatcher more than once for the same op, walking down the key set one key at a time, before a backend kernel finally runs.
 
-**Code 4** first dumps the dispatcher's registration table for `add.Tensor`, showing there really is one kernel per key. It then makes the redispatch loop directly observable: forcing the dispatcher to skip the `Autograd` key changes whether a `grad_fn` gets built at all, even though the numeric result is identical either way.
-
-**Code 4.** Dispatch keys and manually skipping one
+**Code 4. Dispatch keys and manually skipping one.** First dumps the dispatcher's registration table for `add.Tensor`, showing there really is one kernel per key. It then makes the redispatch loop directly observable: forcing the dispatcher to skip the `Autograd` key changes whether a `grad_fn` gets built at all, even though the numeric result is identical either way.
 
 ```python
 import torch
@@ -300,16 +309,15 @@ Autograd[alias]: registered at .../VariableType_2.cpp:10455 :: (Tensor _0, Tenso
 
 Normally, the `Autograd` key wins dispatch priority, its kernel records a `grad_fn`, and it redispatches to `CPU` for the actual math — that's the "normal call" row above. Forcibly excluding `Autograd` from the tensors' key set makes the dispatcher hand the very same call straight to the `CPU` kernel instead: the math comes out identical, but no `grad_fn` is ever built, because the bookkeeping kernel never ran. This is direct, observable proof that "Autograd" and "the ATen dispatcher" are not two separate layers one calls into the other — they are two turns of the *same* dispatch loop.
 
-___
 
-### C10 core library
+### 7. C10 core library
+
+Introduces C10, the core library defining the data structures — `Tensor`, `Storage`, dispatch key set — that every layer above operates on.
 
 * C10 ("Caffe2 and ATen, version 10") is the core library beneath ATen. It defines the fundamental data structures that every layer above operates on: `Tensor`, `Storage` (the actual memory buffer backing a tensor), `Device`, `Dtype`, and the dispatch key set itself.
 * This layer is rarely traced directly — it doesn't run operations, it defines *what a tensor is*. But its structures are exactly what the dispatcher inspects (the dispatch key set) and what a backend kernel reads and writes (the storage buffer), so it's worth being able to see them concretely.
 
-**Code 5** reads several C10-level attributes directly off a tensor, including the same dispatch key set introspected in Code 4.
-
-**Code 5.** Inspecting a tensor's C10-level structure
+**Code 5. Inspecting a tensor's C10-level structure.** Reads several C10-level attributes directly off a tensor, including the same dispatch key set introspected in Code 4.
 
 ```python
 import torch
@@ -342,15 +350,17 @@ dispatch key set:     DispatchKeySet(CPU, ADInplaceOrView, AutogradCPU, Autocast
 
 `dtype`, `device`, `shape`, and `stride` describe how to interpret the raw bytes in `storage` as a 2×3 grid of 32-bit floats (2 × 3 × 4 bytes = 24 bytes, matching `nbytes()`). The `dispatch key set` is the same C10 structure the dispatcher read in Code 4 to decide which kernel runs first.
 
-___
 
-### Backend kernels
+### 8. Backend kernels
+
+Describes the lowest level of the stack: the optimized numerical libraries a backend dispatch key's kernel actually calls into.
 
 * Once the dispatcher has walked down to a backend key like `CPU` or `CUDA`, the registered kernel for that key is what actually performs the computation, by calling into an optimized numerical library.
 * On CPU, this typically means calling into libraries like MKL, oneDNN, or NNPACK for things like matrix multiplication and convolutions. On CUDA, the equivalent role is played by cuDNN and cuBLAS.
 * This is the lowest level in the stack, and per Figure 1's mermaid diagram, it's the endpoint of a redispatch chain rather than something a tracer usually hooks directly — by the time execution reaches here, the op has already been fully identified and dispatched. Tools that do need this level of visibility (e.g. measuring how long a specific CUDA kernel took) typically use `torch.profiler` rather than intercepting the dispatcher itself.
 
-# References
+
+### 9. References
 
 1. [What is torch.nn really?](https://docs.pytorch.org/tutorials/beginner/nn_tutorial.html#what-is-torch-nn-really)
 2. [Neural Networks](https://docs.pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html)
