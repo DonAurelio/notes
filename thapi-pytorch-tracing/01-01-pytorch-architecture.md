@@ -243,10 +243,13 @@ ___
 
 ### Dispatch keys and the redispatch loop
 
-* An ATen op like `aten::add.Tensor` is not implemented by a single function. It can have a *different* kernel registered for each **dispatch key** — `CPU`, `CUDA`, `MPS`, `Autograd`, and others.
-* Every tensor carries a **dispatch key set**: a small collection of tags describing that tensor's device and state (e.g. whether it needs gradient tracking).
-* When an op is called, the **dispatcher** looks at the key set of the tensors involved and picks the kernel registered for the **highest-priority key present**. `Autograd` outranks `CPU`, so a CPU tensor with `requires_grad=True` runs its `Autograd` kernel first — not its `CPU` kernel.
-* The `Autograd` kernel's job is bookkeeping, not computation: it builds the `grad_fn` node from the Autograd section above, decides what needs to be saved for backward, and then **redispatches** — it calls back into the dispatcher for the same op, but with the `Autograd` key now excluded from consideration. That lets the next-highest key (`CPU`) take its turn and actually compute the result.
+* An ATen op like `aten::add.Tensor` may perform several activities according to the properties of its input tensors.
+* These tensor properties are called **dispatch keys** — tags like `CPU`, `CUDA`, `MPS`, or `Autograd` — and the op has a *separate* kernel registered for each one.
+* Every tensor carries its own **dispatch key set**, e.g. `DispatchKeySet(CPU, ADInplaceOrView, AutogradCPU, AutocastCPU)`.
+* When an op takes several tensors, e.g. `add(x, y)`, the dispatcher does not dispatch once per argument — it takes the **union** of `x`'s and `y`'s key sets, then dispatches **once** for the whole call, using that combined set.
+* It runs the kernel for the **highest-priority key present** in that union. `Autograd` outranks `CPU`, so if *either* `x` or `y` carries it, the call runs its `Autograd` kernel first.
+* `AutogradCPU` is present in a CPU tensor's key set whether or not `requires_grad=True`. What differs is what the `Autograd` kernel does with it: it checks each input's `requires_grad` flag itself, and only proceeds to build a backward node if at least one is `True`.
+* That backward node becomes the **result's** `grad_fn` — `x` and `y` themselves are untouched (leaf tensors stay `grad_fn=None`). The kernel then **redispatches**: it re-enters the dispatcher for the same op with `Autograd` now excluded, so `CPU` takes its turn and computes the result.
 * This is the mechanism behind Figure 1 at the top of this note: one Python-level call can trigger the dispatcher more than once for the same op, walking down the key set one key at a time, before a backend kernel finally runs.
 
 **Code 4** first dumps the dispatcher's registration table for `add.Tensor`, showing there really is one kernel per key. It then makes the redispatch loop directly observable: forcing the dispatcher to skip the `Autograd` key changes whether a `grad_fn` gets built at all, even though the numeric result is identical either way.
