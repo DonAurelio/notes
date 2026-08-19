@@ -1,0 +1,34 @@
+/*
+ * LTTng-UST tracepoint schema for the PyTorch RecordFunction tracer.
+ *
+ * The whole "API surface" is one generic op event with the op name carried as a
+ * string, so the producer schema is just two tracepoints: op_entry / op_exit.
+ *
+ * Provider: lttng_ust_pytorch
+ * Events:   lttng_ust_pytorch:op_entry  /  lttng_ust_pytorch:op_exit
+ *
+ * Generate with:  lttng-gen-tp pytorch_tracepoints.tp
+ *   -> pytorch_tracepoints.c + pytorch_tracepoints.h
+ */
+
+TRACEPOINT_EVENT(
+  lttng_ust_pytorch,
+  op_entry,
+  TP_ARGS(
+    const char *, name
+  ),
+  TP_FIELDS(
+    ctf_string(name, name)
+  )
+)
+
+TRACEPOINT_EVENT(
+  lttng_ust_pytorch,
+  op_exit,
+  TP_ARGS(
+    const char *, name
+  ),
+  TP_FIELDS(
+    ctf_string(name, name)
+  )
+)
