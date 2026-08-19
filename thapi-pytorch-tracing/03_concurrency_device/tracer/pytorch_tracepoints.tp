@@ -1,0 +1,43 @@
+/*
+ * LTTng-UST tracepoint schema for the Step 3 granularity experiments.
+ *
+ * Enriched vs Step 1 (which was name-only): each event also carries the
+ * RecordScope, the per-thread nesting depth, and (entry only) a rendered
+ * argument string. This lets one trace expose aspects 2 (scope), 4 (depth),
+ * and 5 (inputs) at once; aspect 3 (thread) comes from LTTng's vtid context.
+ *
+ * Provider: lttng_ust_pytorch
+ * Generate with:  lttng-gen-tp pytorch_tracepoints.tp
+ */
+
+TRACEPOINT_EVENT(
+  lttng_ust_pytorch,
+  op_entry,
+  TP_ARGS(
+    const char *, name,
+    const char *, scope,
+    int, depth,
+    const char *, args
+  ),
+  TP_FIELDS(
+    ctf_string(name, name)
+    ctf_string(scope, scope)
+    ctf_integer(int, depth, depth)
+    ctf_string(args, args)
+  )
+)
+
+TRACEPOINT_EVENT(
+  lttng_ust_pytorch,
+  op_exit,
+  TP_ARGS(
+    const char *, name,
+    const char *, scope,
+    int, depth
+  ),
+  TP_FIELDS(
+    ctf_string(name, name)
+    ctf_string(scope, scope)
+    ctf_integer(int, depth, depth)
+  )
+)
