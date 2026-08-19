@@ -1,4 +1,4 @@
-# Step 3 — How the granularities change under concurrency (and, next, GPU)
+# Step 3 — How the granularities change under concurrency
 
 Step 2 measured the RecordFunction trace granularities on a **single-threaded CPU**
 run. Two of its results were ties *only because* nothing left the calling thread:
@@ -6,10 +6,6 @@ global vs thread-local callbacks were byte-identical (134/134), and the
 `thread_local` depth counter was never exercised by more than one thread. This step
 breaks that assumption on purpose — real **parallel-training** workloads — and shows
 which granularity readings change, and by how much.
-
-This part (**3a**) is multi-thread CPU, runnable on the head node. The GPU part
-(**3b/3c**, XPU on an Aurora compute node) is documented here as the next step; the
-head node has no device (`XPU device count is zero`).
 
 Two parallelism axes matter, and RecordFunction treats them very differently:
 
@@ -45,11 +41,11 @@ Two parallelism axes matter, and RecordFunction treats them very differently:
 source env.sh lttng          # loads oneapi/release/2025.3.1 -> lttng-tools -> babeltrace2 -> frameworks (LAST)
 cd tracer && ./build.sh      # -> tracer/libtorch_tracer.so
 
-# 3a inter-op — Hogwild: global catches every thread, thread-local catches one
+# inter-op — Hogwild: global catches every thread, thread-local catches one
 TRACER_SCOPES=function+backward TRACER_THREAD=global N_THREADS=4 ./run.sh hogwild_global ../example/train_hogwild.py
 TRACER_SCOPES=function+backward TRACER_THREAD=local  N_THREADS=4 ./run.sh hogwild_local  ../example/train_hogwild.py
 
-# 3a intra-op — ATen parallel_for under one launching thread
+# intra-op — ATen parallel_for under one launching thread
 TRACER_SCOPES=function+backward TRACER_THREAD=global N_THREADS=8 DIM=512 ./run.sh intraop_global ../example/train_intraop.py
 ```
 
@@ -120,22 +116,6 @@ op fires the callback exactly once. **RecordFunction granularity is per-dispatch
 not per-core** — intra-op parallelism does not appear as extra events, and
 global-vs-thread-local makes no difference for it.
 
-### Next: GPU (XPU) — step 3b/3c
-Not yet run (needs an Aurora compute node). What we expect to measure, and why it
-matters for the granularities:
-
-- **Host-launch vs device-exec.** RecordFunction brackets the **host-side launch**,
-  not the async device kernel — so the entry/exit interval is *not* the kernel's GPU
-  time. Expect a semantic gap that CPU tracing never showed.
-- **Extra runtime threads.** A device runtime (Level-Zero/SYCL queue) may spin up
-  worker/queue threads; if op work runs there, only `global` will catch it — the
-  same global-vs-local lesson as 3a, on a new thread source.
-- **Device in the args.** With `TRACER_INPUTS=1`, tensors should render `@xpu`
-  instead of `@cpu` (aspect 5 under device).
-- **Our hook vs Kineto.** `torch.profiler`/Kineto failed on the head node
-  (XPU/Level-Zero); confirm the RecordFunction seam still records where the device
-  is real.
-
 ## What this demonstrates
 
 - **Under real inter-op concurrency, thread-local tracing is not a smaller trace —
@@ -148,6 +128,3 @@ matters for the granularities:
   event counts as core utilization.
 - **These are two independent axes.** RecordFunction sees inter-op (thread) work but
   not intra-op (core) work; a full picture needs a second signal for the latter.
-- **Carry the global default into GPU runs:** a device runtime is just another source
-  of extra threads, so the 3a lesson (global, not thread-local) is expected to hold —
-  to be confirmed in step 3b.
