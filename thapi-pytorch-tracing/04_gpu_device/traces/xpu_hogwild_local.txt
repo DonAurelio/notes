@@ -1,0 +1,148 @@
+[19:29:27.898790721] (+?.?????????) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::empty", scope = "FUNCTION", depth = 0, args = "" }
+[19:29:27.898880816] (+0.000090095) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::empty", scope = "FUNCTION", depth = 0 }
+[19:29:27.898935279] (+0.000054463) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::detach", scope = "FUNCTION", depth = 0, args = "" }
+[19:29:27.898939978] (+0.000004699) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "detach", scope = "FUNCTION", depth = 1, args = "" }
+[19:29:27.898983236] (+0.000043258) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "detach", scope = "FUNCTION", depth = 1 }
+[19:29:27.898983711] (+0.000000475) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::detach", scope = "FUNCTION", depth = 0 }
+[19:29:27.899013388] (+0.000029677) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::empty", scope = "FUNCTION", depth = 0, args = "" }
+[19:29:27.899015223] (+0.000001835) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::empty", scope = "FUNCTION", depth = 0 }
+[19:29:27.899017754] (+0.000002531) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::detach", scope = "FUNCTION", depth = 0, args = "" }
+[19:29:27.899018139] (+0.000000385) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "detach", scope = "FUNCTION", depth = 1, args = "" }
+[19:29:27.899019261] (+0.000001122) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "detach", scope = "FUNCTION", depth = 1 }
+[19:29:27.899019480] (+0.000000219) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::detach", scope = "FUNCTION", depth = 0 }
+[19:29:27.899105001] (+0.000085521) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::uniform_", scope = "FUNCTION", depth = 0, args = "" }
+[19:29:27.901438772] (+0.002333771) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::uniform_", scope = "FUNCTION", depth = 0 }
+[19:29:27.901454372] (+0.000015600) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::uniform_", scope = "FUNCTION", depth = 0, args = "" }
+[19:29:27.901457377] (+0.000003005) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::uniform_", scope = "FUNCTION", depth = 0 }
+[19:29:28.038000895] (+0.136543518) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::to", scope = "FUNCTION", depth = 0, args = "" }
+[19:29:28.038030754] (+0.000029859) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::_to_copy", scope = "FUNCTION", depth = 1, args = "" }
+[19:29:28.038067613] (+0.000036859) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::empty_strided", scope = "FUNCTION", depth = 2, args = "" }
+[19:29:28.038394965] (+0.000327352) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::empty_strided", scope = "FUNCTION", depth = 2 }
+[19:29:28.038415516] (+0.000020551) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::copy_", scope = "FUNCTION", depth = 2, args = "" }
+[19:29:28.038660261] (+0.000244745) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::copy_", scope = "FUNCTION", depth = 2 }
+[19:29:28.038661600] (+0.000001339) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::_to_copy", scope = "FUNCTION", depth = 1 }
+[19:29:28.038662109] (+0.000000509) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::to", scope = "FUNCTION", depth = 0 }
+[19:29:28.038716224] (+0.000054115) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::_has_compatible_shallow_copy_type", scope = "FUNCTION", depth = 0, args = "" }
+[19:29:28.038722924] (+0.000006700) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::_has_compatible_shallow_copy_type", scope = "FUNCTION", depth = 0 }
+[19:29:28.038738147] (+0.000015223) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::_has_compatible_shallow_copy_type", scope = "FUNCTION", depth = 0, args = "" }
+[19:29:28.038738490] (+0.000000343) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::_has_compatible_shallow_copy_type", scope = "FUNCTION", depth = 0 }
+[19:29:28.038764987] (+0.000026497) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::to", scope = "FUNCTION", depth = 0, args = "" }
+[19:29:28.038766305] (+0.000001318) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::_to_copy", scope = "FUNCTION", depth = 1, args = "" }
+[19:29:28.038770343] (+0.000004038) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::empty_strided", scope = "FUNCTION", depth = 2, args = "" }
+[19:29:28.038778519] (+0.000008176) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::empty_strided", scope = "FUNCTION", depth = 2 }
+[19:29:28.038779357] (+0.000000838) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::copy_", scope = "FUNCTION", depth = 2, args = "" }
+[19:29:28.038792365] (+0.000013008) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::copy_", scope = "FUNCTION", depth = 2 }
+[19:29:28.038792757] (+0.000000392) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::_to_copy", scope = "FUNCTION", depth = 1 }
+[19:29:28.038793054] (+0.000000297) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::to", scope = "FUNCTION", depth = 0 }
+[19:29:28.038798200] (+0.000005146) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::_has_compatible_shallow_copy_type", scope = "FUNCTION", depth = 0, args = "" }
+[19:29:28.038798756] (+0.000000556) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::_has_compatible_shallow_copy_type", scope = "FUNCTION", depth = 0 }
+[19:29:28.038803403] (+0.000004647) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::_has_compatible_shallow_copy_type", scope = "FUNCTION", depth = 0, args = "" }
+[19:29:28.038803728] (+0.000000325) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::_has_compatible_shallow_copy_type", scope = "FUNCTION", depth = 0 }
+[19:29:28.038897720] (+0.000093992) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::randn", scope = "FUNCTION", depth = 0, args = "" }
+[19:29:28.038913264] (+0.000015544) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::empty", scope = "FUNCTION", depth = 1, args = "" }
+[19:29:28.038923959] (+0.000010695) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::empty", scope = "FUNCTION", depth = 1 }
+[19:29:28.038933202] (+0.000009243) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::normal_", scope = "FUNCTION", depth = 1, args = "" }
+[19:29:28.041349761] (+0.002416559) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::normal_", scope = "FUNCTION", depth = 1 }
+[19:29:28.041353267] (+0.000003506) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::randn", scope = "FUNCTION", depth = 0 }
+[19:29:28.041435490] (+0.000082223) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::linear", scope = "FUNCTION", depth = 0, args = "" }
+[19:29:28.041449953] (+0.000014463) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::t", scope = "FUNCTION", depth = 1, args = "" }
+[19:29:28.041491533] (+0.000041580) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::transpose", scope = "FUNCTION", depth = 2, args = "" }
+[19:29:28.041512725] (+0.000021192) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::as_strided", scope = "FUNCTION", depth = 3, args = "" }
+[19:29:28.041530625] (+0.000017900) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::as_strided", scope = "FUNCTION", depth = 3 }
+[19:29:28.041531602] (+0.000000977) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::transpose", scope = "FUNCTION", depth = 2 }
+[19:29:28.041544326] (+0.000012724) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::t", scope = "FUNCTION", depth = 1 }
+[19:29:28.041550659] (+0.000006333) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::addmm", scope = "FUNCTION", depth = 1, args = "" }
+[19:29:28.041632201] (+0.000081542) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::resize_", scope = "FUNCTION", depth = 2, args = "" }
+[19:29:28.041644732] (+0.000012531) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::resize_", scope = "FUNCTION", depth = 2 }
+[19:29:28.044881698] (+0.003236966) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::expand", scope = "FUNCTION", depth = 2, args = "" }
+[19:29:28.044893157] (+0.000011459) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::as_strided", scope = "FUNCTION", depth = 3, args = "" }
+[19:29:28.044896235] (+0.000003078) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::as_strided", scope = "FUNCTION", depth = 3 }
+[19:29:28.044898900] (+0.000002665) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::expand", scope = "FUNCTION", depth = 2 }
+[19:29:28.061434931] (+0.016536031) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::empty", scope = "FUNCTION", depth = 2, args = "" }
+[19:29:28.061442746] (+0.000007815) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::empty", scope = "FUNCTION", depth = 2 }
+[19:29:28.061621148] (+0.000178402) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::addmm", scope = "FUNCTION", depth = 1 }
+[19:29:28.061625367] (+0.000004219) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::linear", scope = "FUNCTION", depth = 0 }
+[19:29:28.061669598] (+0.000044231) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::relu", scope = "FUNCTION", depth = 0, args = "" }
+[19:29:28.061692368] (+0.000022770) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::clamp_min", scope = "FUNCTION", depth = 1, args = "" }
+[19:29:28.084432217] (+0.022739849) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::clamp_min", scope = "FUNCTION", depth = 1 }
+[19:29:28.084451067] (+0.000018850) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::relu", scope = "FUNCTION", depth = 0 }
+[19:29:28.084505357] (+0.000054290) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::sum", scope = "FUNCTION", depth = 0, args = "" }
+[19:29:28.084530684] (+0.000025327) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::sum", scope = "FUNCTION", depth = 1, args = "" }
+[19:29:28.084554853] (+0.000024169) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::as_strided", scope = "FUNCTION", depth = 2, args = "" }
+[19:29:28.084557114] (+0.000002261) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::as_strided", scope = "FUNCTION", depth = 2 }
+[19:29:28.124635467] (+0.040078353) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::sum", scope = "FUNCTION", depth = 1 }
+[19:29:28.124641616] (+0.000006149) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::sum", scope = "FUNCTION", depth = 0 }
+[19:29:28.124801705] (+0.000160089) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::ones_like", scope = "FUNCTION", depth = 0, args = "" }
+[19:29:28.124809686] (+0.000007981) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::empty_like", scope = "FUNCTION", depth = 1, args = "" }
+[19:29:28.124813832] (+0.000004146) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::empty_strided", scope = "FUNCTION", depth = 2, args = "" }
+[19:29:28.124823578] (+0.000009746) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::empty_strided", scope = "FUNCTION", depth = 2 }
+[19:29:28.124825617] (+0.000002039) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::empty_like", scope = "FUNCTION", depth = 1 }
+[19:29:28.124835753] (+0.000010136) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::fill_", scope = "FUNCTION", depth = 1, args = "" }
+[19:29:28.133560840] (+0.008725087) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::fill_", scope = "FUNCTION", depth = 1 }
+[19:29:28.133562964] (+0.000002124) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 207 }, { vpid = 71911, vtid = 71911 }, { name = "aten::ones_like", scope = "FUNCTION", depth = 0 }
+[19:29:28.141999979] (+0.008437015) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "autograd::engine::evaluate_function: SumBackward0", scope = "FUNCTION", depth = 0, args = "" }
+[19:29:28.142016529] (+0.000016550) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "SumBackward0", scope = "BACKWARD_FUNCTION", depth = 1, args = "" }
+[19:29:28.142030018] (+0.000013489) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::expand", scope = "FUNCTION", depth = 2, args = "" }
+[19:29:28.142046933] (+0.000016915) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::as_strided", scope = "FUNCTION", depth = 3, args = "" }
+[19:29:28.142051238] (+0.000004305) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::as_strided", scope = "FUNCTION", depth = 3 }
+[19:29:28.142055363] (+0.000004125) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::expand", scope = "FUNCTION", depth = 2 }
+[19:29:28.142060680] (+0.000005317) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "SumBackward0", scope = "BACKWARD_FUNCTION", depth = 1 }
+[19:29:28.142066948] (+0.000006268) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "autograd::engine::evaluate_function: SumBackward0", scope = "FUNCTION", depth = 0 }
+[19:29:28.142073911] (+0.000006963) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "autograd::engine::evaluate_function: ReluBackward0", scope = "FUNCTION", depth = 0, args = "" }
+[19:29:28.142074596] (+0.000000685) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "ReluBackward0", scope = "BACKWARD_FUNCTION", depth = 1, args = "" }
+[19:29:28.142086083] (+0.000011487) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::threshold_backward", scope = "FUNCTION", depth = 2, args = "" }
+[19:29:28.157066717] (+0.014980634) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::threshold_backward", scope = "FUNCTION", depth = 2 }
+[19:29:28.157071434] (+0.000004717) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "ReluBackward0", scope = "BACKWARD_FUNCTION", depth = 1 }
+[19:29:28.157084758] (+0.000013324) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "autograd::engine::evaluate_function: ReluBackward0", scope = "FUNCTION", depth = 0 }
+[19:29:28.157100375] (+0.000015617) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "autograd::engine::evaluate_function: AddmmBackward0", scope = "FUNCTION", depth = 0, args = "" }
+[19:29:28.157102374] (+0.000001999) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "AddmmBackward0", scope = "BACKWARD_FUNCTION", depth = 1, args = "" }
+[19:29:28.157126493] (+0.000024119) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::t", scope = "FUNCTION", depth = 2, args = "" }
+[19:29:28.157130358] (+0.000003865) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::transpose", scope = "FUNCTION", depth = 3, args = "" }
+[19:29:28.157133016] (+0.000002658) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::as_strided", scope = "FUNCTION", depth = 4, args = "" }
+[19:29:28.157135410] (+0.000002394) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::as_strided", scope = "FUNCTION", depth = 4 }
+[19:29:28.157135910] (+0.000000500) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::transpose", scope = "FUNCTION", depth = 3 }
+[19:29:28.157137579] (+0.000001669) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::t", scope = "FUNCTION", depth = 2 }
+[19:29:28.157146138] (+0.000008559) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::mm", scope = "FUNCTION", depth = 2, args = "" }
+[19:29:28.157167118] (+0.000020980) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::resize_", scope = "FUNCTION", depth = 3, args = "" }
+[19:29:28.157168860] (+0.000001742) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::resize_", scope = "FUNCTION", depth = 3 }
+[19:29:28.166723161] (+0.009554301) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::empty", scope = "FUNCTION", depth = 3, args = "" }
+[19:29:28.166730756] (+0.000007595) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::empty", scope = "FUNCTION", depth = 3 }
+[19:29:28.166814587] (+0.000083831) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::mm", scope = "FUNCTION", depth = 2 }
+[19:29:28.166816687] (+0.000002100) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::t", scope = "FUNCTION", depth = 2, args = "" }
+[19:29:28.166820152] (+0.000003465) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::transpose", scope = "FUNCTION", depth = 3, args = "" }
+[19:29:28.166822475] (+0.000002323) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::as_strided", scope = "FUNCTION", depth = 4, args = "" }
+[19:29:28.166824892] (+0.000002417) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::as_strided", scope = "FUNCTION", depth = 4 }
+[19:29:28.166825455] (+0.000000563) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::transpose", scope = "FUNCTION", depth = 3 }
+[19:29:28.166828250] (+0.000002795) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::t", scope = "FUNCTION", depth = 2 }
+[19:29:28.166832936] (+0.000004686) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "AddmmBackward0", scope = "BACKWARD_FUNCTION", depth = 1 }
+[19:29:28.166840306] (+0.000007370) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::sum", scope = "FUNCTION", depth = 1, args = "" }
+[19:29:28.166945357] (+0.000105051) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::sum", scope = "FUNCTION", depth = 1 }
+[19:29:28.166954577] (+0.000009220) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::view", scope = "FUNCTION", depth = 1, args = "" }
+[19:29:28.166967594] (+0.000013017) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::view", scope = "FUNCTION", depth = 1 }
+[19:29:28.166979893] (+0.000012299) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "autograd::engine::evaluate_function: AddmmBackward0", scope = "FUNCTION", depth = 0 }
+[19:29:28.167003164] (+0.000023271) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "autograd::engine::evaluate_function: torch::autograd::AccumulateGrad", scope = "FUNCTION", depth = 0, args = "" }
+[19:29:28.167007035] (+0.000003871) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "torch::autograd::AccumulateGrad", scope = "BACKWARD_FUNCTION", depth = 1, args = "" }
+[19:29:28.167020631] (+0.000013596) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::detach", scope = "FUNCTION", depth = 2, args = "" }
+[19:29:28.167021951] (+0.000001320) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "detach", scope = "FUNCTION", depth = 3, args = "" }
+[19:29:28.167025758] (+0.000003807) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "detach", scope = "FUNCTION", depth = 3 }
+[19:29:28.167025960] (+0.000000202) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::detach", scope = "FUNCTION", depth = 2 }
+[19:29:28.167028688] (+0.000002728) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "torch::autograd::AccumulateGrad", scope = "BACKWARD_FUNCTION", depth = 1 }
+[19:29:28.167031939] (+0.000003251) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "autograd::engine::evaluate_function: torch::autograd::AccumulateGrad", scope = "FUNCTION", depth = 0 }
+[19:29:28.167034813] (+0.000002874) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "autograd::engine::evaluate_function: TBackward0", scope = "FUNCTION", depth = 0, args = "" }
+[19:29:28.167035514] (+0.000000701) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "TBackward0", scope = "BACKWARD_FUNCTION", depth = 1, args = "" }
+[19:29:28.167037102] (+0.000001588) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::t", scope = "FUNCTION", depth = 2, args = "" }
+[19:29:28.167038104] (+0.000001002) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::transpose", scope = "FUNCTION", depth = 3, args = "" }
+[19:29:28.167038698] (+0.000000594) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::as_strided", scope = "FUNCTION", depth = 4, args = "" }
+[19:29:28.167039360] (+0.000000662) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::as_strided", scope = "FUNCTION", depth = 4 }
+[19:29:28.167039698] (+0.000000338) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::transpose", scope = "FUNCTION", depth = 3 }
+[19:29:28.167042473] (+0.000002775) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::t", scope = "FUNCTION", depth = 2 }
+[19:29:28.167042795] (+0.000000322) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "TBackward0", scope = "BACKWARD_FUNCTION", depth = 1 }
+[19:29:28.167044113] (+0.000001318) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "autograd::engine::evaluate_function: TBackward0", scope = "FUNCTION", depth = 0 }
+[19:29:28.167046650] (+0.000002537) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "autograd::engine::evaluate_function: torch::autograd::AccumulateGrad", scope = "FUNCTION", depth = 0, args = "" }
+[19:29:28.167047764] (+0.000001114) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "torch::autograd::AccumulateGrad", scope = "BACKWARD_FUNCTION", depth = 1, args = "" }
+[19:29:28.167048444] (+0.000000680) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::detach", scope = "FUNCTION", depth = 2, args = "" }
+[19:29:28.167048815] (+0.000000371) x4114c4s0b0n0 lttng_ust_pytorch:op_entry: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "detach", scope = "FUNCTION", depth = 3, args = "" }
+[19:29:28.167049257] (+0.000000442) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "detach", scope = "FUNCTION", depth = 3 }
+[19:29:28.167049502] (+0.000000245) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "aten::detach", scope = "FUNCTION", depth = 2 }
+[19:29:28.167049788] (+0.000000286) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "torch::autograd::AccumulateGrad", scope = "BACKWARD_FUNCTION", depth = 1 }
+[19:29:28.167050261] (+0.000000473) x4114c4s0b0n0 lttng_ust_pytorch:op_exit: { cpu_id = 157 }, { vpid = 71911, vtid = 71996 }, { name = "autograd::engine::evaluate_function: torch::autograd::AccumulateGrad", scope = "FUNCTION", depth = 0 }
