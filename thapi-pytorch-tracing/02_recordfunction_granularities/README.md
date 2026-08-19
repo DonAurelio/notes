@@ -183,13 +183,13 @@ thread-local callbacks always run regardless of `p`.
 
 ## What this demonstrates
 
-**Per-dispatch-key granularity is NOT reachable here.**
-RecordFunction sees an op **once, at its outermost dispatch**. It exposes
-`name()`, `scope()`, `seqNr()`, `inputs()` — but **no `DispatchKey` accessor**, and
-the dispatcher deliberately does **not** re-arm RecordFunction on `redispatch` /
-`redispatchBoxed` (`Dispatcher.h:840, 898`: *"do not use RecordFunction on
-redispatch"*). So the key-by-key hops an op takes internally
-(Autograd → CPU → …) are invisible through this hook: you see `aten::addmm` one
-time, not each dispatch-key stage of it. Reaching that level requires a different
-seam (raw-symbol interposition of `KernelFunction::call`/lookup, or a Python
-`TorchDispatchMode`). Documenting *why* is the deep-dive for the next step.
+- **Default to global scope + `depth==0`** for a readable, low-overhead trace of what
+  the program actually did.
+- **Add `BACKWARD_FUNCTION`** only when you need the autograd graph — it roughly
+  tracks the forward op count.
+- **Turn on inputs only when debugging shapes/dtypes,** and prefer it over sampling
+  when you need correctness of *what* ran; keep it off on the hot path.
+- **Use sampling for overhead control on long/hot runs, not for correctness** — never
+  rely on a sampled trace to prove an op did or didn't run.
+- **Always register globally** unless you deliberately want a single thread; a
+  thread-local callback silently under-captures exactly when work goes multi-thread.
