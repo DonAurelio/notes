@@ -37,6 +37,11 @@ Each `NN_*` stage is self-contained (`README.md`, `env.sh`, `example/`, `tracer/
 - Stage README shape: title → intro → toggle table → contents tree (annotate each
   trace `(N events, M vtid)`) → reproduce → `### finding` per result → "What this
   demonstrates".
+- **Folder README (`README.md` here) is for beginners** — a different audience from
+  the stage READMEs. Keep it short: the main idea in plain language, a one-line
+  contents table, and findings as single plain sentences. No technical details, no
+  jargon, no numbers, no duplicated/paraphrased findings. Details live in the stage
+  READMEs; this file only points to them.
 - `00_pytorch_introduction/` is background reading, not a tracing stage.
 
 ## Gotchas that will bite (not in the stage READMEs)
