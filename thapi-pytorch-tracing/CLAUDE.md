@@ -1,5 +1,10 @@
 # CLAUDE.md — THAPI PyTorch tracing research
 
+> **This repo is documentation only.** All experiments — building the tracer,
+> recording traces, running workloads — are conducted in a separate working
+> directory, NOT here. Only final notes and write-ups are committed to this repo.
+> Never scaffold, build, or record inside it.
+
 ## What this project is
 
 Understand the PyTorch **dispatcher ↔ RecordFunction** mechanism by observing real
@@ -31,6 +36,8 @@ Each `NN_*` stage is self-contained (`README.md`, `env.sh`, `example/`, `tracer/
 
 ## Conventions
 
+- **Documentation only** — this repo holds final notes and write-ups; run every
+  experiment in a separate working directory and commit only the results here.
 - **README is public; RUNBOOK is local-only** — never commit a `RUNBOOK.md` here.
 - **Results cite numbers, not adjectives** (per-vtid entry/exit, maxdepth, event
   totals, capture %) — get them from the analyze tooling, don't eyeball.
