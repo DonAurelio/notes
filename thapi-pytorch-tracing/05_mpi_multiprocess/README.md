@@ -22,10 +22,8 @@ not a tracer change: the tracer has zero MPI awareness, and LTTng's `vpid` conte
 | `TRACER_THREAD` | `global` (default) \| `local` | register callback on every thread vs the load thread only |
 | `TRACER_INPUTS` | `0` (default) \| `1` | render `fn.inputs()` — exposes the collectives' tensor args |
 
-`NRANKS` is the new axis; the rest carry over from Steps 2–4. A **compute node is
-required** — Cray PALS `mpiexec` will not launch on a login node (no `PBS_JOBID` →
-exit 127); reach one with `qsub -A Performance -q debug -l walltime=00:60:00 -l
-filesystems=home -l select=1 -I`.
+`NRANKS` is the new axis; the rest carry over from Steps 2–4. Running multiple
+ranks requires a compute node.
 
 ## Contents
 
@@ -52,7 +50,7 @@ filesystems=home -l select=1 -I`.
 ## How to reproduce
 
 ```bash
-# On an Aurora COMPUTE node (login node has no PALS launcher — mpiexec exits 127).
+# On an Aurora compute node.
 source env.sh lttng                       # oneapi -> lttng -> babeltrace2 -> frameworks (LAST)
 export LTTNG_HOME="/tmp/lttng_${USER}_$$"  # node-local; avoids shared-home sessiond lock
 cd tracer && ./build.sh                    # -> tracer/libtorch_tracer.so (same source as Step 4)
@@ -73,9 +71,9 @@ NRANKS=4 TRACER_SCOPES=function+backward TRACER_INPUTS=1      BACKEND=gloo DEVIC
 ```
 
 `run_mpi.sh` starts one LTTng userspace session, then launches `mpiexec -n NRANKS`
-with `LD_PRELOAD` and the `TRACER_*` toggles exported so PALS forwards them to every
-rank. All ranks register with the same session, so their events land in one trace,
-separated by `vpid`.
+with `LD_PRELOAD` and the `TRACER_*` toggles exported so they reach every rank. All
+ranks register with the same session, so their events land in one trace, separated
+by `vpid`.
 
 ## Where the traces are written
 
