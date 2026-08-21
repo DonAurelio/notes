@@ -1,4 +1,4 @@
-# Step 5 — How the granularities behave across MPI processes (DDP)
+# Step 5 — How the granularities behave across MPI processes (DDP), CPU
 
 Steps 2–4 traced RecordFunction within **one process** — single-thread, then CPU
 threads, then a GPU device runtime. This step adds the axis real training actually
@@ -9,7 +9,9 @@ stays coherent when the same program runs as N OS processes — and what the hoo
 sees of the collectives that tie them together. This CPU pass (gloo backend, 4
 ranks on one Aurora compute node) answers the first: **N ranks produce N
 independent, balanced `vpid` traces in one session, with no tracer change.** The
-GPU pass (oneCCL) is a separate follow-up.
+GPU pass — same DDP workload on XPU with the `xccl` backend — is
+[Step 6](../06_mpi_gpu/README.md), where the device autograd thread breaks the
+CPU tie found below.
 
 The tracer is **UNCHANGED from Step 4 — the same `.so`.** MPI is a *launch* axis,
 not a tracer change: the tracer has zero MPI awareness, and LTTng's `vpid` context
@@ -28,7 +30,7 @@ ranks requires a compute node.
 ## Contents
 
 ```
-05_mpi_multiprocess/
+05_mpi_cpu/
 ├── README.md                    # this file
 ├── env.sh                       # module recipe (same across stages)
 ├── example/

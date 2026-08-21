@@ -28,7 +28,8 @@ One `.so`, **build-once / configure-at-runtime**: behaviour is selected by
 02_recordfunction_granularities/ # Step 2 — the 6 granularity toggles, single-threaded CPU
 03_concurrency_device/           # Step 3 — granularities under CPU concurrency
 04_gpu_device/                   # Step 4 — same workloads on Aurora XPU
-05_mpi_multiprocess/             # Step 5 — DDP across MPI ranks (CPU/gloo done; GPU/oneCCL TODO)
+05_mpi_cpu/                      # Step 5 — DDP across MPI ranks, CPU (gloo)
+06_mpi_gpu/                      # Step 6 — same DDP on XPU (native xccl); device autograd thread per rank
 ```
 
 Each `NN_*` stage is self-contained (`README.md`, `env.sh`, `example/`, `tracer/`,

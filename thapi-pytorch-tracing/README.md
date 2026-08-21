@@ -17,7 +17,8 @@ back later.
 | `02_recordfunction_granularities/` | The different levels of detail we can record. |
 | `03_concurrency_device/` | What changes when the program uses many CPU threads. |
 | `04_gpu_device/` | What changes when the program runs on a GPU. |
-| `05_mpi_multiprocess/` | What changes when the program runs as many processes at once. |
+| `05_mpi_cpu/` | What changes when the program runs as many processes at once (on CPU). |
+| `06_mpi_gpu/` | The same many-process program, this time on the GPU. |
 
 Each folder has its own README that explains the idea, how to reproduce it, and
 what we found. Read them in order.
@@ -31,3 +32,4 @@ what we found. Read them in order.
 - On a GPU, PyTorch runs part of the work on its own thread, so watching all threads becomes essential.
 - The trace shows when work is *launched*, not how long it takes on the GPU.
 - When the program runs as many processes at once, each one is traced cleanly on its own, and the messages they send each other to stay in sync show up too.
+- Running those many processes on GPUs instead of CPUs traces just as cleanly, and each one shows which GPU it used.
