@@ -34,7 +34,7 @@ style: |
 
 <!-- _class: title -->
 
-# Tracing PyTorch Without Touching Python
+# PyTorch Tracing
 
 ## Watching the ATen dispatcher with RecordFunction + LTTng
 
@@ -55,7 +55,7 @@ style: |
 
 ## 1.1 The ATen dispatcher
 
-![w:1050](assets/img/pytorch_architecture_layers.svg)
+![w:950](assets/img/aten_dispatcher_flow.svg)
 
 ---
 
@@ -402,11 +402,3 @@ devices in args (ddp_xpu_n4_inputs): xpu:0=525  xpu:1=525  xpu:2=525  xpu:3=525 
 ```
 
 - Each rank's ops carry its own tile symmetrically — communication and placement visible with zero new instrumentation
-
----
-
-<!-- _class: title -->
-
-# Thank you
-
-## One `.so`, zero Python changes, every axis traced coherently
