@@ -1,0 +1,67 @@
+BACKEND_PYTORCH | 1 Hostnames | 1 Processes | 1 Threads | 
+
+                                                                Name |     Time | Time(%) | Calls |  Average |      Min |      Max |         
+                                                        aten::linear |  63.34ms |  33.83% |     1 |  63.34ms |  63.34ms |  63.34ms |         
+                                                         aten::addmm |  63.18ms |  33.74% |     1 |  63.18ms |  63.18ms |  63.18ms |         
+                                                      aten::uniform_ |  25.35ms |  13.54% |     2 |  12.67ms |  23.42us |  25.32ms |         
+                   autograd::engine::evaluate_function: SumBackward0 |   7.20ms |   3.85% |     1 |   7.20ms |   7.20ms |   7.20ms |         
+                                                        SumBackward0 |   7.16ms |   3.83% |     1 |   7.16ms |   7.16ms |   7.16ms |         
+                                                    aten::unbind.int |   4.57ms |   2.44% |     8 | 570.68us |   3.85us |   4.41ms |         
+                 autograd::engine::evaluate_function: AddmmBackward0 |   4.00ms |   2.13% |     1 |   4.00ms |   4.00ms |   4.00ms |         
+                                                      AddmmBackward0 |   3.91ms |   2.09% |     1 |   3.91ms |   3.91ms |   3.91ms |         
+                                                            aten::mm |   3.86ms |   2.06% |     1 |   3.86ms |   3.86ms |   3.86ms |         
+                                                      aten::isfinite | 493.30us |   0.26% |     4 | 123.33us |  31.21us | 293.47us |         
+                                                 aten::masked_select | 251.66us |   0.13% |     4 |  62.91us |  20.57us | 157.88us |         
+                                                     aten::ne.Scalar | 244.61us |   0.13% |     8 |  30.58us |   7.18us | 117.26us |         
+                                                      aten::to.dtype | 203.55us |   0.11% |    24 |   8.48us |    350ns |  66.58us |         
+                                               aten::sum.dim_IntList | 180.51us |   0.10% |     6 |  30.09us |  10.95us |  57.36us |         
+                                                           aten::abs | 180.49us |   0.10% |     8 |  22.56us |   4.42us |  94.38us |         
+                                           aten::empty.memory_format | 179.01us |   0.10% |    23 |   7.78us |    563ns | 120.14us |         
+                                                    aten::select.int | 178.62us |   0.10% |    80 |   2.23us |    995ns |  44.14us |         
+                                                      aten::_to_copy | 174.72us |   0.09% |    16 |  10.92us |   3.24us |  59.46us |         
+                                                          aten::item | 167.53us |   0.09% |   121 |   1.38us |    946ns |  16.12us |         
+                                                           aten::sum | 165.70us |   0.09% |     5 |  33.14us |  12.03us |  71.58us |         
+                                                    aten::is_nonzero | 162.85us |   0.09% |    79 |   2.06us |   1.53us |  19.57us |         
+                                                             aten::t | 150.98us |   0.08% |     4 |  37.74us |  10.00us | 116.19us |         
+                                                        aten::detach | 148.57us |   0.08% |    41 |   3.62us |   1.36us |  72.19us |         
+                                                         aten::copy_ | 117.75us |   0.06% |    17 |   6.93us |   1.06us |  48.35us |         
+                                                          aten::relu | 106.22us |   0.06% |     1 | 106.22us | 106.22us | 106.22us |         
+                                                       aten::abs.out |  99.26us |   0.05% |     8 |  12.41us |   1.88us |  56.40us |         
+                                                              detach |  95.84us |   0.05% |    41 |   2.34us |    649ns |  56.54us |         
+                                                    aten::as_strided |  91.68us |   0.05% |    95 | 965.06ns |    305ns |  20.13us |         
+                                                         aten::randn |  74.47us |   0.04% |     1 |  74.47us |  74.47us |  74.47us |         
+                  autograd::engine::evaluate_function: ReluBackward0 |  71.38us |   0.04% |     1 |  71.38us |  71.38us |  71.38us |         
+                                                           aten::min |  67.46us |   0.04% |     4 |  16.86us |   4.68us |  43.92us |         
+                                           aten::_local_scalar_dense |  67.20us |   0.04% |   121 | 555.35ns |    277ns |  11.58us |         
+                                                       ReluBackward0 |  63.75us |   0.03% |     1 |  63.75us |  63.75us |  63.75us |         
+                                                       aten::reshape |  62.44us |   0.03% |     4 |  15.61us |   4.60us |  33.67us |         
+                                                 aten::transpose.int |  59.30us |   0.03% |     4 |  14.82us |   1.86us |  45.22us |         
+                                                          aten::ceil |  58.34us |   0.03% |     6 |   9.72us |   1.63us |  39.90us |         
+                                                     aten::clamp_min |  54.52us |   0.03% |     1 |  54.52us |  54.52us |  54.52us |         
+                                                        aten::expand |  53.22us |   0.03% |     2 |  26.61us |  13.23us |  39.99us |         
+                                                          aten::view |  52.76us |   0.03% |     5 |  10.55us |   3.34us |  26.63us |         
+                                                aten::__and__.Tensor |  48.83us |   0.03% |     4 |  12.21us |   5.02us |  21.87us |         
+                                            aten::threshold_backward |  44.84us |   0.02% |     1 |  44.84us |  44.84us |  44.84us |         
+                                                    aten::mul.Tensor |  40.26us |   0.02% |     4 |  10.07us |   2.96us |  24.71us |         
+                                                     aten::eq.Tensor |  39.39us |   0.02% |     4 |   9.85us |   2.37us |  25.12us |         
+                                            aten::bitwise_and.Tensor |  38.27us |   0.02% |     4 |   9.57us |   3.78us |  17.10us |         
+                                                    aten::div.Tensor |  36.31us |   0.02% |     4 |   9.08us |   2.97us |  22.22us |         
+                                                 aten::empty_strided |  35.90us |   0.02% |    17 |   2.11us |    694ns |  11.42us |         
+                                                     aten::gt.Scalar |  35.49us |   0.02% |     8 |   4.44us |   1.94us |  13.50us |         
+autograd::engine::evaluate_function: torch::autograd::AccumulateGrad |  32.93us |   0.02% |     2 |  16.47us |   5.40us |  27.53us |         
+                                                           aten::max |  31.79us |   0.02% |     4 |   7.95us |   3.88us |  14.51us |         
+                                               aten::to.dtype_layout |  28.17us |   0.02% |     3 |   9.39us |    780ns |  26.60us |         
+                                                     aten::ne.Tensor |  28.14us |   0.02% |     6 |   4.69us |   1.59us |  16.51us |         
+                                                  aten::fill_.Scalar |  25.87us |   0.01% |    15 |   1.72us |    270ns |  10.89us |         
+                                     torch::autograd::AccumulateGrad |  25.46us |   0.01% |     2 |  12.73us |   3.00us |  22.47us |         
+                                                     aten::lt.Scalar |  22.50us |   0.01% |     4 |   5.63us |   2.97us |   9.83us |         
+                                                       aten::normal_ |  20.50us |   0.01% |     1 |  20.50us |  20.50us |  20.50us |         
+                     autograd::engine::evaluate_function: TBackward0 |  16.49us |   0.01% |     1 |  16.49us |  16.49us |  16.49us |         
+                                                     aten::ones_like |  16.31us |   0.01% |     1 |  16.31us |  16.31us |  16.31us |         
+                                                          TBackward0 |  13.08us |   0.01% |     1 |  13.08us |  13.08us |  13.08us |         
+                             aten::_has_compatible_shallow_copy_type |   9.96us |   0.01% |     4 |   2.49us |    276ns |   8.84us |         
+                                                    aten::empty_like |   7.88us |   0.00% |     1 |   7.88us |   7.88us |   7.88us |         
+                                                  aten::resolve_conj |   6.25us |   0.00% |    11 | 568.18ns |    238ns |   1.35us |         
+                                                   aten::resolve_neg |   2.57us |   0.00% |     7 | 366.57ns |    239ns |    764ns |         
+                                                               Total | 187.25ms | 100.00% |   861 |                                          
+
