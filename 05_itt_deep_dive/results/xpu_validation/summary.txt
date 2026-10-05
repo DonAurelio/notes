@@ -1,0 +1,49 @@
+vtune: Using result path `/home/avivasmeza/slides/01_iprof_itt/itt-deep-dive/results/xpu_validation/vtune_hotspots_xpu'
+vtune: Executing actions  0 %                                                  
+vtune: Warning: The result contains a lot of raw data. Finalization may take a long time to complete.
+vtune: Executing actions  0 % Finalizing results                               vtune: Executing actions  0 % Finalizing the result                            vtune: Executing actions  0 % Updating database schema from older version      vtune: Executing actions 50 % Updating database schema from older version      vtune: Executing actions 50 % Generating a report                              vtune: Executing actions 50 % Setting data model parameters                    vtune: Executing actions 75 % Setting data model parameters                    vtune: Executing actions 75 % Generating a report                              Elapsed Time: 312.283s
+    CPU Time: 218.144s
+        Effective Time: 216.768s
+        Spin Time: 1.376s
+        Overhead Time: 0s
+    Total Thread Count: 95
+    Paused Time: 0s
+
+Top Hotspots
+Function                Module           CPU Time  % of CPU Time(%)
+----------------------  ---------------  --------  ----------------
+_dwarf_get_alloc        libdwarf.so       33.074s             15.2%
+operator new            libc++abi.so      17.371s              8.0%
+memcmp                  libc-dynamic.so   13.888s              6.4%
+TraverseDwarfRecursive  libpindwarf.so    10.801s              5.0%
+_dwarf_get_size_of_val  libdwarf.so        9.797s              4.5%
+[Others]                N/A              133.214s             61.1%
+
+Top Tasks
+Task Type                                            Task Time  Task Count  Average Task Time
+---------------------------------------------------  ---------  ----------  -----------------
+aten::sum                                               2.583s      90,000             0.000s
+autograd::engine::evaluate_function: AddmmBackward0     2.098s      30,000             0.000s
+aten::linear                                            2.004s      30,000             0.000s
+aten::addmm                                             1.721s      30,000             0.000s
+AddmmBackward0                                          1.248s      30,000             0.000s
+[Others]                                                7.587s   1,380,000             0.000s
+Effective Physical Core Utilization: 0.9% (0.935 out of 104)
+    Effective Logical Core Utilization: 0.5% (1.009 out of 208)
+Collection and Platform Info
+    Application Command Line: /opt/aurora/26.26.0/frameworks/aurora_frameworks-2025.3.1/bin/python3 "profile_itt.py" 
+    Operating System: 6.4.0-150700.53.78-default NAME="SLES" VERSION="15-SP7" VERSION_ID="15.7" PRETTY_NAME="SUSE Linux Enterprise Server 15 SP7" ID="sles" ID_LIKE="suse" ANSI_COLOR="0;32" CPE_NAME="cpe:/o:suse:sles:15:sp7" DOCUMENTATION_URL="https://documentation.suse.com/"
+    Computer Name: x4311c0s6b0n0
+    Result Size: 579.7 MB 
+    Collection start time: 21:25:04 02/10/2026 UTC
+    Collection stop time: 21:30:18 02/10/2026 UTC
+    Collector Type: Event-based counting driver,User-mode sampling and tracing
+    CPU
+        Name: Intel(R) Xeon(R) Processor code named Sapphirerapids
+        Frequency: 2.000 GHz
+        Logical CPU Count: 208
+        LLC size: 110.1 MB 
+        Cache Allocation Technology
+            Level 2 capability: available
+            Level 3 capability: available
+vtune: Executing actions 100 % Generating a report                             vtune: Executing actions 100 % done                                            

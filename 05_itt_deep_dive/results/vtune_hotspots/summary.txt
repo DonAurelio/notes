@@ -1,0 +1,49 @@
+vtune: Using result path `/home/avivasmeza/slides/01_iprof_itt/itt-deep-dive/results/vtune_hotspots'
+vtune: Executing actions  0 %                                                  
+vtune: Warning: The result contains a lot of raw data. Finalization may take a long time to complete.
+vtune: Executing actions  0 % Finalizing results                               vtune: Executing actions  0 % Finalizing the result                            vtune: Executing actions  0 % Updating database schema from older version      vtune: Executing actions 50 % Updating database schema from older version      vtune: Executing actions 50 % Generating a report                              vtune: Executing actions 50 % Setting data model parameters                    vtune: Executing actions 75 % Setting data model parameters                    vtune: Executing actions 75 % Generating a report                              Elapsed Time: 324.611s
+    CPU Time: 303.336s
+        Effective Time: 303.288s
+        Spin Time: 0.048s
+        Overhead Time: 0s
+    Total Thread Count: 64
+    Paused Time: 0s
+
+Top Hotspots
+Function                              Module           CPU Time  % of CPU Time(%)
+------------------------------------  ---------------  --------  ----------------
+_dwarf_get_alloc                      libdwarf.so       41.051s             13.5%
+memcmp                                libc-dynamic.so   20.150s              6.6%
+operator new                          libc++abi.so      19.053s              6.3%
+_dwarf_next_die_info_ptr.constprop.0  libdwarf.so       18.037s              5.9%
+_dwarf_get_abbrev_for_code            libdwarf.so       17.781s              5.9%
+[Others]                              N/A              187.264s             61.7%
+
+Top Tasks
+Task Type                                            Task Time  Task Count  Average Task Time
+---------------------------------------------------  ---------  ----------  -----------------
+autograd::engine::evaluate_function: AddmmBackward0     0.932s      30,000             0.000s
+aten::linear                                            0.816s      30,000             0.000s
+aten::sum                                               0.644s      90,000             0.000s
+aten::t                                                 0.569s     120,000             0.000s
+aten::addmm                                             0.551s      30,000             0.000s
+[Others]                                                4.465s   1,320,000             0.000s
+Effective Physical Core Utilization: 1.5% (0.772 out of 52)
+    Effective Logical Core Utilization: 0.9% (0.898 out of 104)
+Collection and Platform Info
+    Application Command Line: /opt/aurora/26.26.0/frameworks/aurora_frameworks-2025.3.1/bin/python3 "profile_itt.py" 
+    Operating System: 6.4.0-150700.53.78-default NAME="SLES" VERSION="15-SP7" VERSION_ID="15.7" PRETTY_NAME="SUSE Linux Enterprise Server 15 SP7" ID="sles" ID_LIKE="suse" ANSI_COLOR="0;32" CPE_NAME="cpe:/o:suse:sles:15:sp7" DOCUMENTATION_URL="https://documentation.suse.com/"
+    Computer Name: aurora-uan-0011
+    Result Size: 588.0 MB 
+    Collection start time: 21:07:03 02/10/2026 UTC
+    Collection stop time: 21:12:27 02/10/2026 UTC
+    Collector Type: Driverless Perf per-process counting,User-mode sampling and tracing
+    CPU
+        Name: Intel(R) Xeon(R) Processor code named Icelake
+        Frequency: 2.195 GHz
+        Logical CPU Count: 104
+        LLC size: 40.9 MB 
+        Cache Allocation Technology
+            Level 2 capability: not detected
+            Level 3 capability: available
+vtune: Executing actions 100 % Generating a report                             vtune: Executing actions 100 % done                                            
