@@ -93,7 +93,7 @@ DistributionElementwiseKernelFunctor<float, float, (int)4, at::native::templates
 
 <img src="vtune_timeline.png" width="100%" alt="VTune/ITT xpu-offload timeline: CPU aten::randn/normal_/matmul/mm bars and GPU randn-fill/gemm_kernel bars">
 
-> Note: VTune's result format is proprietary (not Perfetto-compatible), so there is no "explore in Perfetto" link here — view the native timeline with `vtune-gui`/`vtune-backend` instead (see this folder's README).
+> Note: VTune's result format is proprietary (not Perfetto-compatible) — view the native timeline with `vtune-gui`/`vtune-backend` instead.
 
 __THAPI/iprof__
 
@@ -183,6 +183,17 @@ zeCommandListAppendMemoryFill(D) |  14.68MB |   2.47% |     1 | 14.68MB | 14.68M
 <img src="iprof_timeline.png" width="100%" alt="THAPI/iprof timeline: CPU aten::randn/normal_/matmul/mm bars and GPU gemm_kernel bar">
 
 🔗 [Explore this trace in Perfetto](https://ui.perfetto.dev/#!/?url=https://raw.githubusercontent.com/DonAurelio/notes/main/slides/2026_TracingIAML/iprof_timeline.pftrace)
+
+__At a Glance__
+
+| Dimension | THAPI/iprof | torch.profiler/Kineto | VTune/ITT |
+|---|---|---|---|
+| **User code changes required?** | No — runs unmodified code (`iprof -- python model.py`) | Yes — wrap the region in `with profile(...):` | Yes — wrap the region in `with emit_itt():` |
+| **Relies on PyTorch build/instrumentation?** | No — hooks RecordFunction externally via `LD_PRELOAD`, works on a stock PyTorch | Yes — Kineto is compiled into PyTorch itself | Yes — ITT bindings compiled into PyTorch (ATen observer) |
+| **Trace format** | Open — LTTng CTF (Common Trace Format) | Open — Chrome Trace Format (JSON) | Closed — proprietary VTune result database |
+| **Timeline format** | Open — Perfetto native (`.pftrace`) | Open — Chrome Trace JSON (Perfetto-compatible) | Closed — proprietary (viewable only via `vtune-gui`/`vtune-backend`) |
+
+THAPI/iprof is the only approach here that needs neither application code changes nor a PyTorch rebuild/instrumentation, while still emitting fully open trace and timeline formats.
 
 ---
 
