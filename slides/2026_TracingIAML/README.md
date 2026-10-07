@@ -198,14 +198,12 @@ __At a Glance__
 
 ### 2. THAPI/iprof: What Problem Does It Solve?
 
-* We work with *HPC applications* that are *highly parallel*, *distributed*, but that also *leverage heterogeneous resources*.
-* Programming languages and models to implement these HPC applications have never been more diverse.
+* **HPC applications** are highly parallel, distributed, but that also leverage heterogeneous resources.
+* **Programming languages**, **models** are highly diverse and HPC applications used then in many differen ways.
 
-| | |
-|---|---|
-| **Languages**<ul><li>FORTRAN</li><li>C</li><li>C++</li><li>**Python**</li></ul> | **Prospective Languages**<ul><li>Julia</li><li>Lua</li><li>PGAS approaches</li></ul> |
-| **Programming Models**<ul><li>**MPI**</li><li>OpenMP</li><li>**CUDA**, **L0**, **ROCm**, **HIP**, **OpenCL**</li><li>SYCL, Kokkos, Raja</li></ul> | **Domain-Based Programming Models**<ul><li>Linear algebra: BLAS/LAPACK</li><li>FFTs: cuFFT, FFTWx, MKL FFT</li><li>Low-level AI: cuDNN, clDNN, Intel DNNL</li><li>AI/ML: TensorFlow, Caffe, **PyTorch**</li></ul> |
-
+| Languages | Prospective Languages | Programming Models | Domain-Based Programming Models |
+|---|---|---|---|
+| <ul><li>FORTRAN</li><li>C</li><li>C++</li><li>**Python**</li></ul> | <ul><li>Julia</li><li>Lua</li><li>PGAS approaches</li></ul> | <ul><li>**MPI**</li><li>OpenMP</li><li>**CUDA**, **L0**, **ROCm**, **HIP**, **OpenCL**</li><li>SYCL, Kokkos, Raja</li></ul> | <ul><li>Linear algebra: BLAS/LAPACK</li><li>FFTs: cuFFT, FFTWx, MKL FFT</li><li>Low-level AI: cuDNN, clDNN, Intel DNNL</li><li>AI/ML: TensorFlow, Caffe, **PyTorch**</li></ul> |
 * This plethora of alternatives are entwined, especially since heterogeneous computing is the norm.
 
 ```mermaid
@@ -292,14 +290,6 @@ flowchart TD
     CPU --> CPULibs
     MPS --> MPSLibs
 ```
-
-- __What is it?__: A Tracing/profiling **framework** for **heterogeneous applications**.
-- __What problem does it solve?__: 
-    - Complexity in heterogeneous applications.
-    - Lack of execution context for diagnose symtoms.
-
-
-
 
 ---
 
