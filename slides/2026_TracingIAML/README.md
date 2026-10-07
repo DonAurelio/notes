@@ -197,10 +197,9 @@ __At a Glance__
 
 ---
 
-### 2. THAPI/iprof: What Problem Does It Solve?
+### 2. THAPI/iprof: Problematic
 
-* How applications use programming models and how this use impact the performance?
-* **HPC applications** are highly parallel, distributed, but that also leverage heterogeneous resources.
+* **HPC applications** are highly parallel, distributed, heterogeneous (computing resources)
 * **Programming languages**, **models** are highly diverse and HPC applications used then in many differen ways.
 
 | Languages | Prospective Languages | Programming Models | Domain-Based Programming Models |
@@ -293,8 +292,12 @@ flowchart TD
     MPS --> MPSLibs
 ```
 
+__At a Glance__
+
+> We want to understand how applications use programming models and how this use impact the performance. How we can do that?
+
 ---
-### 3. THAPI/iprof: How Does it Address that Problem?
+### 3. THAPI/iprof: Approach
 
 * How applications use programming models and how this use impact the performance?
 
@@ -348,7 +351,7 @@ iprof --trace -- python model.py
   }
 }
 ...
-18:38:14.125522436 - x4220c6s1b0n0 - vpid: 521487, vtid: 521487 - lttng_ust_pytorch:op_entry: {
+18:38:14.125522436 - x4220c6s1b0n0 - vpid: 521487, vtid: 521487 - lttng_ust_pytorch:op_entry/: {
   name: "aten::randn",
   overload_name: ""
 }
@@ -363,7 +366,7 @@ iprof --trace -- python model.py
 }
 ...
 18:38:14.128482163 - x4220c6s1b0n0 - vpid: 521487, vtid: 521487 - lttng_ust_pytorch:op_exit: {
-  name: "aten::randn\x00",
+  name: "aten::randn",
   overload_name: ""
 }
 ```
@@ -389,17 +392,104 @@ iprof --debug 0 -- true | grep "backend-names"
 
 > Pluggable analysis (intervals, aggregation, tally, timeline, the ones you create) to understand impact in performance.
 
+```bash
+iprof --trace -- python model.py
 
+...
+18:38:14.125586709 - x4220c6s1b0n0 - vpid: 521487, vtid: 521487 - lttng_ust_pytorch:op_entry: {
+  name: "aten::empty",
+  overload_name: "memory_format"
+}
+...
+18:38:14.125921259 - x4220c6s1b0n0 - vpid: 521487, vtid: 521487 - lttng_ust_pytorch:op_exit: {
+  name: "aten::empty",
+  overload_name: "memory_format"
+}
+...
+```
 
+```bash
+iprof -l /dev/null --trace-output thapi_interval_trace -- python model.py
+babeltrace2 thapi_interval_trace/<hostname>/trace
 
+lttng:host: { hostname = "x4312c2s7b0n0", vpid = 628908, vtid = 628908, ts = 1791401885424967106, backend = 10 }, { name = "aten::empty.memory_format", dur = 351045, err = 0 }
+...
+```
+
+```bash
+iprof --trace-output thapi_aggreg_trace -- python model.py
+babeltrace2 thapi_aggreg_trace/<hostname>/trace
+
+aggreg:host: { hostname = "x4312c2s7b0n0", vpid = 628099, vtid = 628099, name = "aten::empty.memory_format", min = 8450, max = 354024, total = 362474, count = 2 }, { backend = 10, err_count = 0 }
+...
+
+```bash
+iprof -l iprof_timeline.pftrace -- python model.py
+```
+
+```bash
+iprof -- python model.py
+```
 
 ---
+
+4. THAPI/iprof: Architecture
+
+```mermaid
+flowchart TD
+    subgraph CompileTime["Compile-time"]
+        direction TD
+        Headers["Headers /<br>API Descriptors"]
+        THAPI["THAPI"]
+        Headers --> THAPI
+    end
+
+    subgraph Runtime["Runtime"]
+        direction TD
+        Interposition["Interposition<br>Libraries"]
+        LTTng["LTTng Trace"]
+        Interposition --> LTTng
+    end
+
+    Application["Application"] --> Interposition
+    THAPI --> Interposition
+
+    subgraph Offline["Offline"]
+        direction TD
+        subgraph IPROF["IPROF"]
+            direction TD
+            CustomPlugins["Custom<br>Plugins"]
+        end
+    end
+
+    LTTng --> IPROF
+    Interposition --> CustomPlugins
+
+    Timeline["Timeline"]
+    Tally["Tally"]
+    PrettyPrint["Pretty<br>Print"]
+
+    IPROF --> Timeline
+    IPROF --> Tally
+    IPROF --> PrettyPrint
+
+    classDef input fill:#d4b84a,stroke:#333,stroke-width:1px;
+    classDef outputLib fill:#e8a0a8,stroke:#333,stroke-width:1px;
+    classDef output fill:#9fa0c3,stroke:#333,stroke-width:1px;
+    classDef plain fill:#ffffff,stroke:#333,stroke-width:1px;
+
+    class Headers input;
+    class Interposition,CustomPlugins outputLib;
+    class LTTng,Timeline,Tally,PrettyPrint output;
+    class THAPI,Application,IPROF plain;
+```
+
+
+### 5. Comparing the Three: Similarities and Differences
 
 Modular Architecture
 Low/Reasonable Overhead
 Low/Reasonable Overhead
-
-### 5. Comparing the Three: Similarities and Differences
 
 | Dimension | THAPI/iprof | torch.profiler/Kineto | VTune/ITT |
 |---|---|---|---|
