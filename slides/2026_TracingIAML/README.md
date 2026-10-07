@@ -211,23 +211,27 @@ __At a Glance__
 ```mermaid
 flowchart TD
     subgraph SYCL_group["SYCL"]
+        direction TD
         SYCL --> HIP1[HIP]
         SYCL --> OpenCL1[OpenCL]
         SYCL --> L01[L0]
     end
 
     subgraph OpenMP_group["OpenMP"]
+        direction TD
         OpenMP --> OpenCL2[OpenCL]
         OpenMP --> CUDA1[CUDA]
         OpenMP --> L02[L0]
     end
 
     subgraph OpenCL_group["OpenCL"]
+        direction TD
         OpenCL --> L03[L0]
         OpenCL --> CUDA2[CUDA]
     end
 
     subgraph HIP_group["HIP"]
+        direction TD
         HIP --> CUDA3[CUDA]
         HIP --> OpenCL3[OpenCL]
         HIP --> ROCm1[ROCm]
@@ -235,6 +239,7 @@ flowchart TD
     end
 
     subgraph Kokkos_group["Kokkos"]
+        direction TD
         Kokkos --> OpenMP2[OpenMP]
         Kokkos --> CUDA4[CUDA]
         Kokkos --> SYCL2[SYCL]
