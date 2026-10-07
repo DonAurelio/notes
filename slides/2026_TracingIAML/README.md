@@ -196,6 +196,108 @@ __At a Glance__
 
 ---
 
+### 2. THAPI/iprof: What Problem Does It Solve?
+
+* We work with *HPC applications* that are *highly parallel*, *distributed*, but that also *leverage heterogeneous resources*.
+* Programming languages and models to implement these HPC applications have never been more diverse.
+
+| | |
+|---|---|
+| **Languages**<ul><li>FORTRAN</li><li>C</li><li>C++</li><li>**Python**</li></ul> | **Prospective Languages**<ul><li>Julia</li><li>Lua</li><li>PGAS approaches</li></ul> |
+| **Programming Models**<ul><li>**MPI**</li><li>OpenMP</li><li>**CUDA**, **L0**, **ROCm**, **HIP**, **OpenCL**</li><li>SYCL, Kokkos, Raja</li></ul> | **Domain-Based Programming Models**<ul><li>Linear algebra: BLAS/LAPACK</li><li>FFTs: cuFFT, FFTWx, MKL FFT</li><li>Low-level AI: cuDNN, clDNN, Intel DNNL</li><li>AI/ML: TensorFlow, Caffe, **PyTorch**</li></ul> |
+
+* This plethora of alternatives are entwined, especially since heterogeneous computing is the norm.
+
+```mermaid
+flowchart LR
+    subgraph SYCL_group["SYCL"]
+        SYCL --> HIP1[HIP]
+        SYCL --> OpenCL1[OpenCL]
+        SYCL --> L01[L0]
+    end
+
+    subgraph OpenMP_group["OpenMP"]
+        OpenMP --> OpenCL2[OpenCL]
+        OpenMP --> CUDA1[CUDA]
+        OpenMP --> L02[L0]
+    end
+
+    subgraph OpenCL_group["OpenCL"]
+        OpenCL --> L03[L0]
+        OpenCL --> CUDA2[CUDA]
+    end
+
+    subgraph HIP_group["HIP"]
+        HIP --> CUDA3[CUDA]
+        HIP --> OpenCL3[OpenCL]
+        HIP --> ROCm1[ROCm]
+        HIP --> L04[L0]
+    end
+
+    subgraph Kokkos_group["Kokkos"]
+        Kokkos --> OpenMP2[OpenMP]
+        Kokkos --> CUDA4[CUDA]
+        Kokkos --> SYCL2[SYCL]
+    end
+```
+
+```mermaid
+flowchart TD
+    subgraph App["Application Layer"]
+        Python["Python"]
+    end
+
+    subgraph Frontend["PyTorch Frontend"]
+        TorchAPI["torch (Python API, autograd)"]
+    end
+
+    subgraph ATenLayer["ATen Programming Model"]
+        ATen["aten:: ops"]
+        Dispatcher["Dispatcher (DispatchKey routing)"]
+    end
+
+    subgraph Backends["Device Backends"]
+        CUDA["CUDA backend<br>(DispatchKey: CUDA)"]
+        ROCm["ROCm/HIP backend<br>(HIPified, same DispatchKey: CUDA)"]
+        XPU["XPU backend<br>(DispatchKey: XPU)"]
+        CPU["CPU backend<br>(DispatchKey: CPU)"]
+        MPS["MPS backend<br>(DispatchKey: MPS)"]
+    end
+
+    subgraph Libs["Vendor Libraries / Runtime"]
+        CUDALibs["cuBLAS, cuDNN, NCCL<br>CUDA driver"]
+        ROCmLibs["rocBLAS, MIOpen, RCCL<br>HIP/ROCr runtime"]
+        XPULibs["oneMKL, oneDNN<br>SYCL / Level Zero runtime"]
+        CPULibs["MKL, oneDNN"]
+        MPSLibs["Metal Performance Shaders"]
+    end
+
+    Python --> TorchAPI
+    TorchAPI --> ATen
+    ATen --> Dispatcher
+    Dispatcher --> CUDA
+    Dispatcher --> ROCm
+    Dispatcher --> XPU
+    Dispatcher --> CPU
+    Dispatcher --> MPS
+
+    CUDA --> CUDALibs
+    ROCm --> ROCmLibs
+    XPU --> XPULibs
+    CPU --> CPULibs
+    MPS --> MPSLibs
+```
+
+- __What is it?__: A Tracing/profiling **framework** for **heterogeneous applications**.
+- __What problem does it solve?__: 
+    - Complexity in heterogeneous applications.
+    - Lack of execution context for diagnose symtoms.
+
+
+
+
+---
+
 ### 5. Comparing the Three: Similarities and Differences
 
 | Dimension | THAPI/iprof | torch.profiler/Kineto | VTune/ITT |
