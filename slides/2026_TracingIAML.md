@@ -5,8 +5,7 @@
      alt="Dask logo\">
 </a>
 
-# Tracing AI/ML Workloads: THAPI/iprof, torch.profiler/Kineto, VTune/ITT 
-— Three Different Flavors
+# Tracing AI/ML Workloads: THAPI/iprof, torch.profiler/Kineto, VTune/ITT - Three Different Flavors
 
 1. Three Tools, Three Tracing Approaches
 2. THAPI/iprof: What Problem Does It Solve?
