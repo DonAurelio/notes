@@ -186,14 +186,16 @@ zeCommandListAppendMemoryFill(D) |  14.68MB |   2.47% |     1 | 14.68MB | 14.68M
 
 __At a Glance__
 
+All three see the same `aten::*` ops because all three hook PyTorch's RecordFunction callback mechanism — the difference is where that callback is implemented.
+
 | Dimension | THAPI/iprof | torch.profiler/Kineto | VTune/ITT |
 |---|---|---|---|
 | **User code changes required?** | No — runs unmodified code (`iprof -- python model.py`) | Yes — wrap the region in `with profile(...):` | Yes — wrap the region in `with emit_itt():` |
-| **Relies on PyTorch build/instrumentation?** | No — hooks RecordFunction externally via `LD_PRELOAD`, works on a stock PyTorch | Yes — Kineto is compiled into PyTorch itself | Yes — ITT bindings compiled into PyTorch (ATen observer) |
+| **Where does the RecordFunction callback live?** | Outside PyTorch — THAPI's own callback, attached externally via `LD_PRELOAD` | Inside PyTorch — Kineto's callback ships compiled into every PyTorch build | Inside PyTorch — ITT's callback ships compiled into every PyTorch build |
 | **Trace format** | Open — LTTng CTF (Common Trace Format) | Open — Chrome Trace Format (JSON) | Closed — proprietary VTune result database |
 | **Timeline format** | Open — Perfetto native (`.pftrace`) | Open — Chrome Trace JSON (Perfetto-compatible) | Closed — proprietary (viewable only via `vtune-gui`/`vtune-backend`) |
 
-THAPI/iprof is the only approach here that needs neither application code changes nor a PyTorch rebuild/instrumentation, while still emitting fully open trace and timeline formats.
+**Easy adoption** — No application changes, no PyTorch instrumentation, and no tool-specific knowledge are needed to get started — and the output is fully open end to end.
 
 ---
 
