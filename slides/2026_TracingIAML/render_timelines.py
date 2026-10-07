@@ -123,6 +123,27 @@ def render_kineto():
                   f"{OUT_DIR}/kineto_timeline.png")
 
 
+def render_vtune():
+    # VTune's CLI exposes no per-event timestamp export (no raw trace/timeline
+    # dump with start times). These start times were recovered by bisecting
+    # `vtune -report hotspots -group-by task|computing-task -time-filter t:END`
+    # for the narrowest window that still reports the task's full duration —
+    # see the README in this folder for the exact commands.
+    # Values are (start_seconds, duration_seconds) from the vtune_xpu_offload result.
+    raw = {
+        "aten::randn": (207.706601, 0.006225),
+        "aten::normal_": (207.707071, 0.005750),
+        "aten::matmul": (207.712904, 0.065117),
+        "aten::mm": (207.712926, 0.065091),
+        "gpu_randn_kernel": (207.712828, 0.000043),
+        "gemm_kernel": (207.777999, 0.000820),
+    }
+    events = {k: (s * 1_000_000.0, d * 1_000_000.0) for k, (s, d) in raw.items()}
+    draw_timeline(events, "VTune/ITT (xpu-offload) timeline — randn + matmul",
+                  f"{OUT_DIR}/vtune_timeline.png")
+
+
 if __name__ == "__main__":
     render_iprof()
     render_kineto()
+    render_vtune()
