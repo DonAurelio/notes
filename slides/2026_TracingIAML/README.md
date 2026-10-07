@@ -2,15 +2,15 @@
 <img src="https://intelcorp.scene7.com/is/image/intelcorp/argonne-logo-rwd:1920-1080?wid=864&hei=486&fmt=webp-alpha"
      align="right"
      width="30%"
-     alt="Dask logo\">
+     alt="Argonna National Laboratory\">
 </a>
 
 # Tracing AI/ML Workloads: torch.profiler/Kineto, VTune/ITT, THAPI/iprof - Three Different Flavors
 
 1. Three Tools, Three Tracing Approaches
-2. THAPI/iprof: What Problem Does It Solve?
-3. THAPI/iprof Pipeline: Intercept (LD_PRELOAD) → Collect (LTTng) → Analyze (Babeltrace2)
-4. THAPI/iprof: System Architecture
+2. THAPI/iprof: Problematic
+3. THAPI/iprof: Approach
+4. THAPI/iprof: Architecture
 5. Comparing the Three: Similarities and Differences
 
 ---
@@ -100,6 +100,7 @@ __THAPI/iprof__
 ```bash
 iprof -- python model.py
 ```
+
 ```python
 # model.py
 import torch 
@@ -198,6 +199,7 @@ __At a Glance__
 
 ### 2. THAPI/iprof: What Problem Does It Solve?
 
+* How applications use programming models and how this use impact the performance?
 * **HPC applications** are highly parallel, distributed, but that also leverage heterogeneous resources.
 * **Programming languages**, **models** are highly diverse and HPC applications used then in many differen ways.
 
@@ -292,6 +294,110 @@ flowchart TD
 ```
 
 ---
+### 3. THAPI/iprof: How Does it Address that Problem?
+
+* How applications use programming models and how this use impact the performance?
+
+> Programming model-based Tracing (construct execution context and uderstand how application use modes)
+
+```bash
+iprof --trace -- python model.py
+```
+
+```bash
+18:38:14.107496039 - x4220c6s1b0n0 - vpid: 521487, vtid: 521487 - lttng_ust_ze_properties:device: {
+  hDriver: 0x000055db77b4a308,
+  hDevice: 0x000055db77b45708,
+  pDeviceProperties_val: {
+    stype: ZE_STRUCTURE_TYPE_DEVICE_PROPERTIES,
+    pNext: 0x0000000000000000,
+    type: ZE_DEVICE_TYPE_GPU,
+    vendorId: 32902,
+    deviceId: 3030,
+    flags: [],
+    subdeviceId: 0,
+    coreClockRate: 1500,
+    maxMemAllocSize: 65267564544,
+    maxHardwareContexts: 65536,
+    maxCommandQueuePriority: 0,
+    numThreadsPerEU: 8,
+    physicalEUSimdWidth: 16,
+    numEUsPerSubslice: 8,
+    numSubslicesPerSlice: 56,
+    numSlices: 1,
+    timerResolution: 80,
+    timestampValidBits: 36,
+    kernelTimestampValidBits: 32,
+    uuid: { id: 01000000-0000-0000-acd8-6956cefc0023 },
+    name: Intel(R) Data Center GPU Max 1550
+  }
+}
+...
+18:38:14.108973093 - x4220c6s1b0n0 - vpid: 521487, vtid: 521487 - lttng_ust_ze:zeMemAllocDevice_entry: {
+  hContext: 0x000055db751d17d8,
+  device_desc: 0x00007ffd57806f18,
+  size: 1,
+  alignment: 0,
+  hDevice: 0x000055db77b45708,
+  pptr: 0x00007ffd57806f90,
+  device_desc_val: {
+    stype: ZE_STRUCTURE_TYPE_DEVICE_MEM_ALLOC_DESC,
+    pNext: 0x0000000000000000,
+    flags: [],
+    ordinal: 0
+  }
+}
+...
+18:38:14.125522436 - x4220c6s1b0n0 - vpid: 521487, vtid: 521487 - lttng_ust_pytorch:op_entry: {
+  name: "aten::randn",
+  overload_name: ""
+}
+18:38:14.125586709 - x4220c6s1b0n0 - vpid: 521487, vtid: 521487 - lttng_ust_pytorch:op_entry: {
+  name: "aten::empty",
+  overload_name: "memory_format"
+}
+...
+18:38:14.125921259 - x4220c6s1b0n0 - vpid: 521487, vtid: 521487 - lttng_ust_pytorch:op_exit: {
+  name: "aten::empty",
+  overload_name: "memory_format"
+}
+...
+18:38:14.128482163 - x4220c6s1b0n0 - vpid: 521487, vtid: 521487 - lttng_ust_pytorch:op_exit: {
+  name: "aten::randn\x00",
+  overload_name: ""
+}
+```
+
+```bash
+18:19:58.533827512 - aurora-uan-0009 - vpid: 1979959, vtid: 1979959 - lttng_ust_ze:zeInit_entry: {
+  flags: [ ZE_INIT_FLAG_GPU_ONLY ]
+}
+18:19:58.533845709 - aurora-uan-0009 - vpid: 1979959, vtid: 1979959 - lttng_ust_ze:zeInit_exit: {
+  zeResult: ZE_RESULT_ERROR_UNINITIALIZED
+}
+```
+
+> Independent, easy to integrate backends (manage hetereogeneity)
+
+```bash
+iprof --debug 0 -- true | grep "backend-names"
+```
+
+```bash
+... :"backend-names"=>["mpi", "omp", "cl", "ze", "cuda", "hip", "cxi", "itt", "pytorch"] ...
+```
+
+> Pluggable analysis (intervals, aggregation, tally, timeline, the ones you create) to understand impact in performance.
+
+
+
+
+
+---
+
+Modular Architecture
+Low/Reasonable Overhead
+Low/Reasonable Overhead
 
 ### 5. Comparing the Three: Similarities and Differences
 
