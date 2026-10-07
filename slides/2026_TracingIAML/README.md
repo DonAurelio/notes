@@ -209,7 +209,7 @@ __At a Glance__
 * This plethora of alternatives are entwined, especially since heterogeneous computing is the norm.
 
 ```mermaid
-flowchart LR
+flowchart TD
     subgraph SYCL_group["SYCL"]
         SYCL --> HIP1[HIP]
         SYCL --> OpenCL1[OpenCL]
