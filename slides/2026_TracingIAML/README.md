@@ -1,8 +1,8 @@
 <a href="">
-<img src="https://intelcorp.scene7.com/is/image/intelcorp/argonne-logo-rwd:1920-1080?wid=864&hei=486&fmt=webp-alpha"
+<img src="argonne-logo.webp"
      align="right"
      width="30%"
-     alt="Argonna National Laboratory\">
+     alt="Argonne National Laboratory">
 </a>
 
 # Tracing AI/ML Workloads: torch.profiler/Kineto, VTune/ITT, THAPI/iprof - Three Different Flavors
@@ -12,6 +12,9 @@
 3. THAPI/iprof: Design Decisions
 4. THAPI/iprof: Architecture
 5. When to Reach for THAPI/iprof
+
+**References:** [THAPI repository](https://github.com/argonne-lcf/THAPI) ·
+[iprof documentation (ALCF Aurora)](https://docs.alcf.anl.gov/aurora/performance-tools/iprof/)
 
 ---
 
@@ -59,7 +62,9 @@ Self CPU time total: 69.652ms
 Self XPU time total: 871.360us
 ```
 
+<table><tr><td>
 <img src="kineto_timeline.png" width="100%" alt="torch.profiler/Kineto timeline: CPU aten::randn/normal_/matmul/mm bars and GPU randn-fill/gemm_kernel bars">
+</td></tr></table>
 
 🔗 [Explore this trace in Perfetto](https://ui.perfetto.dev/#!/?url=https://raw.githubusercontent.com/DonAurelio/notes/main/slides/2026_TracingIAML/kineto_timeline.json)
 
@@ -95,7 +100,9 @@ gemm_kernel                                                                     
 DistributionElementwiseKernelFunctor<float, float, (int)4, at::native::templates::xpu::Normal4DistributionFunctor, at::native::templates::xpu::NormalTransformFunctor<float, float>, int>      0.000s               1
 ```
 
+<table><tr><td>
 <img src="vtune_timeline.png" width="100%" alt="VTune/ITT xpu-offload timeline: CPU aten::randn/normal_/matmul/mm bars and GPU randn-fill/gemm_kernel bars">
+</td></tr></table>
 
 > Note: VTune's result format is proprietary (not Perfetto-compatible) — view the native timeline with `vtune-gui`/`vtune-backend` instead.
 
@@ -185,7 +192,9 @@ zeCommandListAppendMemoryFill(D) |  14.68MB |   2.47% |     1 | 14.68MB | 14.68M
 
 ```
 
+<table><tr><td>
 <img src="iprof_timeline.png" width="100%" alt="THAPI/iprof timeline: CPU aten::randn/normal_/matmul/mm bars and GPU gemm_kernel bar">
+</td></tr></table>
 
 🔗 [Explore this trace in Perfetto](https://ui.perfetto.dev/#!/?url=https://raw.githubusercontent.com/DonAurelio/notes/main/slides/2026_TracingIAML/iprof_timeline.pftrace)
 
@@ -307,11 +316,11 @@ fans out, through ATen's dispatcher, to a different vendor-specific
 programming model depending on the device — which is exactly the kind of
 heterogeneity a tracer has to handle.
 
-__Key takeaway__
-
-> We want to understand how applications use programming models, and how that
-> usage impacts performance — across this entire diversity, with one tool.
-> That requirement is what shapes every design decision in the next section.
+> [!IMPORTANT]
+> **Key takeaway** — We want to understand how applications use programming
+> models, and how that usage impacts performance, across this entire
+> diversity, with one tool. That requirement is what shapes every design
+> decision in the next section.
 
 ---
 ### 3. THAPI/iprof: Design Decisions
@@ -414,9 +423,10 @@ iprof --trace -- python model.py
 useful for diagnosing *where* an application actually ran, not just what it
 called.
 
-**Key takeaway** — because iprof traces the application's own vocabulary
-(`ze*`, `cl*`, `aten::*`), the trace is readable without first learning
-THAPI's internals — only the programming model the application already uses.
+> [!NOTE]
+> **Key takeaway** — because iprof traces the application's own vocabulary
+> (`ze*`, `cl*`, `aten::*`), the trace is readable without first learning
+> THAPI's internals — only the programming model the application already uses.
 
 #### Decision 2 — Independent, pluggable backends
 
@@ -432,8 +442,9 @@ iprof --debug 0 -- true | grep "backend-names"
 ... :"backend-names"=>["mpi", "omp", "cl", "ze", "cuda", "hip", "cxi", "itt", "pytorch"] ...
 ```
 
-**Key takeaway** — a new programming model becomes a new backend, dropped in
-alongside the existing ones, never a rewrite of them.
+> [!NOTE]
+> **Key takeaway** — a new programming model becomes a new backend, dropped
+> in alongside the existing ones, never a rewrite of them.
 
 #### Decision 3 — Pluggable analysis over a single raw trace
 
@@ -521,13 +532,15 @@ iprof -l iprof_timeline.pftrace -- python model.py   # timeline (Perfetto-compat
 iprof -- python model.py                              # tally / summary (default)
 ```
 
-**Key takeaway** — one raw trace, many views: adding a new analysis means
-writing a babeltrace2 plugin, not re-recording the workload.
+> [!NOTE]
+> **Key takeaway** — one raw trace, many views: adding a new analysis means
+> writing a babeltrace2 plugin, not re-recording the workload.
 
-**Section takeaway** — programming-model-level tracing, independent
-backends, and pluggable analysis are the three decisions that let one tool
-cover MPI-to-PyTorch heterogeneity without becoming unmaintainable. The next
-section shows the architecture that implements them.
+> [!IMPORTANT]
+> **Section takeaway** — programming-model-level tracing, independent
+> backends, and pluggable analysis are the three decisions that let one tool
+> cover MPI-to-PyTorch heterogeneity without becoming unmaintainable. The
+> next section shows the architecture that implements them.
 
 ---
 
@@ -592,10 +605,12 @@ the programming-model level) and Decision 3 (pluggable analysis) actually
 hold together as one consistent pipeline rather than two separately
 maintained halves.
 
-**Section takeaway** — compile-time code generation, runtime interposition,
-and offline analysis are three independent stages joined by one shared
-model; that separation is what makes THAPI easy to extend instead of
-fragile. Next: how this architecture actually compares to Kineto and VTune/ITT.
+> [!IMPORTANT]
+> **Section takeaway** — compile-time code generation, runtime interposition,
+> and offline analysis are three independent stages joined by one shared
+> model; that separation is what makes THAPI easy to extend instead of
+> fragile. Next: how this architecture actually compares to Kineto and
+> VTune/ITT.
 
 ### 5. When to Reach for THAPI/iprof
 
@@ -612,8 +627,9 @@ behaves the way it does, so you can match it to the right job:
 | To add tracing support for a programming model or analysis THAPI doesn't have yet | **THAPI/iprof** | backends and analyses are pluggable by design (§3, Decisions 2–3; §4's shared model) — that's an extension, not a fork |
 | Trace and timeline files you can read, convert, or archive without the vendor's own tool | **THAPI/iprof** or **Kineto** | both use open formats (LTTng/CTF, Perfetto `.pftrace`, Chrome Trace JSON) — VTune's result database is closed |
 
-If your workload matches one of the first two rows, use that tool — it's the
-right one for the job. If it matches either of the last two, **try
-THAPI/iprof**, and if the backend or analysis you need isn't there yet, the
-plugin points from Sections 3–4 are exactly where it would go — **we'd
-welcome your contribution**.
+> [!IMPORTANT]
+> If your workload matches one of the first two rows, use that tool — it's
+> the right one for the job. If it matches either of the last two, **try
+> THAPI/iprof**, and if the backend or analysis you need isn't there yet, the
+> plugin points from Sections 3–4 are exactly where it would go — **we'd
+> welcome your contribution**.
