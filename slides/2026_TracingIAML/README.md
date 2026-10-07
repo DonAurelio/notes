@@ -8,8 +8,8 @@
 # Tracing AI/ML Workloads: torch.profiler/Kineto, VTune/ITT, THAPI/iprof - Three Different Flavors
 
 1. Three Tools, Three Tracing Approaches
-2. THAPI/iprof: Problematic
-3. THAPI/iprof: Approach
+2. THAPI/iprof: Motivation
+3. THAPI/iprof: Design Decisions
 4. THAPI/iprof: Architecture
 5. Comparing the Three: Similarities and Differences
 
@@ -197,7 +197,7 @@ __At a Glance__
 
 ---
 
-### 2. THAPI/iprof: Problematic
+### 2. THAPI/iprof: Motivation
 
 * **HPC applications** are highly parallel, distributed, heterogeneous (computing resources)
 * **Programming languages**, **models** are highly diverse and HPC applications used then in many differen ways.
@@ -297,11 +297,19 @@ __At a Glance__
 > We want to understand how applications use programming models and how this use impact the performance. How we can do that?
 
 ---
-### 3. THAPI/iprof: Approach
+### 3. THAPI/iprof: Design Decisions
 
-* How applications use programming models and how this use impact the performance?
+How do you trace applications that mix MPI, OpenMP, SYCL, Level Zero, OpenCL,
+and PyTorch — written by people who think in terms of *their* programming
+model, not generic function calls — without rebuilding the trace tooling for
+every new combination? THAPI/iprof answers this with three architectural
+decisions, each demonstrated below.
 
-> Programming model-based Tracing (construct execution context and uderstand how application use modes)
+#### Decision 1 — Trace at the programming-model level, not generic function calls
+
+THAPI hooks each programming model's own API (`ze*`, `cl*`, `aten::*`, ...),
+so the trace already speaks the application's vocabulary instead of needing
+to be reverse-engineered from generic call stacks or symbol names.
 
 ```bash
 iprof --trace -- python model.py
@@ -371,6 +379,10 @@ iprof --trace -- python model.py
 }
 ```
 
+Because tracing happens at this level, even a call that fails or runs in the
+wrong context is captured as-is — e.g. on a login node with no GPU, `zeInit`
+still shows up, just returning an error instead of silently vanishing:
+
 ```bash
 18:19:58.533827512 - aurora-uan-0009 - vpid: 1979959, vtid: 1979959 - lttng_ust_ze:zeInit_entry: {
   flags: [ ZE_INIT_FLAG_GPU_ONLY ]
@@ -380,7 +392,15 @@ iprof --trace -- python model.py
 }
 ```
 
-> Independent, easy to integrate backends (manage hetereogeneity)
+useful for diagnosing *where* an application actually ran, not just what it
+called.
+
+#### Decision 2 — Independent, pluggable backends
+
+Each programming model (MPI, OpenMP, OpenCL, Level Zero, CUDA, HIP, CXI, ITT,
+PyTorch) is implemented as its own backend. Backends are selected per run, so
+adding support for a new programming model never touches the others —
+heterogeneity is managed by composition, not by one monolithic tracer.
 
 ```bash
 iprof --debug 0 -- true | grep "backend-names"
@@ -390,24 +410,44 @@ iprof --debug 0 -- true | grep "backend-names"
 ... :"backend-names"=>["mpi", "omp", "cl", "ze", "cuda", "hip", "cxi", "itt", "pytorch"] ...
 ```
 
-> Pluggable analysis (intervals, aggregation, tally, timeline, the ones you create) to understand impact in performance.
+#### Decision 3 — Pluggable analysis over a single raw trace
 
-```bash
-iprof --trace -- python model.py
+The raw LTTng trace is just a substrate. babeltrace2 plugins transform it
+into different analysis-ready forms, which in turn feed different
+presentations — adding a new way to look at the data means adding a plugin,
+not re-instrumenting the application or re-running the workload.
 
-...
-18:38:14.125586709 - x4220c6s1b0n0 - vpid: 521487, vtid: 521487 - lttng_ust_pytorch:op_entry: {
-  name: "aten::empty",
-  overload_name: "memory_format"
-}
-...
-18:38:14.125921259 - x4220c6s1b0n0 - vpid: 521487, vtid: 521487 - lttng_ust_pytorch:op_exit: {
-  name: "aten::empty",
-  overload_name: "memory_format"
-}
-...
+```mermaid
+flowchart LR
+    RAW["Raw LTTng trace (CTF)<br/>per-event entry/exit"]
+
+    RAW -->|"-t / --trace<br/>(move, no conversion)"| PRETTY["Pretty-printed raw trace<br/>entry + exit events"]
+    RAW -->|"to_interval<br/>(-l / --timeline)"| INTERVAL["Interval CTF trace<br/>one row per op: ts + dur"]
+    RAW -->|"to_aggreg<br/>(default)"| AGGREG["Aggregated CTF trace<br/>per-op min/max/total/count"]
+
+    PRETTY --> PRETTYOUT["raw_trace.txt"]
+
+    INTERVAL -->|"babeltrace_thapi timeline"| TIMELINE["iprof_timeline.pftrace<br/>(Perfetto-compatible)"]
+    INTERVAL -->|"babeltrace2 (plain dump)"| INTERVALTXT["intervals.txt"]
+
+    AGGREG -->|"babeltrace_thapi tally"| TALLY["Tally / Summary<br/>(iprof_summary.txt)"]
+    AGGREG -->|"babeltrace2 (plain dump)"| AGGREGTXT["aggregations.txt"]
+
+    classDef raw fill:#d4b84a,stroke:#333,stroke-width:1px;
+    classDef mid fill:#e8a0a8,stroke:#333,stroke-width:1px;
+    classDef out fill:#9fa0c3,stroke:#333,stroke-width:1px;
+
+    class RAW raw;
+    class PRETTY,INTERVAL,AGGREG mid;
+    class TIMELINE,INTERVALTXT,TALLY,AGGREGTXT,PRETTYOUT out;
 ```
 
+Raw trace, kept as-is (`-t`):
+```bash
+iprof -t --analysis-output raw_trace.txt -- python model.py
+```
+
+Interval form — one row per op, with `ts`/`dur` (`-l`, the path feeding the timeline):
 ```bash
 iprof -l /dev/null --trace-output thapi_interval_trace -- python model.py
 babeltrace2 thapi_interval_trace/<hostname>/trace
@@ -416,32 +456,34 @@ lttng:host: { hostname = "x4312c2s7b0n0", vpid = 628908, vtid = 628908, ts = 179
 ...
 ```
 
+Aggregated form — per-op `min`/`max`/`total`/`count` (the default conversion):
 ```bash
 iprof --trace-output thapi_aggreg_trace -- python model.py
 babeltrace2 thapi_aggreg_trace/<hostname>/trace
 
 aggreg:host: { hostname = "x4312c2s7b0n0", vpid = 628099, vtid = 628099, name = "aten::empty.memory_format", min = 8450, max = 354024, total = 362474, count = 2 }, { backend = 10, err_count = 0 }
 ...
-
-```bash
-iprof -l iprof_timeline.pftrace -- python model.py
 ```
 
+Same two conversions, packaged as the two outputs you'd actually reach for day-to-day:
 ```bash
-iprof -- python model.py
+iprof -l iprof_timeline.pftrace -- python model.py   # timeline (Perfetto-compatible)
+iprof -- python model.py                              # tally / summary (default)
 ```
 
 ---
 
-4. THAPI/iprof: Architecture
+### 4. THAPI/iprof: Architecture
 
 ```mermaid
 flowchart TD
     subgraph CompileTime["Compile-time"]
         direction TD
         Headers["Headers /<br>API Descriptors"]
-        THAPI["THAPI"]
+        THAPI["THAPI<br>(code generator)"]
+        Model["Model<br>(programming-model<br>bindings / event schema)"]
         Headers --> THAPI
+        THAPI --> Model
     end
 
     subgraph Runtime["Runtime"]
@@ -452,7 +494,7 @@ flowchart TD
     end
 
     Application["Application"] --> Interposition
-    THAPI --> Interposition
+    Model --> Interposition
 
     subgraph Offline["Offline"]
         direction TD
@@ -463,7 +505,7 @@ flowchart TD
     end
 
     LTTng --> IPROF
-    Interposition --> CustomPlugins
+    Model --> CustomPlugins
 
     Timeline["Timeline"]
     Tally["Tally"]
@@ -481,33 +523,43 @@ flowchart TD
     class Headers input;
     class Interposition,CustomPlugins outputLib;
     class LTTng,Timeline,Tally,PrettyPrint output;
-    class THAPI,Application,IPROF plain;
+    class THAPI,Model,Application,IPROF plain;
 ```
 
-__At a Glance__
-
-> Modular Architecture: Interposition/Registration (LD_PRELOAD, dl_open) -> Collection (LTTng) -> Analysis (babletarce)
+The same generated **model** — not just the interposition libraries — is what
+the babeltrace plugins parse against. Headers go in once, at compile-time, and
+that single model drives both the runtime recorder and the offline parser, so
+the two never drift out of sync: this is what makes Decision 1 (tracing at
+the programming-model level) and Decision 3 (pluggable analysis) actually
+hold together as one consistent pipeline rather than two separately
+maintained halves.
 
 ### 5. Comparing the Three: Similarities and Differences
 
-| Dimension | THAPI/iprof | torch.profiler/Kineto | VTune/ITT |
-|---|---|---|---|
-| inteposition/registration | Outside PyTorch — THAPI's own callback, attached externally via `LD_PRELOAD` | Inside PyTorch — Kineto's callback ships compiled into every PyTorch build | Inside PyTorch — ITT's callback ships compiled into every PyTorch build |
-collection (open, closed; standard format, non standard, )
-analysis (babeltarc2, ...)
+This isn't about picking a winner — torch.profiler/Kineto and VTune/ITT are
+mature, capable tools, and the differences below are a direct consequence of
+the architectural decisions each one made, not a ranking.
 
-Entensibility in more devices support and analisis support, i mean if we cna implement plugable separate componentes or modifiy the existing code and library.
+Back in Section 1, the same `randn` + `matmul` script showed up three times
+with three different requirements and three different output formats. We can
+now explain why, using the architecture from Sections 3–4:
 
-Support 
-THAPI/iprof: CUDA, CXI, HIP, ITT, MPI, OMP, OpenCL, pytorch, Level Zero.
-Pytorch/Kineto: CUDA, Intel (XPU, HPU), Meta (MTIA), AMD (ROCm Devices)
-VTune/ITT: 
+- **No code changes, no PyTorch rebuild** — THAPI's interposition libraries
+  attach externally (`LD_PRELOAD`) against a model generated once from
+  headers (Decision 1, §4's compile-time stage). Kineto and VTune/ITT instead
+  compile their callbacks directly into PyTorch, which is why both need a
+  `with ...:` block in the user's own script to activate.
+- **Open trace and timeline formats** — THAPI records through LTTng into CTF
+  and converts to Perfetto's native format, both open, community-maintained
+  standards. VTune's result database is a format it defines and controls
+  itself, which is why reading its timeline needs `vtune-gui`/`vtune-backend`
+  rather than a generic tool.
+- **Low cost to extend** — because backends are independent (Decision 2) and
+  analyses are babeltrace2 plugins over a shared model (Decision 3), adding
+  support for a new programming model or a new way to look at a trace doesn't
+  require touching THAPI's existing code, let alone PyTorch's.
 
-Granularity 
-THAPI/iprof: disable individual events tracing
-Pytorch/Kineto: scopes (via python context managers)
-VTune/ITT:  scopes (python contextmanagers)
-
-__At a Glance__
-
-> ...
+That last point is really the invitation: **try THAPI/iprof on your own
+workload**, and if it's missing a backend or an analysis you need, the
+plugin points that make that possible are exactly what Sections 3 and 4 just
+walked through — **we'd welcome your contribution**.
