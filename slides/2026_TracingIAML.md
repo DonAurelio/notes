@@ -5,7 +5,7 @@
      alt="Dask logo\">
 </a>
 
-# Tracing AI/ML Workloads: THAPI/iprof, torch.profiler/Kineto, VTune/ITT - Three Different Flavors
+# Tracing AI/ML Workloads: torch.profiler/Kineto, VTune/ITT, THAPI/iprof - Three Different Flavors
 
 1. Three Tools, Three Tracing Approaches
 2. THAPI/iprof: What Problem Does It Solve?
@@ -15,8 +15,56 @@
 
 ---
 
-Three different ways of tracing
+### 1. Three Tools, Three Tracing Approaches
 
+__torch.profiler/Kineto__
+
+```bash
+python model.py
+```
+
+```python
+# model.py
+import torch
+from torch.profiler import profile, ProfilerActivity
+
+with profile(activities=[ProfilerActivity.CPU, ProfilerActivity.XPU]) as prof:
+    x = torch.randn(2048, 2048, device="xpu")
+    y = torch.matmul(x, x)
+torch.xpu.synchronize()
+```
+
+__VTune/ITT__
+
+```bash
+vtune -collect xpu-offload -- python model.py
+```
+
+```python
+import torch
+with torch.autograd.profiler.emit_itt():
+    x = torch.randn(2048, 2048, device="xpu")
+    y = torch.matmul(x, x)
+torch.xpu.synchronize()
+```
+
+```bash 
+Hottest Host Tasks
+Host Task       Task Time  % of Elapsed Time(%)  Task Count
+--------------  ---------  --------------------  ----------
+aten::matmul       0.065s                  0.0%           1
+aten::mm           0.065s                  0.0%           1
+aten::randn        0.006s                  0.0%           1
+aten::normal_      0.006s                  0.0%           1
+zeModuleCreate     0.001s                  0.0%          14
+[Others]           0.005s                  0.0%         101
+
+Hottest GPU Computing Tasks
+Computing Task                                                                                                                                                                             Total Time  Instance Count
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  ----------  --------------
+gemm_kernel                                                                                                                                                                                    0.001s               1
+DistributionElementwiseKernelFunctor<float, float, (int)4, at::native::templates::xpu::Normal4DistributionFunctor, at::native::templates::xpu::NormalTransformFunctor<float, float>, int>      0.000s               1
+```
 __THAPI/iprof__
 
 ```bash
@@ -102,30 +150,5 @@ zeCommandListAppendMemoryFill(D) |  14.68MB |   2.47% |     1 | 14.68MB | 14.68M
 
 ```
 
-
-
-
-
-__torch.profiler/Kineto__
-
-
-
-
-__VTune/ITT__
-
-```python
-import torch
-with torch.autograd.profiler.emit_itt():
-    x = torch.randn(2048, 2048, device="xpu")
-    y = torch.matmul(x, x)
-torch.xpu.synchronize()
-```
-
 ---
 
-
-1. What is iprof, Kineto, ITT? What problem do they solve?
-2. Views and Usage: tally, timeline
-3. Tracing Architecture: hook, collection, analysis
-4. Comparative table: similarities and differences
-5. Findings and questions
