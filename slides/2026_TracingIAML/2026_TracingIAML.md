@@ -90,6 +90,11 @@ Computing Task                                                                  
 gemm_kernel                                                                                                                                                                                    0.001s               1
 DistributionElementwiseKernelFunctor<float, float, (int)4, at::native::templates::xpu::Normal4DistributionFunctor, at::native::templates::xpu::NormalTransformFunctor<float, float>, int>      0.000s               1
 ```
+
+<img src="vtune_timeline.png" width="100%" alt="VTune/ITT xpu-offload timeline: CPU aten::randn/normal_/matmul/mm bars and GPU randn-fill/gemm_kernel bars">
+
+> Note: VTune's result format is proprietary (not Perfetto-compatible), so there is no "explore in Perfetto" link here — view the native timeline with `vtune-gui`/`vtune-backend` instead (see this folder's README).
+
 __THAPI/iprof__
 
 ```bash
