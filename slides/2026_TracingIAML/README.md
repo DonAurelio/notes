@@ -484,17 +484,30 @@ flowchart TD
     class THAPI,Application,IPROF plain;
 ```
 
+__At a Glance__
+
+> Modular Architecture: Interposition/Registration (LD_PRELOAD, dl_open) -> Collection (LTTng) -> Analysis (babletarce)
 
 ### 5. Comparing the Three: Similarities and Differences
 
-Modular Architecture
-Low/Reasonable Overhead
-Low/Reasonable Overhead
-
 | Dimension | THAPI/iprof | torch.profiler/Kineto | VTune/ITT |
 |---|---|---|---|
-| **Where does the RecordFunction callback live?** | Outside PyTorch — THAPI's own callback, attached externally via `LD_PRELOAD` | Inside PyTorch — Kineto's callback ships compiled into every PyTorch build | Inside PyTorch — ITT's callback ships compiled into every PyTorch build |
+| inteposition/registration | Outside PyTorch — THAPI's own callback, attached externally via `LD_PRELOAD` | Inside PyTorch — Kineto's callback ships compiled into every PyTorch build | Inside PyTorch — ITT's callback ships compiled into every PyTorch build |
+collection (open, closed; standard format, non standard, )
+analysis (babeltarc2, ...)
 
-All three see the same `aten::*` ops because all three hook PyTorch's RecordFunction callback mechanism — the difference is where that callback is implemented.
+Entensibility in more devices support and analisis support, i mean if we cna implement plugable separate componentes or modifiy the existing code and library.
 
+Support 
+THAPI/iprof: CUDA, CXI, HIP, ITT, MPI, OMP, OpenCL, pytorch, Level Zero.
+Pytorch/Kineto: CUDA, Intel (XPU, HPU), Meta (MTIA), AMD (ROCm Devices)
+VTune/ITT: 
 
+Granularity 
+THAPI/iprof: disable individual events tracing
+Pytorch/Kineto: scopes (via python context managers)
+VTune/ITT:  scopes (python contextmanagers)
+
+__At a Glance__
+
+> ...
