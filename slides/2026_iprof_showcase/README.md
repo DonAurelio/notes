@@ -459,3 +459,58 @@ aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "a
 [Aggregations](02_5_cpu_xpu/aggregations.txt)
 
 🔗 [Explore this trace in Perfetto](https://ui.perfetto.dev/#!/?url=https://raw.githubusercontent.com/DonAurelio/notes/main/slides/2026_iprof_showcase/02_5_cpu_xpu/iprof_timeline.pftrace)
+
+# Many ranks, many nodes, one tally
+
+THAPI merges every rank's capture across nodes into a single view, surfacing real MPI traffic alongside PyTorch and the device backends.
+
+```bash
+mpirun -n 2 -ppn 1 -hosts <host0>,<host1> iprof --analysis-output iprof_summary.txt -- python model.py
+```
+
+```python
+# model.py
+import torch
+from mpi4py import MPI
+
+comm = MPI.COMM_WORLD
+rank = comm.Get_rank()
+
+x = torch.randn(2048, 2048, device="xpu")
+y = torch.matmul(x, x)
+torch.xpu.synchronize()
+
+local_sum = y.sum().item()
+total_sum = comm.allreduce(local_sum, op=MPI.SUM)
+print(f"rank {rank}: local_sum={local_sum:.4f} total_sum={total_sum:.4f}")
+```
+
+Two ranks, two nodes, one tally. Every backend section now reports "2 Hostnames", and a new `BACKEND_MPI` section appears for the `comm.allreduce` call:
+
+```text
+BACKEND_PYTORCH | 2 Hostnames | 2 Processes | 2 Threads |
+
+         Name |     Time | Time(%) | Calls |  Average |     Min |     Max |
+    aten::sum | 157.38ms |  26.46% |     2 |  78.69ms | 75.98ms | 81.40ms |
+ aten::matmul | 133.51ms |  22.44% |     2 |  66.76ms | 66.66ms | 66.85ms |
+...
+
+BACKEND_MPI | 2 Hostnames | 2 Processes | 2 Threads |
+
+            Name |   Time | Time(%) | Calls |  Average |      Min |      Max |
+ MPI_Init_thread |  1.36s |  97.89% |     2 | 678.08ms | 591.83ms | 764.32ms |
+    MPI_Finalize | 23.87ms |   1.72% |     2 |  11.94ms |  11.86ms |  12.01ms |
+    MPI_Comm_dup |  4.90ms |   0.35% |     2 |   2.45ms | 101.30us |   4.80ms |
+      MPI_Bcast_c | 101.42us | 0.01% |     4 |  25.35us |   4.00us |  40.96us |
+...
+
+BACKEND_OPENCL,BACKEND_ZE | 2 Hostnames | 2 Processes | 2 Threads |
+...
+```
+
+📄 [Full tally](02_6_mpi/iprof_summary.txt) ·
+[Raw trace](02_6_mpi/raw_trace.txt) ·
+[Intervals](02_6_mpi/intervals.txt) ·
+[Aggregations](02_6_mpi/aggregations.txt)
+
+🔗 [Explore this trace in Perfetto](https://ui.perfetto.dev/#!/?url=https://raw.githubusercontent.com/DonAurelio/notes/main/slides/2026_iprof_showcase/02_6_mpi/iprof_timeline.pftrace)                                                                                                                                                                                         
