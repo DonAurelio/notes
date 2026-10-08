@@ -376,3 +376,140 @@ lttng:host: { hostname = "x4703c6s5b0n0", vpid = 19831, vtid = 19831, ts = 17914
 [Aggregations](02_3_itt_backend/aggregations.txt)
 
 🔗 [Explore this trace in Perfetto](https://ui.perfetto.dev/#!/?url=https://raw.githubusercontent.com/DonAurelio/notes/main/slides/2026_iprof_showcase/02_3_itt_backend/iprof_timeline.pftrace)
+
+#### 2.4 Heterogeneous Programming Models: CPU + XPU
+
+The same `aten::matmul` call dispatches to a different backend depending
+on the tensor's device. One process, two programming models, one trace.
+
+```bash
+iprof --analysis-output iprof_summary.txt -- python model.py
+```
+
+```python
+# model.py
+import torch
+
+xc = torch.randn(2048, 2048, device="cpu")
+yc = torch.matmul(xc, xc)
+
+xg = torch.randn(2048, 2048, device="xpu")
+yg = torch.matmul(xg, xg)
+torch.xpu.synchronize()
+```
+
+The tally shows `BACKEND_PYTORCH` with two calls to `aten::matmul`; the
+device backends only light up for the XPU call:
+
+```text
+BACKEND_PYTORCH | 1 Hostnames | 1 Processes | 1 Threads |
+
+         Name |     Time | Time(%) | Calls |  Average |     Min |      Max |
+  aten::matmul |  81.51ms |  38.11% |     2 |  40.76ms | 16.37ms |  65.15ms |
+      aten::mm |  81.47ms |  38.09% |     2 |  40.73ms | 16.33ms |  65.14ms |
+...
+
+BACKEND_OPENCL,BACKEND_ZE | 1 Hostnames | 1 Processes | 1 Threads |
+
+                        Name |    Time | Time(%) | Calls |  Average |     Min |      Max |
+ zeContextMakeMemoryResident |  7.21ms |  38.11% |   324 |  22.26us |  5.74us | 325.22us |
+       zeDeviceCanAccessPeer |  3.12ms |  16.48% |   132 |  23.63us |   173ns |  73.13us |
+...
+
+Device profiling | 1 Hostnames | 1 Processes | 1 Threads | 1 Devices | 1 Subdevices |
+
+     Name |     Time | Time(%) | Calls |  Average |      Min |      Max |
+gemm_kernel | 818.40us |  93.78% |     1 | 818.40us | 818.40us | 818.40us |
+...
+```
+
+The CPU `aten::matmul` runs with no ZE/OpenCL calls and no device kernel
+around it; the XPU one is surrounded by both. The raw trace makes this
+explicit. The CPU call's entry/exit pair has only PyTorch events around
+it:
+
+```bash
+iprof --trace -- python model.py
+```
+
+```text
+15:22:32.549006501 - x4703c6s5b0n0 - vpid: 59280, vtid: 59280 - lttng_ust_pytorch:op_entry: {
+  name: "aten::matmul",
+  overload_name: ""
+}
+...
+15:22:32.856048785 - x4703c6s5b0n0 - vpid: 59280, vtid: 59280 - lttng_ust_pytorch:op_exit: {
+  name: "aten::matmul",
+  overload_name: ""
+}
+```
+
+The XPU call's entry/exit pair has `zeMemAllocDevice`,
+`zeContextMakeMemoryResident`, and a kernel launch in between:
+
+```text
+15:22:33.155141065 - x4703c6s5b0n0 - vpid: 59280, vtid: 59280 - lttng_ust_pytorch:op_entry: {
+  name: "aten::matmul",
+  overload_name: ""
+}
+...
+15:22:33.155171430 - x4703c6s5b0n0 - vpid: 59280, vtid: 59280 - lttng_ust_ze:zeMemAllocDevice_entry: {
+  hContext: 0x0000563c348b3668,
+  device_desc: 0x00007fffcb14d058,
+  size: 16777216,
+  alignment: 512,
+  hDevice: 0x0000563c333bd708,
+  pptr: 0x00007fffcb14d100,
+  device_desc_val: {
+    stype: ZE_STRUCTURE_TYPE_DEVICE_MEM_ALLOC_DESC,
+    pNext: 0x0000000000000000,
+    flags: [],
+    ordinal: 0
+  }
+}
+...
+15:22:33.221035908 - x4703c6s5b0n0 - vpid: 59280, vtid: 59280 - lttng_ust_ze:zeCommandListAppendLaunchKernel_entry: {
+  hCommandList: 0x0000563c35aff2a8,
+  hKernel: 0x0000563c2ed79ce8,
+  pLaunchFuncArgs: 0x00007fffcb149040,
+  hSignalEvent: 0x0000563c380885d8,
+  numWaitEvents: 1,
+  phWaitEvents: 0x0000563c38088590,
+  pLaunchFuncArgs_val: {
+    groupCountX: 224,
+    groupCountY: 1,
+    groupCountZ: 1
+  },
+  phWaitEvents_vals: [ 0x0000563c35bba7d8 ]
+}
+...
+15:22:33.221098107 - x4703c6s5b0n0 - vpid: 59280, vtid: 59280 - lttng_ust_pytorch:op_exit: {
+  name: "aten::matmul",
+  overload_name: ""
+}
+```
+
+The interval view confirms the duration difference directly; the CPU
+call takes almost five times as long as the XPU one on this run:
+
+```text
+lttng:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, ts = 1791472952549006501, backend = 10 }, { name = "aten::matmul", dur = 307042284, err = 0 }
+lttng:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, ts = 1791472953155141065, backend = 10 }, { name = "aten::matmul", dur = 65957042, err = 0 }
+```
+
+The aggregation view collapses both calls into one row by name; it
+reports `count = 2` with `min`/`max` spanning both runs, but it can't by
+itself tell which call ran on which device. That distinction only shows
+up in the raw trace or the per-event interval view, not in the
+aggregate:
+
+```text
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "aten::matmul", min = 65957042, max = 307042284, total = 372999326, count = 2 }, { backend = 10, err_count = 0 }
+```
+
+📄 [Full tally](02_4_cpu_xpu/iprof_summary.txt) ·
+[Raw trace](02_4_cpu_xpu/raw_trace.txt) ·
+[Intervals](02_4_cpu_xpu/intervals.txt) ·
+[Aggregations](02_4_cpu_xpu/aggregations.txt)
+
+🔗 [Explore this trace in Perfetto](https://ui.perfetto.dev/#!/?url=https://raw.githubusercontent.com/DonAurelio/notes/main/slides/2026_iprof_showcase/02_4_cpu_xpu/iprof_timeline.pftrace)

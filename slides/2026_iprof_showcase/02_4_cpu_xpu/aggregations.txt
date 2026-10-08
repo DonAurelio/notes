@@ -1,0 +1,44 @@
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeEventHostSynchronize", min = 633614, max = 633614, total = 633614, count = 1 }, { backend = 1, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeModuleDestroy", min = 1469, max = 44851, total = 73708, count = 13 }, { backend = 1, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeEventPoolCreate", min = 20195, max = 20195, total = 20195, count = 1 }, { backend = 1, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeContextMakeMemoryResident", min = 5663, max = 337602, total = 7263628, count = 324 }, { backend = 1, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "aten::resize_", min = 3114, max = 3114, total = 3114, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeCommandListAppendLaunchKernel", min = 22990, max = 310266, total = 333256, count = 2 }, { backend = 1, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeKernelSetIndirectAccess", min = 201, max = 974, total = 5095, count = 14 }, { backend = 1, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeDriverGet", min = 147, max = 1234, total = 2527, count = 8 }, { backend = 1, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "aten::matmul", min = 65957042, max = 307042284, total = 372999326, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "clGetPlatformIDs", min = 400, max = 7552, total = 7952, count = 2 }, { backend = 2, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "aten::mm", min = 65945857, max = 306997776, total = 372943633, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeKernelSetGroupSize", min = 753, max = 987, total = 1740, count = 2 }, { backend = 1, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeDeviceCanAccessPeer", min = 168, max = 73107, total = 3098369, count = 132 }, { backend = 1, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeDeviceGet", min = 180, max = 1043, total = 3240, count = 10 }, { backend = 1, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "aten::randn", min = 5721719, max = 44413093, total = 50134812, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeKernelDestroy", min = 391, max = 5530, total = 12390, count = 13 }, { backend = 1, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "clGetPlatformInfo", min = 152, max = 4238, total = 54408, count = 128 }, { backend = 2, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "aten::resolve_conj", min = 190, max = 3138, total = 3551, count = 3 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeInit", min = 163, max = 8660, total = 11312, count = 7 }, { backend = 1, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeMemAllocHost", min = 47060, max = 116554, total = 163614, count = 2 }, { backend = 1, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeMemFree", min = 9367, max = 142224, total = 2557294, count = 74 }, { backend = 1, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "aten::normal_", min = 5327511, max = 44279339, total = 49606850, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeDriverGetExtensionFunctionAddress", min = 343, max = 253250, total = 270440, count = 11 }, { backend = 1, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeDeviceGetRootDevice", min = 121, max = 2103, total = 156402, count = 972 }, { backend = 1, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeMemAllocShared", min = 14823, max = 40294, total = 905151, count = 48 }, { backend = 1, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeDriverGetApiVersion", min = 585, max = 585, total = 585, count = 1 }, { backend = 1, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "aten::empty.memory_format", min = 10853, max = 373226, total = 446566, count = 3 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "clGetDeviceInfo", min = 146, max = 7161, total = 250429, count = 1117 }, { backend = 2, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "dnnl::primitive::execute:matmul", min = 422223, max = 422223, total = 422223, count = 1 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeEventCreate", min = 944, max = 9412, total = 15129, count = 3 }, { backend = 1, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "clGetDeviceIDs", min = 2215, max = 99328, total = 116340, count = 4 }, { backend = 2, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeCommandListAppendMemoryFill", min = 242843, max = 242843, total = 242843, count = 1 }, { backend = 1, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeDeviceGetSubDevices", min = 146, max = 1383, total = 11624, count = 38 }, { backend = 1, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeInitDrivers", min = 461, max = 26081, total = 29995, count = 7 }, { backend = 1, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeModuleCreate", min = 35213, max = 486454, total = 1194888, count = 14 }, { backend = 1, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeContextCreate", min = 6519, max = 6519, total = 6519, count = 1 }, { backend = 1, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeMemAllocDevice", min = 5053, max = 20553, total = 215870, count = 27 }, { backend = 1, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeCommandListCreateImmediate", min = 241356, max = 892343, total = 1133699, count = 2 }, { backend = 1, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeKernelCreate", min = 1845, max = 7592, total = 49632, count = 14 }, { backend = 1, err_count = 0 }
+aggreg:traffic: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeCommandListAppendMemoryFill(D)", min = 14680064, max = 14680064, total = 14680064, count = 1 }, { backend = 1, metadata = "discarded_metadata" }
+aggreg:traffic: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeContextMakeMemoryResident", min = 1, max = 16777216, total = 578814240, count = 324 }, { backend = 1, metadata = "discarded_metadata" }
+aggreg:device: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "gemm_kernel", min = 817920, max = 817920, total = 817920, count = 1 }, { did = 2725151260764804644, sdid = 0, metadata = "discarded_metadata" }
+aggreg:device: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "zeCommandListAppendMemoryFill(D)", min = 11680, max = 11680, total = 11680, count = 1 }, { did = 2725151260764804644, sdid = 0, metadata = "discarded_metadata" }
+aggreg:device: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "_ZTSN2at6native3xpu36DistributionElementwiseKernelFunctorIffLi4ENS0_9templates3xpu26Normal4DistributionFunctorENS4_22NormalTransformFunctorIffEEiEE", min = 41760, max = 41760, total = 41760, count = 1 }, { did = 2725151260764804644, sdid = 0, metadata = "discarded_metadata" }
