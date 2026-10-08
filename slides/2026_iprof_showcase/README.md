@@ -252,7 +252,7 @@ iprof --trace -- python3 -c "import torch; torch.zeros(1, device='xpu')"
 
 # Hardware counters, straight from the NIC
 
-THAPI samples genuine **Slingshot NIC telemetry** directly from hardware, independent of the application's **instrumented calls**.
+THAPI samples **Slingshot NIC telemetry** directly from hardware, independent of the application's **instrumented calls**.
 
 ```bash
 iprof --sample --backend cxi,pytorch --trace -- python model.py
