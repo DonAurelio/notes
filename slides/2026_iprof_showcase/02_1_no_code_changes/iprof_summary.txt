@@ -1,0 +1,68 @@
+BACKEND_PYTORCH | 1 Hostnames | 1 Processes | 1 Threads | 
+
+                     Name |     Time | Time(%) | Calls |  Average |     Min |      Max |         
+             aten::matmul |  64.61ms |  47.85% |     1 |  64.61ms | 64.61ms |  64.61ms |         
+                 aten::mm |  64.57ms |  47.83% |     1 |  64.57ms | 64.57ms |  64.57ms |         
+              aten::randn |   2.95ms |   2.19% |     1 |   2.95ms |  2.95ms |   2.95ms |         
+            aten::normal_ |   2.50ms |   1.85% |     1 |   2.50ms |  2.50ms |   2.50ms |         
+aten::empty.memory_format | 374.61us |   0.28% |     2 | 187.30us |  8.83us | 365.78us |         
+            aten::resize_ |   2.47us |   0.00% |     1 |   2.47us |  2.47us |   2.47us |         
+                    Total | 135.02ms | 100.00% |     7 |                                         
+
+BACKEND_ITT | 1 Hostnames | 1 Processes | 1 Threads | 
+
+                           Name |     Time | Time(%) | Calls |  Average |      Min |      Max |         
+dnnl::primitive::execute:matmul | 392.92us | 100.00% |     1 | 392.92us | 392.92us | 392.92us |         
+                          Total | 392.92us | 100.00% |     1 |                                          
+
+BACKEND_OPENCL,BACKEND_ZE | 1 Hostnames | 1 Processes | 1 Threads | 
+
+                               Name |     Time | Time(%) | Calls |  Average |      Min |      Max |         
+        zeContextMakeMemoryResident |   7.13ms |  38.00% |   324 |  21.99us |   5.88us | 324.15us |         
+              zeDeviceCanAccessPeer |   3.16ms |  16.86% |   132 |  23.96us |    171ns |  70.67us |         
+                          zeMemFree |   2.61ms |  13.90% |    74 |  35.24us |   9.12us | 151.69us |         
+                     zeModuleCreate |   1.22ms |   6.49% |    14 |  86.99us |  34.89us | 483.84us |         
+       zeCommandListCreateImmediate |   1.09ms |   5.80% |     2 | 543.90us | 221.21us | 866.59us |         
+                   zeMemAllocShared | 922.29us |   4.92% |    48 |  19.21us |  15.28us |  40.57us |         
+             zeEventHostSynchronize | 647.82us |   3.45% |     1 | 647.82us | 647.82us | 647.82us |         
+    zeCommandListAppendLaunchKernel | 348.84us |   1.86% |     2 | 174.42us |  24.61us | 324.23us |         
+      zeCommandListAppendMemoryFill | 234.82us |   1.25% |     1 | 234.82us | 234.82us | 234.82us |         
+                    clGetDeviceInfo | 232.44us |   1.24% |  1117 | 208.09ns |    144ns |   1.61us |         
+zeDriverGetExtensionFunctionAddress | 224.89us |   1.20% |    11 |  20.44us |    323ns | 208.85us |         
+                   zeMemAllocDevice | 216.56us |   1.15% |    27 |   8.02us |   5.48us |  19.20us |         
+                     zeMemAllocHost | 155.35us |   0.83% |     2 |  77.68us |  43.69us | 111.67us |         
+              zeDeviceGetRootDevice | 154.70us |   0.82% |   972 | 159.15ns |    121ns |   2.73us |         
+                     clGetDeviceIDs | 118.55us |   0.63% |     4 |  29.64us |   2.22us |  97.98us |         
+                    zeModuleDestroy |  65.91us |   0.35% |    13 |   5.07us |   1.36us |  43.06us |         
+                  clGetPlatformInfo |  59.33us |   0.32% |   128 | 463.52ns |    156ns |   7.60us |         
+                     zeKernelCreate |  46.88us |   0.25% |    14 |   3.35us |   1.64us |   8.98us |         
+                      zeInitDrivers |  28.94us |   0.15% |     7 |   4.13us |    439ns |  25.75us |         
+                      zeEventCreate |  20.28us |   0.11% |     3 |   6.76us |   1.13us |  14.94us |         
+                  zeEventPoolCreate |  17.13us |   0.09% |     1 |  17.13us |  17.13us |  17.13us |         
+                    zeKernelDestroy |   9.83us |   0.05% |    13 | 756.46ns |    359ns |   3.93us |         
+              zeDeviceGetSubDevices |   9.43us |   0.05% |    38 | 248.05ns |    146ns |   1.07us |         
+                   clGetPlatformIDs |   8.52us |   0.05% |     2 |   4.26us |    384ns |   8.14us |         
+                    zeContextCreate |   8.03us |   0.04% |     1 |   8.03us |   8.03us |   8.03us |         
+                             zeInit |   7.63us |   0.04% |     7 |   1.09us |    163ns |   5.25us |         
+          zeKernelSetIndirectAccess |   5.32us |   0.03% |    14 | 380.29ns |    243ns |    995ns |         
+                        zeDeviceGet |   3.98us |   0.02% |    10 | 398.30ns |    194ns |   1.63us |         
+                        zeDriverGet |   2.68us |   0.01% |     8 | 335.38ns |    146ns |   1.20us |         
+               zeKernelSetGroupSize |   1.36us |   0.01% |     2 | 679.50ns |    592ns |    767ns |         
+              zeDriverGetApiVersion |    588ns |   0.00% |     1 | 588.00ns |    588ns |    588ns |         
+                              Total |  18.75ms | 100.00% |  2993 |                                          
+
+Device profiling | 1 Hostnames | 1 Processes | 1 Threads | 1 Devices | 1 Subdevices | 
+
+                                                                            Name |     Time | Time(%) | Calls |  Average |      Min |      Max |         
+                                                                     gemm_kernel | 817.60us |  93.85% |     1 | 817.60us | 817.60us | 817.60us |         
+at::native::xpu::DistributionElementw[...]alTransformFunctor<float, float>, int> |  41.92us |   4.81% |     1 |  41.92us |  41.92us |  41.92us |         
+                                                zeCommandListAppendMemoryFill(D) |  11.68us |   1.34% |     1 |  11.68us |  11.68us |  11.68us |         
+                                                                           Total | 871.20us | 100.00% |     3 |                                          
+
+Explicit memory traffic (BACKEND_ZE) | 1 Hostnames | 1 Processes | 1 Threads | 
+
+                            Name |     Byte | Byte(%) | Calls | Average |     Min |     Max |         
+     zeContextMakeMemoryResident | 578.81MB |  97.53% |   324 |  1.79MB |      1B | 16.78MB |         
+zeCommandListAppendMemoryFill(D) |  14.68MB |   2.47% |     1 | 14.68MB | 14.68MB | 14.68MB |         
+                           Total | 593.49MB | 100.00% |   325 |                                       
+
