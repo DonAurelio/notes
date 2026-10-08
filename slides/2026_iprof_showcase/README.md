@@ -327,10 +327,9 @@ BACKEND_ITT | 1 Hostnames | 1 Processes | 1 Threads |
 
 🔗 [Explore this trace in Perfetto](https://ui.perfetto.dev/#!/?url=https://raw.githubusercontent.com/DonAurelio/notes/main/slides/2026_iprof_showcase/02_4_itt_backend/iprof_timeline.pftrace)
 
-#### 2.5 Heterogeneous Programming Models: CPU + XPU
+# Same call, different device, one timeline
 
-The same `aten::matmul` call dispatches to a different backend depending
-on the tensor's device. One process, two programming models, one trace.
+The same `aten::matmul` call dispatches to a different backend depending on the tensor's device.
 
 ```bash
 iprof --analysis-output iprof_summary.txt -- python model.py
@@ -348,8 +347,7 @@ yg = torch.matmul(xg, xg)
 torch.xpu.synchronize()
 ```
 
-The tally shows `BACKEND_PYTORCH` with two calls to `aten::matmul`; the
-device backends only light up for the XPU call:
+The tally shows `BACKEND_PYTORCH` with two calls to `aten::matmul`; the device backends only light up for the XPU call:
 
 ```text
 BACKEND_PYTORCH | 1 Hostnames | 1 Processes | 1 Threads |
@@ -394,8 +392,7 @@ iprof --trace -- python model.py
 }
 ```
 
-The XPU call's entry/exit pair has `zeMemAllocDevice`,
-`zeContextMakeMemoryResident`, and a kernel launch in between:
+The XPU call's entry/exit pair has `zeMemAllocDevice`, `zeContextMakeMemoryResident`, and a kernel launch in between:
 
 ```text
 15:22:33.155141065 - x4703c6s5b0n0 - vpid: 59280, vtid: 59280 - lttng_ust_pytorch:op_entry: {
@@ -439,8 +436,7 @@ The XPU call's entry/exit pair has `zeMemAllocDevice`,
 }
 ```
 
-The interval view confirms the duration difference directly; the CPU
-call takes almost five times as long as the XPU one on this run:
+The interval view confirms the duration difference directly; the CPU call takes almost five times as long as the XPU one on this run:
 
 ```text
 lttng:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, ts = 1791472952549006501, backend = 10 }, { name = "aten::matmul", dur = 307042284, err = 0 }
