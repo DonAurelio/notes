@@ -11,7 +11,6 @@
 2. Features Showcase
    - No Code Changes, Open Trace Format, Perfetto Native Timeline
    - Programming-Model-Based Tracing
-   - Performance Counter Sampling (CXI)
    - Intel ITT Backend
    - Heterogeneous Programming Models: CPU + XPU
    - Heterogeneous Programming Models: CPU + GPU
