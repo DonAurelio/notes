@@ -1,0 +1,462 @@
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "LlamaDemo:Step.1", min = 8836903, max = 8836903, total = 8836903, count = 1 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "c10d::allreduce_", min = 73639807, max = 73639807, total = 73639807, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "LlamaDemo:Step.0", min = 650853253, max = 650853253, total = 650853253, count = 1 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::_foreach_div_.ScalarList", min = 43191, max = 9951036, total = 9994227, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "LlamaDemo:Step.0", min = 649455311, max = 649455311, total = 649455311, count = 1 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "LlamaDemo:Optimizer.Step", min = 780866, max = 57393717, total = 58174583, count = 2 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::_foreach_addcdiv_.ScalarList", min = 35237, max = 69537, total = 104774, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::_foreach_div_.ScalarList", min = 42296, max = 9909882, total = 9952178, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::_foreach_sqrt", min = 48012, max = 26970727, total = 27018739, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::_foreach_addcmul_.Scalar", min = 41916, max = 5959815, total = 6001731, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::_foreach_lerp_.Scalar", min = 47211, max = 1716972, total = 1764183, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::_foreach_mul_.Scalar", min = 27176, max = 11661219, total = 11842737, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::zeros_like", min = 6906, max = 31956, total = 165391, count = 18 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::lift_fresh", min = 138, max = 2420, total = 4890, count = 11 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::_foreach_add_.Tensor", min = 23058, max = 33413, total = 56471, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::lift_fresh", min = 137, max = 2239, total = 4342, count = 11 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "LlamaDemo:Backward", min = 4288999, max = 159335249, total = 163624248, count = 2 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::_foreach_add_.Scalar", min = 32116, max = 114113, total = 146229, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "LlamaDemo:Backward", min = 4397550, max = 164210258, total = 168607808, count = 2 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "oneCCL::API:allreduce_scaleout_sycl_simple {send_size=295680}", min = 35895, max = 314238, total = 350133, count = 2 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::embedding_dense_backward", min = 567619, max = 81825114, total = 82392733, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "exclusive_scan_xpu", min = 161930, max = 44029297, total = 44191227, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "autograd::engine::evaluate_function: EmbeddingBackward0", min = 606654, max = 74294364, total = 74901018, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "EmbeddingBackward0", min = 587597, max = 74256232, total = 74843829, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "exclusive_scan_xpu", min = 163439, max = 36129212, total = 36292651, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::embedding_backward", min = 570309, max = 81831363, total = 82401672, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::select.int", min = 1100, max = 11347, total = 31265, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "inclusive_scan_xpu", min = 67165, max = 30386404, total = 30453569, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "copy_if_xpu", min = 191427, max = 30377442, total = 30568869, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::item", min = 6042, max = 106557, total = 274229, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::_local_scalar_dense", min = 5661, max = 104346, total = 267094, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "inclusive_scan_xpu", min = 67744, max = 30198951, total = 30266695, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "pstl::sort", min = 11624, max = 3432081, total = 3443705, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "itoa_xpu", min = 5082, max = 3617993, total = 3643817, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "adjacent_difference", min = 8353, max = 37011, total = 45364, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "pstl::sort", min = 11383, max = 3533459, total = 3544842, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "record_param_comms", min = 305, max = 361, total = 666, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "autograd::engine::evaluate_function: SplitBackward0", min = 105315, max = 169404, total = 274719, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "autograd::engine::evaluate_function: SliceBackward0", min = 17264, max = 98899, total = 320330, count = 8 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "autograd::engine::evaluate_function: NegBackward0", min = 9024, max = 17072, total = 51084, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "autograd::engine::evaluate_function: CatBackward0", min = 7346, max = 23100, total = 55708, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "autograd::engine::evaluate_function: MaskedFillBackward0", min = 46708, max = 62310, total = 109018, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "autograd::engine::evaluate_function: EmbeddingBackward0", min = 594034, max = 81877501, total = 82471535, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "MaskedFillBackward0", min = 43551, max = 57692, total = 101243, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::masked_fill.Scalar", min = 41894, max = 52770, total = 94664, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "autograd::engine::evaluate_function: SoftmaxBackward0", min = 51044, max = 119004, total = 170048, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "SoftmaxBackward0", min = 48545, max = 115269, total = 163814, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "ReshapeAliasBackward0", min = 1677, max = 7335, total = 17769, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "autograd::engine::evaluate_function: BmmBackward0", min = 70896, max = 2459090, total = 3031629, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::bmm", min = 28549, max = 2192979, total = 2960053, count = 8 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::_reshape_alias", min = 1708, max = 2183, total = 3891, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "TransposeBackward0", min = 1596, max = 5133, total = 27324, count = 10 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "LlamaDemo:Step.1", min = 8744996, max = 8744996, total = 8744996, count = 1 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::_foreach_sqrt", min = 48582, max = 27346797, total = 27395379, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::masked_fill_.Scalar", min = 14894, max = 24034, total = 38928, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "autograd::engine::evaluate_function: CloneBackward0", min = 1695, max = 2133, total = 3828, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "CloneBackward0", min = 386, max = 674, total = 1060, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "autograd::engine::evaluate_function: SiluBackward0", min = 22301, max = 79763, total = 102064, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "autograd::engine::evaluate_function: SplitBackward0", min = 97237, max = 163989, total = 261226, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::cat", min = 90466, max = 152415, total = 242881, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "SliceBackward0", min = 14950, max = 95068, total = 232382, count = 8 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::zeros", min = 6953, max = 66183, total = 182085, count = 10 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::_foreach_add_.Scalar", min = 30973, max = 99519, total = 130492, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "NegBackward0", min = 7477, max = 15341, total = 42892, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "autograd::engine::evaluate_function: CatBackward0", min = 6802, max = 25895, total = 57069, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "EmbeddingBackward0", min = 573178, max = 81839986, total = 82413164, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::slice.Tensor", min = 928, max = 5531, total = 28332, count = 16 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "autograd::engine::evaluate_function: MaskedFillBackward0", min = 37397, max = 61802, total = 99199, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::masked_fill_.Scalar", min = 13811, max = 23956, total = 37767, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::clone", min = 7474, max = 15912, total = 78076, count = 8 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::empty_like", min = 1188, max = 4265, total = 29797, count = 16 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::_softmax_backward_data", min = 43716, max = 102182, total = 145898, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::narrow", min = 1511, max = 9243, total = 30024, count = 8 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "autograd::engine::evaluate_function: ExpandBackward0", min = 1473, max = 2746, total = 15830, count = 8 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "torch.distributed.ddp.reducer::copy_bucket_to_grad", min = 5350, max = 30866, total = 153428, count = 18 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "autograd::engine::evaluate_function: ReshapeAliasBackward0", min = 3215, max = 9393, total = 31225, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "autograd::engine::evaluate_function: SliceBackward0", min = 17587, max = 97290, total = 313489, count = 8 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "autograd::engine::evaluate_function: BmmBackward0", min = 69247, max = 2445427, total = 2994080, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::bmm", min = 27236, max = 2179401, total = 2922855, count = 8 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::_reshape_alias", min = 1971, max = 2152, total = 4123, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "autograd::engine::evaluate_function: CloneBackward0", min = 1595, max = 1714, total = 3309, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "autograd::engine::evaluate_function: SiluBackward0", min = 21895, max = 72440, total = 94335, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "SiluBackward0", min = 18621, max = 64844, total = 83465, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "autograd::engine::evaluate_function: PowBackward0", min = 40110, max = 89395, total = 318177, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::add_.Tensor", min = 5458, max = 41977, total = 278459, count = 22 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "PowBackward0", min = 30020, max = 44524, total = 207062, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::silu_backward", min = 16342, max = 57798, total = 74140, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::to.dtype", min = 299, max = 16292, total = 120567, count = 18 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::result_type.Scalar", min = 362, max = 725, total = 3206, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "MeanBackward1", min = 14051, max = 47164, total = 137201, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "autograd::engine::evaluate_function: AddBackward0", min = 1742, max = 20345, total = 88514, count = 14 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "SqrtBackward0", min = 18302, max = 56147, total = 163524, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::mul.Scalar", min = 7376, max = 16491, total = 112067, count = 12 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "autograd::engine::evaluate_function: DivBackward0", min = 14397, max = 171817, total = 655149, count = 8 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::_local_scalar_dense", min = 6177, max = 110752, total = 279756, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "autograd::engine::evaluate_function: SoftmaxBackward0", min = 49478, max = 115896, total = 165374, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::div.Tensor", min = 5509, max = 27355, total = 319679, count = 32 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "torch::distributed::reducer::mul_out", min = 7062, max = 83165, total = 285923, count = 18 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "c10d::allreduce_", min = 75027209, max = 75027209, total = 75027209, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "detach", min = 509, max = 3237, total = 25912, count = 18 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "autograd::engine::evaluate_function: MulBackward0", min = 19069, max = 50926409, total = 51571503, count = 16 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "autograd::engine::evaluate_function: MeanBackward1", min = 16076, max = 49861, total = 151492, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::sum.dim_IntList", min = 19783, max = 50802499, total = 51205293, count = 12 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "autograd::engine::evaluate_function: PowBackward0", min = 38420, max = 89679, total = 337611, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::pow.Tensor_Scalar", min = 12290, max = 23426, total = 98047, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::to.dtype", min = 301, max = 15803, total = 117846, count = 18 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "MeanBackward1", min = 14378, max = 50774, total = 138491, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "c10d::allreduce_", min = 453962, max = 464653, total = 918615, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::expand", min = 819, max = 6814, total = 34900, count = 12 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "CatBackward0", min = 5120, max = 19928, total = 46221, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "autograd::engine::evaluate_function: AddBackward0", min = 1695, max = 19969, total = 85595, count = 14 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "ExpandBackward0", min = 255, max = 1225, total = 4585, count = 8 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "AddBackward0", min = 390, max = 1055, total = 9316, count = 14 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "autograd::engine::evaluate_function: DivBackward0", min = 14527, max = 179791, total = 635854, count = 8 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "torch.distributed.ddp.reducer::copy_bucket_to_grad", min = 5056, max = 30720, total = 152783, count = 18 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::neg", min = 6908, max = 45325, total = 138978, count = 10 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::div.Tensor", min = 5503, max = 26706, total = 315188, count = 32 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::slice_backward", min = 14422, max = 88783, total = 219186, count = 8 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "torch::distributed::reducer::mul_out", min = 7306, max = 85746, total = 293614, count = 18 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "itoa_xpu", min = 5044, max = 3413781, total = 3442494, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::mul.out", min = 6839, max = 80736, total = 272386, count = 18 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::detach", min = 1005, max = 4301, total = 37293, count = 18 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "autograd::engine::evaluate_function: MulBackward0", min = 18819, max = 50551894, total = 51220238, count = 16 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "SplitBackward0", min = 102205, max = 166179, total = 268384, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "ExpandBackward0", min = 263, max = 1242, total = 4872, count = 8 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::transpose.int", min = 1093, max = 13720, total = 79959, count = 22 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "torch::autograd::AccumulateGrad", min = 1837, max = 19083, total = 87214, count = 18 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "UnsafeViewBackward0", min = 1689, max = 6561, total = 50472, count = 16 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "BmmBackward0", min = 65394, max = 2429876, total = 2963570, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::add.Tensor", min = 7893, max = 34813356, total = 35126468, count = 14 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::pow.Tensor_Scalar", min = 11402, max = 35170370, total = 70586395, count = 12 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::empty_strided", min = 648, max = 3709, total = 66677, count = 46 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::clone", min = 14618, max = 91293, total = 202970, count = 5 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::empty_like", min = 1171, max = 3979, total = 30654, count = 16 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::embedding", min = 76894, max = 169164672, total = 169241566, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::mul.Tensor", min = 4382, max = 45039514, total = 45383077, count = 18 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "torch::autograd::AccumulateGrad", min = 1713, max = 18415, total = 85989, count = 18 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::index_select", min = 49008, max = 169108814, total = 169157822, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::div.Scalar", min = 9057, max = 30753, total = 88217, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "LlamaDemo:Data.Generate", min = 148349, max = 12202633, total = 12350982, count = 2 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::item", min = 6843, max = 113295, total = 289067, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::roll", min = 70440, max = 1336238, total = 1406678, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::randint.low_generator", min = 46433, max = 10711403, total = 10757836, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::contiguous", min = 15444, max = 56585, total = 72029, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "c10d::barrier", min = 80545763, max = 81124394, total = 161670157, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::split.Tensor", min = 23500, max = 38879, total = 62379, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "detach_", min = 217, max = 868, total = 4072, count = 11 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::mul.out", min = 6463, max = 77305, total = 262954, count = 18 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::randint.low_generator", min = 49840, max = 10486159, total = 10535999, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "c10d::barrier", min = 80943684, max = 84840943, total = 165784627, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::cat", min = 22862, max = 5876178, total = 6147854, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "LlamaDemo:Metrics.AllReduce", min = 73972459, max = 73972459, total = 73972459, count = 1 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::add.Tensor", min = 8299, max = 35109537, total = 35416049, count = 14 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "LlamaDemo:Forward", min = 3235739, max = 415528823, total = 418764562, count = 2 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "oneCCL::API:allreduce_scaleout_sycl_simple {send_size=4}", min = 45010033, max = 56711011, total = 153304022, count = 3 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::to.dtype_layout", min = 7797, max = 36228, total = 467654, count = 30 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::zero_", min = 5082, max = 9094379, total = 9232159, count = 20 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::zeros", min = 24331, max = 9109035, total = 9133366, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::detach", min = 904, max = 4272, total = 37079, count = 18 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::zero_", min = 5135, max = 8766114, total = 8904163, count = 20 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::fill_.Scalar", min = 4800, max = 57371, total = 190751, count = 12 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::result_type.Scalar", min = 131, max = 3087, total = 38865, count = 115 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::bmm", min = 57016, max = 3372517, total = 6223531, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "LlamaDemo:Init.Model", min = 1694022372, max = 1694022372, total = 1694022372, count = 1 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "oneCCL::API:allreduce_scaleout_sycl_simple {send_size=295680}", min = 35747, max = 2463068, total = 2498815, count = 2 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "c10d::allgather_", min = 916998389, max = 916998389, total = 916998389, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::pow.Tensor_Tensor_out", min = 26189, max = 26189, total = 26189, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "LlamaDemo:Data.Generate", min = 140824, max = 11922355, total = 12063179, count = 2 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::narrow", min = 1331, max = 56270, total = 128330, count = 23 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::slice.Tensor", min = 898, max = 26556, total = 126966, count = 35 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::clone", min = 7208, max = 16146, total = 77726, count = 8 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::div.Tensor", min = 10161, max = 15692848, total = 16104792, count = 10 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::unflatten_dense_tensors", min = 100402, max = 100402, total = 100402, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "autograd::engine::evaluate_function: SqrtBackward0", min = 20004, max = 59178, total = 177700, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::narrow", min = 1316, max = 56931, total = 124157, count = 23 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::_foreach_lerp_.Scalar", min = 74384, max = 1610063, total = 1684447, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "detach", min = 585, max = 3300, total = 24656, count = 18 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::as_strided", min = 212, max = 10723, total = 127560, count = 105 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "PowBackward0", min = 28297, max = 43633, total = 204465, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::reshape", min = 959, max = 16478, total = 168624, count = 46 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::item", min = 519, max = 52371, total = 127584, count = 39 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::slice.Tensor", min = 872, max = 33465, total = 126617, count = 35 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::item", min = 475, max = 55575, total = 94923, count = 38 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::einsum", min = 93502, max = 93502, total = 93502, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::masked_fill.Scalar", min = 31923, max = 52550, total = 84473, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::index_select", min = 50589, max = 169072359, total = 169122948, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::sqrt", min = 9404, max = 14815783, total = 14896756, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::mean.dim", min = 38632, max = 29513882, total = 29785474, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "oneCCL::API:allreduce_scaleout_sycl_simple {send_size=4}", min = 72030880, max = 80408848, total = 227341685, count = 3 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::_to_copy", min = 2410, max = 13097454, total = 14449002, count = 48 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::embedding_backward", min = 584229, max = 74246789, total = 74831018, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "LlamaDemo:Attn.0", min = 1442552, max = 239364916, total = 240807468, count = 2 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "dnnl::primitive::execute:matmul", min = 10092, max = 50011, total = 699410, count = 32 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "record_param_comms", min = 200, max = 84818987, total = 165838144, count = 9 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "ReshapeAliasBackward0", min = 1626, max = 6674, total = 20481, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::resize_", min = 216, max = 9430, total = 34129, count = 22 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::unflatten_dense_tensors", min = 109121, max = 109121, total = 109121, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::result_type.Scalar", min = 444, max = 722, total = 3349, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::_unsafe_view", min = 1310, max = 13175, total = 62868, count = 16 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::empty.memory_format", min = 596, max = 56258, total = 310062, count = 98 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::select.int", min = 1614, max = 54433, total = 73647, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "LlamaDemo:Metrics.AllReduce", min = 75327198, max = 75327198, total = 75327198, count = 1 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::view", min = 462, max = 13692, total = 120981, count = 48 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::_has_compatible_shallow_copy_type", min = 146, max = 2088, total = 6161, count = 20 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::sqrt", min = 9296, max = 14945952, total = 15029081, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::ones", min = 2306, max = 77606, total = 135381, count = 5 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "autograd::engine::evaluate_function: NllLossBackward0", min = 63085, max = 173628, total = 236713, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::t", min = 1269, max = 11492, total = 141392, count = 48 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::bmm", min = 60264, max = 3454728, total = 6331927, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::_softmax", min = 68791, max = 10825310, total = 10894101, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::neg", min = 6860, max = 44791, total = 138597, count = 10 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::flatten_dense_tensors", min = 5671052, max = 5671052, total = 5671052, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::_to_copy", min = 2334, max = 12931104, total = 14253310, count = 48 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::cos", min = 1792833, max = 1792833, total = 1792833, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "LogSoftmaxBackward0", min = 52163, max = 7411235, total = 7463398, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::zeros", min = 6677, max = 64612, total = 179842, count = 10 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::reshape", min = 863, max = 16427, total = 170295, count = 46 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "transform_first_true", min = 7999, max = 33148, total = 41147, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::t", min = 2227, max = 27829, total = 90413, count = 12 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "DivBackward0", min = 12301, max = 102239, total = 365186, count = 8 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::_log_softmax_backward_data", min = 47549, max = 7395100, total = 7442649, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::div.Scalar", min = 9593, max = 33406, total = 88901, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "c10d::broadcast_", min = 48891, max = 60914934, total = 120371405, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "autograd::engine::evaluate_function: ExpandBackward0", min = 1456, max = 3020, total = 15805, count = 8 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::_local_scalar_dense", min = 181, max = 44097, total = 98265, count = 39 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::einsum", min = 85527, max = 85527, total = 85527, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::nll_loss_forward", min = 27911, max = 1404023, total = 1431934, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::permute", min = 1678, max = 15303, total = 16981, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::_foreach_mul_.Scalar", min = 26767, max = 12191808, total = 12420189, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "UnsafeViewBackward0", min = 1750, max = 6744, total = 50096, count = 16 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::div.Tensor", min = 9675, max = 7624184, total = 7994757, count = 10 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::mul.Tensor", min = 4421, max = 39692231, total = 40079382, count = 18 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::log_softmax.int", min = 64823, max = 121750, total = 372918, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::select.int", min = 973, max = 10523, total = 27141, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "autograd::engine::evaluate_function: ReshapeAliasBackward0", min = 3020, max = 10290, total = 28877, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::neg", min = 8142, max = 21635520, total = 21677653, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::resize_", min = 227, max = 1056, total = 15171, count = 32 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::normal_", min = 2547505, max = 2547505, total = 2547505, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::view", min = 443, max = 12592, total = 117919, count = 48 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::pow.Tensor_Tensor_out", min = 26450, max = 26450, total = 26450, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::arange", min = 9453, max = 9453, total = 9453, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "LlamaDemo:Init.Model", min = 1689760969, max = 1689760969, total = 1689760969, count = 1 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::mean.dim", min = 34230, max = 29794931, total = 30070167, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "autograd::engine::evaluate_function: ViewBackward0", min = 2694, max = 19356, total = 193174, count = 24 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::slice.Tensor", min = 993, max = 6015, total = 30991, count = 16 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::arange", min = 9838, max = 9838, total = 9838, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "autograd::engine::evaluate_function: TransposeBackward0", min = 2731, max = 6521, total = 41089, count = 10 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "CloneBackward0", min = 315, max = 376, total = 691, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::copy_", min = 895, max = 26192066, total = 40713186, count = 77 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "detach", min = 380, max = 32156, total = 54201, count = 20 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::empty_like", min = 1080, max = 12761, total = 94809, count = 28 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "oneCCL::API:allgatherv_scaleout_sycl_direct {send_size=8}", min = 2572889, max = 2572889, total = 2572889, count = 1 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::_local_scalar_dense", min = 153, max = 45152, total = 66813, count = 38 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::_unsafe_view", min = 437, max = 1857, total = 5214, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "LlamaDemo:Layer.0", min = 1899229, max = 247966978, total = 249866207, count = 2 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::chunk", min = 25468, max = 54304, total = 79772, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "autograd::engine::evaluate_function: ToCopyBackward0", min = 9738, max = 48394, total = 609183, count = 30 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "LlamaDemo:Init.MPI", min = 32189, max = 32189, total = 32189, count = 1 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::random_.from", min = 31975, max = 10673738, total = 10705713, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::permute", min = 1435, max = 14173, total = 15608, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::flatten_dense_tensors", min = 5913637, max = 5913637, total = 5913637, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::detach", min = 882, max = 30818, total = 67692, count = 20 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::mm", min = 33612, max = 8935243, total = 14729929, count = 12 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::ones_like", min = 25157, max = 48145, total = 73302, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::chunk", min = 28458, max = 55145, total = 83603, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "autograd::engine::evaluate_function: NegBackward0", min = 9211, max = 17161, total = 50017, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::fill_.Scalar", min = 668, max = 9077120, total = 9357574, count = 27 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::to.dtype", min = 192, max = 13101825, total = 13692296, count = 39 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::embedding_dense_backward", min = 581471, max = 74239392, total = 74820863, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::mul.Tensor", min = 5658, max = 60563, total = 431742, count = 48 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "SqrtBackward0", min = 17594, max = 55995, total = 161175, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::arange.start_out", min = 3262, max = 92646, total = 95908, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::nll_loss_forward", min = 26572, max = 1353154, total = 1379726, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::to.dtype", min = 247, max = 12935298, total = 13513409, count = 39 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::resize_", min = 266, max = 9795, total = 34281, count = 22 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::result_type.Scalar_Tensor", min = 6257, max = 6257, total = 6257, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::uniform_", min = 18539, max = 75417, total = 342933, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "c10d::broadcast_", min = 31971, max = 59366435, total = 117824628, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::resize_", min = 189, max = 1020, total = 14002, count = 32 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::mul.Tensor", min = 5761, max = 60491, total = 437464, count = 48 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::detach_", min = 582, max = 1785, total = 9965, count = 11 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::empty_like", min = 1179, max = 14487, total = 103478, count = 28 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::to.device", min = 140, max = 2276, total = 5276, count = 11 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::detach_", min = 563, max = 1660, total = 9520, count = 11 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::cat", min = 98067, max = 157443, total = 255510, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::sin", min = 20065, max = 20065, total = 20065, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "autograd::engine::evaluate_function: MmBackward0", min = 61290, max = 5636624, total = 14121564, count = 12 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::fill_.Scalar", min = 683, max = 8753064, total = 9034871, count = 27 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::empty_strided", min = 529, max = 309595, total = 493592, count = 89 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::reshape", min = 1636, max = 25666, total = 117677, count = 22 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "record_param_comms", min = 189, max = 81092244, total = 161723812, count = 9 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::to.dtype_layout", min = 237, max = 535609, total = 832214, count = 20 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::arange.start_step", min = 114385, max = 114385, total = 114385, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::silu_backward", min = 16968, max = 64842, total = 81810, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::cos", min = 2067426, max = 2067426, total = 2067426, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "MaskedFillBackward0", min = 33981, max = 57319, total = 91300, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "SoftmaxBackward0", min = 46885, max = 111682, total = 158567, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::copy_", min = 923, max = 26009825, total = 40324401, count = 77 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::detach", min = 924, max = 36263, total = 72848, count = 20 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::_log_softmax_backward_data", min = 48715, max = 7431384, total = 7480099, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::to.dtype_layout", min = 218, max = 530210, total = 808371, count = 20 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "NegBackward0", min = 7466, max = 14943, total = 44013, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::_log_softmax", min = 57869, max = 104256, total = 162125, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::sin", min = 54875, max = 54875, total = 54875, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::view", min = 532, max = 6843, total = 81120, count = 46 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::ones", min = 2812, max = 81484, total = 144493, count = 5 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::uniform_", min = 18312, max = 76169, total = 345602, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::reciprocal", min = 19409, max = 19409, total = 19409, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::zeros_like", min = 6911, max = 34230, total = 167433, count = 18 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "DivBackward0", min = 12489, max = 109414, total = 372106, count = 8 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::normal_", min = 2497699, max = 2497699, total = 2497699, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::_to_copy", min = 6945, max = 42368, total = 556991, count = 42 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::zeros", min = 24086, max = 8780457, total = 8804543, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::add_.Tensor", min = 529, max = 18866, total = 39573, count = 18 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "detach_", min = 238, max = 895, total = 4350, count = 11 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::reciprocal", min = 20617, max = 20617, total = 20617, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::expand", min = 1033, max = 12123, total = 53705, count = 14 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::pow.Tensor_Scalar", min = 12098, max = 24446, total = 99384, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::silu", min = 19879, max = 3077523, total = 3097402, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::_foreach_addcmul_.Scalar", min = 46008, max = 6237411, total = 6283419, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::add_.Tensor", min = 5758, max = 37023, total = 293904, count = 22 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "NllLossBackward0", min = 43835, max = 159333, total = 203168, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::roll", min = 63223, max = 1290243, total = 1353466, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "SiluBackward0", min = 19319, max = 71914, total = 91233, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::empty_strided", min = 502, max = 311566, total = 500044, count = 89 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::to.device", min = 141, max = 2332, total = 4923, count = 11 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::masked_fill.Scalar", min = 46772, max = 208521, total = 255293, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "ToCopyBackward0", min = 7968, max = 45963, total = 500696, count = 30 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "detach", min = 379, max = 26571, total = 48803, count = 20 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "copy_if_xpu", min = 205936, max = 30572413, total = 30778349, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::random_.from", min = 36865, max = 10450942, total = 10487807, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "SliceBackward0", min = 14577, max = 96487, total = 234355, count = 8 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::result_type.Scalar", min = 130, max = 3908, total = 41424, count = 115 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "autograd::engine::evaluate_function: TransposeBackward0", min = 2841, max = 7226, total = 43074, count = 10 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::softmax.int", min = 88367, max = 10902692, total = 21974667, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "autograd::engine::evaluate_function: ViewBackward0", min = 2867, max = 19351, total = 190090, count = 24 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::nll_loss_nd", min = 51544, max = 1403064, total = 1454608, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::cat", min = 23092, max = 5635584, total = 5902484, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::t", min = 2409, max = 30357, total = 92118, count = 12 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::masked_fill_.Scalar", min = 21518, max = 76087, total = 97605, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::select.int", min = 1571, max = 58087, total = 77654, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::contiguous", min = 16034, max = 53488, total = 69522, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "dnnl::primitive::execute:matmul", min = 14567, max = 79704, total = 530876, count = 16 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::fill_.Scalar", min = 4951, max = 58832, total = 194784, count = 12 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::embedding", min = 74109, max = 169197952, total = 169272061, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::linear", min = 42240, max = 21960161, total = 43043681, count = 24 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::transpose.int", min = 1013, max = 14224, total = 79652, count = 22 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::split.Tensor", min = 21093, max = 39099, total = 60192, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::add_.Tensor", min = 560, max = 23286, total = 44606, count = 18 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "dnnl::primitive::execute:matmul", min = 14892, max = 78481, total = 542396, count = 16 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::copy_", min = 4567, max = 27275, total = 730612, count = 84 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::is_same_size", min = 209, max = 4991, total = 5200, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::_unsafe_view", min = 1271, max = 16674, total = 66371, count = 16 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::matmul", min = 38066, max = 8988432, total = 27990574, count = 20 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::_unsafe_view", min = 392, max = 1622, total = 4935, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::unsqueeze", min = 861, max = 32475, total = 49766, count = 10 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::linear", min = 41493, max = 22202336, total = 43488392, count = 24 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::sum.dim_IntList", min = 20452, max = 50436797, total = 50861265, count = 12 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "LogSoftmaxBackward0", min = 53786, max = 7450714, total = 7504500, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "BmmBackward0", min = 66800, max = 2442926, total = 3000408, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::_reshape_alias", min = 1260, max = 5187, total = 16306, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::mul.Scalar", min = 7388, max = 16360, total = 111371, count = 12 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "c10d::allgather_", min = 910061907, max = 910061907, total = 910061907, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::pow.Scalar", min = 72746, max = 72746, total = 72746, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "LlamaDemo:Init.ProcessGroup", min = 2322240, max = 2322240, total = 2322240, count = 1 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "autograd::engine::evaluate_function: UnsafeViewBackward0", min = 3181, max = 8199, total = 77047, count = 16 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::neg", min = 8305, max = 21883933, total = 21927085, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::expand", min = 1133, max = 12322, total = 51109, count = 14 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::_reshape_alias", min = 1197, max = 10314, total = 21213, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "CatBackward0", min = 4854, max = 23380, total = 48146, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::triu", min = 17888, max = 5017016, total = 5034904, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "LlamaDemo:MLP.0", min = 433397, max = 8563928, total = 8997325, count = 2 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::_has_compatible_shallow_copy_type", min = 145, max = 2469, total = 6741, count = 20 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "autograd::engine::evaluate_function: MmBackward0", min = 63434, max = 5589973, total = 14080536, count = 12 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "autograd::engine::evaluate_function: torch::autograd::AccumulateGrad", min = 12329, max = 591726, total = 1603512, count = 18 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::clone", min = 14173, max = 86353, total = 202409, count = 5 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "autograd::engine::evaluate_function: torch::autograd::AccumulateGrad", min = 12006, max = 2749398, total = 3626195, count = 18 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "LlamaDemo:Init.MPI", min = 33119, max = 33119, total = 33119, count = 1 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::as_strided", min = 210, max = 10211, total = 125406, count = 105 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::masked_fill_.Scalar", min = 20724, max = 71486, total = 92210, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "transform_first_true", min = 8598, max = 35126, total = 43724, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::triu", min = 18610, max = 5086086, total = 5104696, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::_softmax", min = 70516, max = 10868884, total = 10939400, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::view", min = 520, max = 6212, total = 77713, count = 46 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::masked_fill.Scalar", min = 48340, max = 222110, total = 270450, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::pow.Tensor_Scalar", min = 12656, max = 35395905, total = 71040045, count = 12 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "LlamaDemo:Attn.0", min = 1399245, max = 234928905, total = 236328150, count = 2 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "record_param_comms", min = 430, max = 443, total = 873, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::copy_", min = 4742, max = 34270, total = 742252, count = 84 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "LlamaDemo:Optimizer.Step", min = 790290, max = 58734886, total = 59525176, count = 2 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::mm", min = 34215, max = 8873177, total = 14597951, count = 12 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::softmax.int", min = 92119, max = 10947395, total = 22070029, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::reshape", min = 1629, max = 19025, total = 106701, count = 22 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::unsqueeze", min = 958, max = 31086, total = 48146, count = 10 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::to.dtype_layout", min = 7519, max = 43858, total = 470722, count = 30 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "autograd::engine::evaluate_function: SqrtBackward0", min = 20615, max = 59507, total = 179915, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::pow.Scalar", min = 69393, max = 69393, total = 69393, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "LlamaDemo:MLP.0", min = 423271, max = 8471172, total = 8894443, count = 2 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "autograd::engine::evaluate_function: NllLossBackward0", min = 51039, max = 181188, total = 232227, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::transpose.int", min = 658, max = 9290, total = 112984, count = 66 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "NllLossBackward0", min = 39886, max = 151938, total = 191824, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::arange.start_step", min = 105088, max = 105088, total = 105088, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "LlamaDemo:Layer.0", min = 1844014, max = 243439427, total = 245283441, count = 2 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::_foreach_addcdiv_.ScalarList", min = 34311, max = 70972, total = 105283, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "autograd::engine::evaluate_function: MeanBackward1", min = 16429, max = 53316, total = 151960, count = 6 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::log_softmax.int", min = 61594, max = 112178, total = 347463, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::_softmax_backward_data", min = 43508, max = 100467, total = 143975, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "AddBackward0", min = 393, max = 1131, total = 9657, count = 14 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::nll_loss", min = 29236, max = 1394564, total = 2838039, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::empty.memory_format", min = 525, max = 57966, total = 319217, count = 98 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::cross_entropy_loss", min = 119728, max = 1541924, total = 1661652, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "LlamaDemo:Init.ProcessGroup", min = 122869972, max = 122869972, total = 122869972, count = 1 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::_to_copy", min = 7094, max = 34661, total = 556067, count = 42 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::ones_like", min = 25745, max = 49907, total = 75652, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::zero_", min = 5409, max = 60951, total = 207428, count = 12 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::nll_loss_backward", min = 33887, max = 126032, total = 159919, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::nll_loss", min = 30350, max = 1447796, total = 2949271, count = 4 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::matmul", min = 38819, max = 8913326, total = 27623826, count = 20 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::nll_loss_nd", min = 55807, max = 1458437, total = 1514244, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "SplitBackward0", min = 94402, max = 160527, total = 254929, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "MmBackward0", min = 59357, max = 5575415, total = 13989246, count = 12 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "adjacent_difference", min = 8070, max = 35457, total = 43527, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::narrow", min = 1556, max = 9649, total = 30816, count = 8 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::cross_entropy_loss", min = 127467, max = 1609780, total = 1737247, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::zero_", min = 5188, max = 59328, total = 203391, count = 12 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "LlamaDemo:Forward", min = 3419120, max = 420167389, total = 423586509, count = 2 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "TBackward0", min = 1986, max = 8515, total = 47268, count = 12 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::expand", min = 942, max = 6696, total = 34569, count = 12 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::silu", min = 19818, max = 3039766, total = 3059584, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::nll_loss_backward", min = 36298, max = 128217, total = 164515, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::result_type.Scalar_Tensor", min = 5998, max = 5998, total = 5998, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::empty_strided", min = 625, max = 4214, total = 68810, count = 46 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::_foreach_add_.Tensor", min = 24127, max = 38325, total = 62452, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "ToCopyBackward0", min = 8254, max = 38525, total = 502337, count = 30 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::slice_backward", min = 14070, max = 89004, total = 219232, count = 8 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "autograd::engine::evaluate_function: ToCopyBackward0", min = 9919, max = 41279, total = 603572, count = 30 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "autograd::engine::evaluate_function: LogSoftmaxBackward0", min = 54959, max = 7423770, total = 7478729, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::as_strided", min = 259, max = 6684, total = 92294, count = 118 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "oneCCL::API:allgatherv_scaleout_sycl_direct {send_size=8}", min = 564607, max = 564607, total = 564607, count = 1 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::t", min = 1347, max = 10538, total = 137691, count = 48 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::is_same_size", min = 231, max = 4794, total = 5025, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::mm", min = 24222, max = 3492273, total = 13805038, count = 24 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "autograd::engine::evaluate_function: LogSoftmaxBackward0", min = 56406, max = 7462903, total = 7519309, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "ViewBackward0", min = 1389, max = 17322, total = 142516, count = 24 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "autograd::engine::evaluate_function: UnsafeViewBackward0", min = 2894, max = 8144, total = 78320, count = 16 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "TransposeBackward0", min = 1553, max = 4682, total = 26089, count = 10 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::as_strided", min = 233, max = 6968, total = 97309, count = 118 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::transpose.int", min = 649, max = 9603, total = 117383, count = 66 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "autograd::engine::evaluate_function: TBackward0", min = 3368, max = 10247, total = 66749, count = 12 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "MulBackward0", min = 7455, max = 76467, total = 299854, count = 16 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "dnnl::primitive::execute:matmul", min = 9964, max = 50735, total = 710801, count = 32 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153956, name = "aten::arange.start_out", min = 3312, max = 86468, total = 89780, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678524, name = "aten::_log_softmax", min = 60836, max = 113118, total = 173954, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::empty.memory_format", min = 468, max = 9113, total = 109622, count = 72 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "c10d::allreduce_", min = 319201, max = 2617828, total = 2937029, count = 2 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "aten::mm", min = 24197, max = 3522586, total = 13844405, count = 24 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "ViewBackward0", min = 1528, max = 17340, total = 139460, count = 24 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "TBackward0", min = 1958, max = 8706, total = 45689, count = 12 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "MmBackward0", min = 57878, max = 5621176, total = 14029072, count = 12 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "autograd::engine::evaluate_function: TBackward0", min = 3289, max = 10759, total = 65555, count = 12 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4607c5s7b0n0", vpid = 153956, vtid = 153984, name = "aten::empty.memory_format", min = 415, max = 8516, total = 113255, count = 72 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4300c2s6b0n0", vpid = 678524, vtid = 678551, name = "MulBackward0", min = 6702, max = 81538, total = 304696, count = 16 }, { backend = 10, err_count = 0 }
