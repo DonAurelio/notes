@@ -306,3 +306,73 @@ called.
 
 _TODO: overhead discussion (LTTng/babeltrace, and the associated
 instrumentation cost) to be filled in._
+
+#### 2.3 Intel ITT Backend
+
+`emit_itt()` opens the ITT stream and auto-emits a range for every
+RecordFunction-observed op in its scope. `itt.range_push`/`range_pop`
+inject an additional, custom-named marker inside that same open stream.
+`-b itt` restricts THAPI's trace to just the ITT backend.
+
+```bash
+iprof -b itt --analysis-output iprof_summary.txt -- python model.py
+```
+
+```python
+# model.py
+import torch
+from torch.profiler import itt
+
+x = torch.randn(2048, 2048, device="xpu")
+with torch.autograd.profiler.emit_itt():
+    itt.range_push("my_matmul")
+    y = torch.matmul(x, x)
+    itt.range_pop()
+torch.xpu.synchronize()
+```
+
+```text
+BACKEND_ITT | 1 Hostnames | 1 Processes | 1 Threads |
+
+                  Name |    Time | Time(%) | Calls | Average |    Min |     Max |
+     PyTorch:my_matmul | 65.14ms |  33.31% |     1 | 65.14ms | 65.14ms | 65.14ms |
+  PyTorch:aten::matmul | 65.05ms |  33.26% |     1 | 65.05ms | 65.05ms | 65.05ms |
+...
+```
+
+The custom range (`PyTorch:my_matmul`) appears alongside the
+RecordFunction-auto-named rows (`PyTorch:aten::matmul`, etc.). `-b itt`
+isolates the backend, but doesn't change what's inside it; both mechanisms
+fire from the same `emit_itt()` scope.
+
+The raw trace shows the ITT API calls directly. The custom range opens
+first, the auto-named ranges nest inside it, and the oneDNN domain opens
+its own separate task:
+
+```bash
+iprof -b itt --trace -- python model.py
+```
+
+```text
+14:50:04.245857082 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_task_begin: { domain: 0x000055f00e19ecf0, taskid: { d1: 0, d2: 0, d3: 0 }, parentid: { d1: 0, d2: 0, d3: 0 }, name: 0x000055f01638cdb0, domain__nameA_val: "PyTorch", name__strA_val: "my_matmul" }
+...
+14:50:04.245910565 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_task_begin: { domain: 0x000055f00e19ecf0, taskid: { d1: 0, d2: 0, d3: 0 }, parentid: { d1: 0, d2: 0, d3: 0 }, name: 0x000055f01638cf30, domain__nameA_val: "PyTorch", name__strA_val: "aten::matmul" }
+...
+14:50:04.342009433 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_task_begin: { domain: 0x000055f018159880, taskid: { d1: 0, d2: 0, d3: 0 }, parentid: { d1: 0, d2: 0, d3: 0 }, name: 0x000055f01807e5e0, domain__nameA_val: "dnnl::primitive::execute", name__strA_val: "matmul" }
+```
+
+The interval trace turns each task begin/end pair into one row with a
+duration, and confirms `my_matmul`'s own span (64.64ms) covers the nested
+`aten::matmul` call (64.58ms) plus the small gap around it:
+
+```text
+lttng:host: { hostname = "x4703c6s5b0n0", vpid = 19831, vtid = 19831, ts = 1791471015044304462, backend = 9 }, { name = "PyTorch:my_matmul", dur = 64644254, err = 0 }
+lttng:host: { hostname = "x4703c6s5b0n0", vpid = 19831, vtid = 19831, ts = 1791471015044358313, backend = 9 }, { name = "PyTorch:aten::matmul", dur = 64576739, err = 0 }
+```
+
+📄 [Full tally](02_3_itt_backend/iprof_summary.txt) ·
+[Raw trace](02_3_itt_backend/raw_trace.txt) ·
+[Intervals](02_3_itt_backend/intervals.txt) ·
+[Aggregations](02_3_itt_backend/aggregations.txt)
+
+🔗 [Explore this trace in Perfetto](https://ui.perfetto.dev/#!/?url=https://raw.githubusercontent.com/DonAurelio/notes/main/slides/2026_iprof_showcase/02_3_itt_backend/iprof_timeline.pftrace)

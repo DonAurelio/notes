@@ -1,0 +1,20 @@
+
+PXâHostname x4402c5s2b0n0
+PXâProcess 53213(
+UPXâPThread 53213(r<Host API activity. Expand (âŒ„) to view nested device tracks
+UPXâPThread 53213(r<Host API activity. Expand (âŒ„) to view nested device tracks
+3@ìØ­ì×¡¥îPXZHPXbPyTorch:aten::resize_h
+@ªý­ì×¡¥îPXZHX
+1@îñˆ‹Ø¡¥îPXZHPXbPyTorch:aten::emptyh
+@Ä»‰‹Ø¡¥îPXZHX
+=@šõŠ‹Ø¡¥îPXZHPXb%#dnnl::primitive::execute:matmulh
+@ëõŸ‹Ø¡¥îPXZHX
+UPXâPThread 53213(r<Host API activity. Expand (âŒ„) to view nested device tracks
+.@Ô‘ì×¡¥îPXZHPXbPyTorch:aten::mmh
+@ºõ ‹Ø¡¥îPXZHX
+UPXâPThread 53213(r<Host API activity. Expand (âŒ„) to view nested device tracks
+2@œ¿›ì×¡¥îPXZHPXbPyTorch:aten::matmulh
+@€¡‹Ø¡¥îPXZHX
+UPXâPThread 53213(r<Host API activity. Expand (âŒ„) to view nested device tracks
+/@Ž»—ì×¡¥îPXZHPXbPyTorch:my_matmulh
+@êú¡‹Ø¡¥îPXZHX

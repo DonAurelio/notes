@@ -1,0 +1,40 @@
+14:50:04.245857082 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_task_begin: { domain: 0x000055f00e19ecf0, taskid: { d1: 0, d2: 0, d3: 0 }, parentid: { d1: 0, d2: 0, d3: 0 }, name: 0x000055f01638cdb0, domain__nameA_val: "PyTorch\x00", name__strA_val: "my_matmul\x00" }
+14:50:04.245910065 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_string_handle_create: { ittResult: 0x000055f01638cf30, name: 0x000055f00b071250 }
+14:50:04.245910565 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_task_begin: { domain: 0x000055f00e19ecf0, taskid: { d1: 0, d2: 0, d3: 0 }, parentid: { d1: 0, d2: 0, d3: 0 }, name: 0x000055f01638cf30, domain__nameA_val: "PyTorch\x00", name__strA_val: "aten::matmul\x00" }
+14:50:04.248410029 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_string_handle_create: { ittResult: 0x000055f01638cf60, name: 0x000055f00ae58f40 }
+14:50:04.248410713 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_task_begin: { domain: 0x000055f00e19ecf0, taskid: { d1: 0, d2: 0, d3: 0 }, parentid: { d1: 0, d2: 0, d3: 0 }, name: 0x000055f01638cf60, domain__nameA_val: "PyTorch\x00", name__strA_val: "aten::mm\x00" }
+14:50:04.248664372 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_string_handle_create: { ittResult: 0x000055f0164b7e40, name: 0x000055f00aec6900 }
+14:50:04.248664744 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_task_begin: { domain: 0x000055f00e19ecf0, taskid: { d1: 0, d2: 0, d3: 0 }, parentid: { d1: 0, d2: 0, d3: 0 }, name: 0x000055f0164b7e40, domain__nameA_val: "PyTorch\x00", name__strA_val: "aten::resize_\x00" }
+14:50:04.248668874 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_task_end: { domain: 0x000055f00e19ecf0 }
+14:50:04.341979180 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_string_handle_create: { ittResult: 0x000055f01751ffa0, name: 0x000055f00aec9fa0 }
+14:50:04.341980108 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_task_begin: { domain: 0x000055f00e19ecf0, taskid: { d1: 0, d2: 0, d3: 0 }, parentid: { d1: 0, d2: 0, d3: 0 }, name: 0x000055f01751ffa0, domain__nameA_val: "PyTorch\x00", name__strA_val: "aten::empty\x00" }
+14:50:04.341988692 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_task_end: { domain: 0x000055f00e19ecf0 }
+14:50:04.342002848 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_string_handle_create: { ittResult: 0x000055f0164efe40, name: 0x00007f4ff7c12000 }
+14:50:04.342003207 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_string_handle_create: { ittResult: 0x000055f0164efe70, name: 0x00007f4ff7c147f5 }
+14:50:04.342003488 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_string_handle_create: { ittResult: 0x000055f0164efea0, name: 0x00007f4ff7c1368f }
+14:50:04.342003870 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_string_handle_create: { ittResult: 0x000055f0164ee510, name: 0x00007f4ff7c14118 }
+14:50:04.342004071 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_string_handle_create: { ittResult: 0x000055f0164ee540, name: 0x00007f4ff7c136c8 }
+14:50:04.342004262 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_string_handle_create: { ittResult: 0x000055f0164ee570, name: 0x00007f4ff7c04501 }
+14:50:04.342004589 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_string_handle_create: { ittResult: 0x000055f0164ee5a0, name: 0x00007f4ff7c0cc8b }
+14:50:04.342004800 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_string_handle_create: { ittResult: 0x000055f0164ee5d0, name: 0x00007f4ff7c13ce4 }
+14:50:04.342005142 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_string_handle_create: { ittResult: 0x000055f013e7c620, name: 0x00007f4ff7c0ccb1 }
+14:50:04.342005311 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_string_handle_create: { ittResult: 0x000055f013e7c650, name: 0x00007f4ff7c0ccba }
+14:50:04.342005569 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_string_handle_create: { ittResult: 0x000055f013e7c680, name: 0x00007f4ff7c0cce3 }
+14:50:04.342005739 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_string_handle_create: { ittResult: 0x000055f013e7c6b0, name: 0x00007f4ff7c1518c }
+14:50:04.342006009 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_string_handle_create: { ittResult: 0x000055f013e7c6e0, name: 0x00007f4ff7c17c9f }
+14:50:04.342006274 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_string_handle_create: { ittResult: 0x000055f01807e5b0, name: 0x00007f4ff7c12fa5 }
+14:50:04.342006536 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_string_handle_create: { ittResult: 0x000055f01807e5e0, name: 0x00007f4ff7c0d5e4 }
+14:50:04.342006716 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_string_handle_create: { ittResult: 0x000055f01807e610, name: 0x00007f4ff7c0dc8b }
+14:50:04.342006974 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_string_handle_create: { ittResult: 0x000055f01807e640, name: 0x00007f4ff7c0cd21 }
+14:50:04.342007145 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_string_handle_create: { ittResult: 0x000055f01807e670, name: 0x00007f4ff7c19166 }
+14:50:04.342007435 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_string_handle_create: { ittResult: 0x000055f01807e6a0, name: 0x00007f4ff7c13d27 }
+14:50:04.342007603 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_string_handle_create: { ittResult: 0x000055f01807e6d0, name: 0x00007f4ff7c0a4e1 }
+14:50:04.342007782 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_string_handle_create: { ittResult: 0x000055f01807e700, name: 0x00007f4ff7c0cd4d }
+14:50:04.342008089 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_string_handle_create: { ittResult: 0x000055f01807e730, name: 0x00007f4ff7c0cd76 }
+14:50:04.342008258 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_string_handle_create: { ittResult: 0x000055f01807e760, name: 0x00007f4ff7c17825 }
+14:50:04.342009047 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_domain_create: { ittResult: 0x000055f018159880, name: 0x00007f4ff7c115e5 }
+14:50:04.342009433 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_task_begin: { domain: 0x000055f018159880, taskid: { d1: 0, d2: 0, d3: 0 }, parentid: { d1: 0, d2: 0, d3: 0 }, name: 0x000055f01807e5e0, domain__nameA_val: "dnnl::primitive::execute\x00", name__strA_val: "matmul\x00" }
+14:50:04.342313273 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_task_end: { domain: 0x000055f018159880 }
+14:50:04.342326560 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_task_end: { domain: 0x000055f00e19ecf0 }
+14:50:04.342328906 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_task_end: { domain: 0x000055f00e19ecf0 }
+14:50:04.342345797 - x4703c6s5b0n0 - vpid: 19659, vtid: 19659 - lttng_ust_itt:__itt_task_end: { domain: 0x000055f00e19ecf0 }

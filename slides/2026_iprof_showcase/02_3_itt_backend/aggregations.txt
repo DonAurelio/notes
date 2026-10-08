@@ -1,0 +1,6 @@
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 19831, vtid = 19831, name = "PyTorch:aten::matmul", min = 64576739, max = 64576739, total = 64576739, count = 1 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 19831, vtid = 19831, name = "dnnl::primitive::execute:matmul", min = 314214, max = 314214, total = 314214, count = 1 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 19831, vtid = 19831, name = "PyTorch:my_matmul", min = 64644254, max = 64644254, total = 64644254, count = 1 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 19831, vtid = 19831, name = "PyTorch:aten::empty", min = 9182, max = 9182, total = 9182, count = 1 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 19831, vtid = 19831, name = "PyTorch:aten::mm", min = 64557493, max = 64557493, total = 64557493, count = 1 }, { backend = 9, err_count = 0 }
+aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 19831, vtid = 19831, name = "PyTorch:aten::resize_", min = 3702, max = 3702, total = 3702, count = 1 }, { backend = 9, err_count = 0 }

@@ -1,0 +1,6 @@
+lttng:host: { hostname = "x4703c6s5b0n0", vpid = 19831, vtid = 19831, ts = 1791471015044621801, backend = 9 }, { name = "PyTorch:aten::resize_", dur = 3702, err = 0 }
+lttng:host: { hostname = "x4703c6s5b0n0", vpid = 19831, vtid = 19831, ts = 1791471015108574068, backend = 9 }, { name = "PyTorch:aten::empty", dur = 9182, err = 0 }
+lttng:host: { hostname = "x4703c6s5b0n0", vpid = 19831, vtid = 19831, ts = 1791471015108604946, backend = 9 }, { name = "dnnl::primitive::execute:matmul", dur = 314214, err = 0 }
+lttng:host: { hostname = "x4703c6s5b0n0", vpid = 19831, vtid = 19831, ts = 1791471015044374314, backend = 9 }, { name = "PyTorch:aten::mm", dur = 64557493, err = 0 }
+lttng:host: { hostname = "x4703c6s5b0n0", vpid = 19831, vtid = 19831, ts = 1791471015044358313, backend = 9 }, { name = "PyTorch:aten::matmul", dur = 64576739, err = 0 }
+lttng:host: { hostname = "x4703c6s5b0n0", vpid = 19831, vtid = 19831, ts = 1791471015044304462, backend = 9 }, { name = "PyTorch:my_matmul", dur = 64644254, err = 0 }

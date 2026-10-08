@@ -1,0 +1,11 @@
+BACKEND_ITT | 1 Hostnames | 1 Processes | 1 Threads | 
+
+                           Name |     Time | Time(%) | Calls |  Average |      Min |      Max |         
+              PyTorch:my_matmul |  65.14ms |  33.31% |     1 |  65.14ms |  65.14ms |  65.14ms |         
+           PyTorch:aten::matmul |  65.05ms |  33.26% |     1 |  65.05ms |  65.05ms |  65.05ms |         
+               PyTorch:aten::mm |  65.02ms |  33.24% |     1 |  65.02ms |  65.02ms |  65.02ms |         
+dnnl::primitive::execute:matmul | 352.10us |   0.18% |     1 | 352.10us | 352.10us | 352.10us |         
+            PyTorch:aten::empty |   9.18us |   0.00% |     1 |   9.18us |   9.18us |   9.18us |         
+          PyTorch:aten::resize_ |   4.66us |   0.00% |     1 |   4.66us |   4.66us |   4.66us |         
+                          Total | 195.57ms | 100.00% |     6 |                                          
+
