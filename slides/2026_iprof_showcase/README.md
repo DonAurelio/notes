@@ -5,47 +5,19 @@
      alt="Argonne National Laboratory">
 </a>
 
-# THAPI/iprof: Tracing Heterogeneous APIs
+# [THAPI/iprof: Tracing Heterogeneous APIs](https://github.com/argonne-lcf/THAPI)
 
-1. Introduction
-2. Features Showcase
-   - No Code Changes, Open Trace Format, Perfetto Native Timeline
-   - Programming-Model-Based Tracing
-   - Performance Counter Sampling (CXI)
-   - Intel ITT Backend
-   - Heterogeneous Programming Models: CPU + XPU
-   - Heterogeneous Programming Models: CPU + GPU
-   - Distributed Computing (MPI)
-3. DistributedDataParallel
-
-**References:** [THAPI repository](https://github.com/argonne-lcf/THAPI)
-
----
-
-### 1. Introduction
-
-THAPI is the tracing infrastructure for heterogeneous computing applications.
-`iprof` is the command line tool.
-
-**Usage**
-
-```bash
-iprof <executable>
-iprof -- python model.py
-```
-
-```bash
-mpirun iprof -- <executable>
-mpirun iprof -- python model.py
-```
-
-- THAPI is a generic framework for heterogeneous applications.
+> [!NOTE]
+> __THAPI is a generic framework for heterogeneous applications.__
+> - `THAPI` is the tracing infrastructure.
+> - `iprof` is the command line utility, e.g., `iprof -- python model.py`, `mpirun iprof -- python model.py`
 
 | Languages | Prospective Languages | Programming Models | Domain-Based Programming Models |
 |---|---|---|---|
 | <ul><li>FORTRAN</li><li>C</li><li>C++</li><li>**Python**</li></ul> | <ul><li>Julia</li><li>Lua</li><li>PGAS approaches</li></ul> | <ul><li>**MPI**</li><li>OpenMP</li><li>**CUDA**, **L0**, **ROCm**, **HIP**, **OpenCL**</li><li>SYCL, Kokkos, Raja</li></ul> | <ul><li>Linear algebra: BLAS/LAPACK</li><li>FFTs: cuFFT, FFTWx, MKL FFT</li><li>Low-level AI: cuDNN, clDNN, Intel DNNL</li><li>AI/ML: TensorFlow, Caffe, **PyTorch**</li></ul> |
 
-**Diagram 1: Programming-model interrelation**
+> [!NOTE]
+> __We want to understand how applications use programming models, and how that usage impacts performance__
 
 ```mermaid
 flowchart TD
@@ -85,11 +57,8 @@ flowchart TD
     end
 ```
 
-- AI/ML workloads are just another, domain-specific case of heterogeneous
-  application that THAPI can address. PyTorch itself dispatches to a
-  different programming model per device.
-
-**Diagram 2: The PyTorch case**
+> [!NOTE]
+> __AI/ML workloads are just another, domain-specific case of heterogeneous application that THAPI can address__
 
 ```mermaid
 flowchart TD
@@ -111,7 +80,6 @@ flowchart TD
         ROCm["ROCm/HIP backend<br>(HIPified, same DispatchKey: CUDA)"]
         XPU["XPU backend<br>(DispatchKey: XPU)"]
         CPU["CPU backend<br>(DispatchKey: CPU)"]
-        MPS["MPS backend<br>(DispatchKey: MPS)"]
     end
 
     subgraph Libs["Vendor Libraries / Runtime"]
@@ -119,7 +87,6 @@ flowchart TD
         ROCmLibs["rocBLAS, MIOpen, RCCL<br>HIP/ROCr runtime"]
         XPULibs["oneMKL, oneDNN<br>SYCL / Level Zero runtime"]
         CPULibs["MKL, oneDNN"]
-        MPSLibs["Metal Performance Shaders"]
     end
 
     Python --> TorchAPI
@@ -129,37 +96,21 @@ flowchart TD
     Dispatcher --> ROCm
     Dispatcher --> XPU
     Dispatcher --> CPU
-    Dispatcher --> MPS
 
     CUDA --> CUDALibs
     ROCm --> ROCmLibs
     XPU --> XPULibs
     CPU --> CPULibs
-    MPS --> MPSLibs
 ```
 
-**Supported backends**
+> [!IMPORTANT]
+> **Supported backends**: MPI, OpenMP, OpenCL, Level Zero (L0), CUDA, HIP, CXI, ITT, PyTorch
 
-| Backend | Keywords |
-|---|---|
-| **MPI** | distributed memory, point-to-point, collectives |
-| **OpenMP** | shared memory, threads, parallel regions |
-| **OpenCL** | cross-vendor, `cl*` calls, command queues |
-| **Level Zero (L0)** | Intel GPU, `ze*` calls, oneAPI/SYCL |
-| **CUDA** | NVIDIA GPU, runtime + driver API |
-| **HIP** | AMD GPU, CUDA-portable, `hip*` calls |
-| **CXI** | HPE Slingshot, network fabric, NIC |
-| **ITT** | Intel instrumentation, named tasks, VTune |
-| **PyTorch** | `aten::*` ops, RecordFunction, no code changes |
 
----
 
-### 2. Features Showcase
+# Easy to adopt
 
-#### 2.1 No Code Changes, Open Trace Format, Perfetto Native Timeline
-
-The base code below is traced as-is. No `with profile(...):`, no
-`emit_itt()`, no import added.
+No Code Changes, Open Trace Format, Perfetto Native Timeline
 
 ```bash
 iprof -- python model.py
@@ -203,11 +154,10 @@ at::native::xpu::DistributionElementw[...]alTransformFunctor<float, float>, int>
 
 🔗 [Explore this trace in Perfetto](https://ui.perfetto.dev/#!/?url=https://raw.githubusercontent.com/DonAurelio/notes/main/slides/2026_iprof_showcase/02_1_no_code_changes/iprof_timeline.pftrace)
 
-#### 2.2 Programming-Model-Based Tracing
+# Trace already speaks the application's vocabulary
 
-THAPI hooks each programming model's own API (`ze*`, `cl*`, `aten::*`).
-The trace reads in the application's own vocabulary, not generic call
-stacks.
+> [!IMPORTANT]
+> THAPI captures as much **context** as possible while maintaining **minimal overhead** [[1](https://dl.acm.org/doi/10.1007/978-3-031-99854-6_4)].
 
 ```bash
 iprof --trace -- python model.py
@@ -300,11 +250,9 @@ iprof --trace -- python3 -c "import torch; torch.zeros(1, device='xpu')"
 13:46:47.480464747 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_ze:zeInit_exit: { zeResult: ZE_RESULT_ERROR_UNINITIALIZED }
 ```
 
-Useful for diagnosing where an application actually ran, not just what it
-called.
-
 📄 [Full raw trace (login node)](02_2_programming_model_based/login_trace.txt)
 
+# Minumal 
 _TODO: overhead discussion (LTTng/babeltrace, and the associated
 instrumentation cost) to be filled in._
 
