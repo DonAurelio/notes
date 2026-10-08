@@ -11,6 +11,7 @@
 2. Features Showcase
    - No Code Changes, Open Trace Format, Perfetto Native Timeline
    - Programming-Model-Based Tracing
+   - Performance Counter Sampling (CXI)
    - Intel ITT Backend
    - Heterogeneous Programming Models: CPU + XPU
    - Heterogeneous Programming Models: CPU + GPU
@@ -307,7 +308,76 @@ called.
 _TODO: overhead discussion (LTTng/babeltrace, and the associated
 instrumentation cost) to be filled in._
 
-#### 2.3 Intel ITT Backend
+#### 2.3 Performance Counter Sampling (CXI)
+
+`-s`/`--sample` starts a background sampling daemon that reads hardware
+counters on a fixed interval, independent of the workload's own
+instrumented calls. The CXI plugin samples real Slingshot NIC telemetry
+under `/sys/class/cxi/*/device/telemetry` every 100ms by default.
+
+```bash
+iprof --sample --backend cxi,pytorch --trace -- python model.py
+```
+
+```python
+# model.py
+import torch
+x = torch.randn(2048, 2048, device="xpu")
+y = torch.matmul(x, x)
+torch.xpu.synchronize()
+```
+
+Sampling runs on its own clock, not tied to any traced call. Each tick
+emits one event per counter per NIC interface:
+
+```text
+15:54:25.703629402 - x4116c4s4b0n0 - vpid: 145452, vtid: 145713 - lttng_ust_cxi_sampling:cxi: {interface_name: cxi6 , counter: pct_eth_packets , value: 126480}
+15:54:25.703632740 - x4116c4s4b0n0 - vpid: 145452, vtid: 145713 - lttng_ust_cxi_sampling:cxi: {interface_name: cxi6 , counter: pct_mem_cor_err_cntr , value: 0}
+...
+```
+
+The interval view turns each tick into one row per counter, and strung
+together they show the counter accumulating independently of the
+application's own `aten::*` calls, which run on a separate thread
+(`sampling:nic` carries no `vpid`/`vtid`, unlike the `lttng:host` rows
+from the traced process):
+
+```text
+sampling:nic: { hostname = "x4116c4s4b0n0", ts = 1791474932332351582 }, { interface_name = "cxi4", counter = "pct_eth_packets", value = 104 }
+sampling:nic: { hostname = "x4116c4s4b0n0", ts = 1791474932432308058 }, { interface_name = "cxi4", counter = "pct_eth_packets", value = 220 }
+sampling:nic: { hostname = "x4116c4s4b0n0", ts = 1791474932532365693 }, { interface_name = "cxi4", counter = "pct_eth_packets", value = 334 }
+...
+```
+
+Those three timestamps are ~100ms apart, matching the sampling period,
+and keep incrementing well past the short `aten::matmul` call itself;
+this is the fixed-rate telemetry stream the ITT/PyTorch backends don't
+provide.
+
+Two things to know when using `-s`:
+
+- Counter samples only show up in the raw trace, the interval view, and
+  the Perfetto timeline, not in the tally (`--analysis-output`). The
+  tally aggregates named, duration-based calls; periodic counter samples
+  aren't that, so `to_aggreg` doesn't carry them. Read sampling data from
+  the raw/interval/timeline views instead.
+- Restrict `--backend` to only what's needed (`cxi,pytorch` here). Asking
+  for `-s` with the default backend set also tries to load the ZE
+  sampling plugin, and on this system that crashes the sampling daemon
+  outright (`libffi.so.8: cannot open shared object file`), which
+  silently drops every counter, CXI included, with no error surfaced to
+  `iprof`. That silent failure, combined with not knowing to look in the
+  interval/timeline views instead of the tally, is what looked like a
+  CXI-specific bug at first.
+
+📄 [Full raw trace](02_3_cxi_sampling/raw_trace.txt) ·
+[Intervals](02_3_cxi_sampling/intervals.txt) ·
+[Aggregations (PyTorch calls only)](02_3_cxi_sampling/aggregations.txt) ·
+[Tally (PyTorch calls only)](02_3_cxi_sampling/iprof_summary.txt)
+
+🔗 [Explore this trace in Perfetto](https://ui.perfetto.dev/#!/?url=https://raw.githubusercontent.com/DonAurelio/notes/main/slides/2026_iprof_showcase/02_3_cxi_sampling/iprof_timeline.pftrace)
+
+#### 2.4 Intel ITT Backend
 
 `emit_itt()` opens the ITT stream and auto-emits a range for every
 RecordFunction-observed op in its scope. `itt.range_push`/`range_pop`
@@ -370,14 +440,14 @@ lttng:host: { hostname = "x4703c6s5b0n0", vpid = 19831, vtid = 19831, ts = 17914
 lttng:host: { hostname = "x4703c6s5b0n0", vpid = 19831, vtid = 19831, ts = 1791471015044358313, backend = 9 }, { name = "PyTorch:aten::matmul", dur = 64576739, err = 0 }
 ```
 
-📄 [Full tally](02_3_itt_backend/iprof_summary.txt) ·
-[Raw trace](02_3_itt_backend/raw_trace.txt) ·
-[Intervals](02_3_itt_backend/intervals.txt) ·
-[Aggregations](02_3_itt_backend/aggregations.txt)
+📄 [Full tally](02_4_itt_backend/iprof_summary.txt) ·
+[Raw trace](02_4_itt_backend/raw_trace.txt) ·
+[Intervals](02_4_itt_backend/intervals.txt) ·
+[Aggregations](02_4_itt_backend/aggregations.txt)
 
-🔗 [Explore this trace in Perfetto](https://ui.perfetto.dev/#!/?url=https://raw.githubusercontent.com/DonAurelio/notes/main/slides/2026_iprof_showcase/02_3_itt_backend/iprof_timeline.pftrace)
+🔗 [Explore this trace in Perfetto](https://ui.perfetto.dev/#!/?url=https://raw.githubusercontent.com/DonAurelio/notes/main/slides/2026_iprof_showcase/02_4_itt_backend/iprof_timeline.pftrace)
 
-#### 2.4 Heterogeneous Programming Models: CPU + XPU
+#### 2.5 Heterogeneous Programming Models: CPU + XPU
 
 The same `aten::matmul` call dispatches to a different backend depending
 on the tensor's device. One process, two programming models, one trace.
@@ -507,9 +577,9 @@ aggregate:
 aggreg:host: { hostname = "x4703c6s5b0n0", vpid = 59280, vtid = 59280, name = "aten::matmul", min = 65957042, max = 307042284, total = 372999326, count = 2 }, { backend = 10, err_count = 0 }
 ```
 
-📄 [Full tally](02_4_cpu_xpu/iprof_summary.txt) ·
-[Raw trace](02_4_cpu_xpu/raw_trace.txt) ·
-[Intervals](02_4_cpu_xpu/intervals.txt) ·
-[Aggregations](02_4_cpu_xpu/aggregations.txt)
+📄 [Full tally](02_5_cpu_xpu/iprof_summary.txt) ·
+[Raw trace](02_5_cpu_xpu/raw_trace.txt) ·
+[Intervals](02_5_cpu_xpu/intervals.txt) ·
+[Aggregations](02_5_cpu_xpu/aggregations.txt)
 
-🔗 [Explore this trace in Perfetto](https://ui.perfetto.dev/#!/?url=https://raw.githubusercontent.com/DonAurelio/notes/main/slides/2026_iprof_showcase/02_4_cpu_xpu/iprof_timeline.pftrace)
+🔗 [Explore this trace in Perfetto](https://ui.perfetto.dev/#!/?url=https://raw.githubusercontent.com/DonAurelio/notes/main/slides/2026_iprof_showcase/02_5_cpu_xpu/iprof_timeline.pftrace)

@@ -1,0 +1,11 @@
+BACKEND_PYTORCH | 1 Hostnames | 1 Processes | 1 Threads | 
+
+                     Name |     Time | Time(%) | Calls |  Average |     Min |      Max |         
+             aten::matmul |  68.16ms |  47.98% |     1 |  68.16ms | 68.16ms |  68.16ms |         
+                 aten::mm |  68.11ms |  47.95% |     1 |  68.11ms | 68.11ms |  68.11ms |         
+              aten::randn |   2.94ms |   2.07% |     1 |   2.94ms |  2.94ms |   2.94ms |         
+            aten::normal_ |   2.51ms |   1.76% |     1 |   2.51ms |  2.51ms |   2.51ms |         
+aten::empty.memory_format | 333.43us |   0.23% |     2 | 166.72us | 11.78us | 321.65us |         
+            aten::resize_ |  11.36us |   0.01% |     1 |  11.36us | 11.36us |  11.36us |         
+                    Total | 142.07ms | 100.00% |     7 |                                         
+

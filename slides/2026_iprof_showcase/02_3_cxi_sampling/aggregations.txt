@@ -1,0 +1,6 @@
+aggreg:host: { hostname = "x4116c4s4b0n0", vpid = 153699, vtid = 153699, name = "aten::mm", min = 64894360, max = 64894360, total = 64894360, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4116c4s4b0n0", vpid = 153699, vtid = 153699, name = "aten::resize_", min = 4385, max = 4385, total = 4385, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4116c4s4b0n0", vpid = 153699, vtid = 153699, name = "aten::randn", min = 2740641, max = 2740641, total = 2740641, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4116c4s4b0n0", vpid = 153699, vtid = 153699, name = "aten::normal_", min = 2350928, max = 2350928, total = 2350928, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4116c4s4b0n0", vpid = 153699, vtid = 153699, name = "aten::matmul", min = 64932071, max = 64932071, total = 64932071, count = 1 }, { backend = 10, err_count = 0 }
+aggreg:host: { hostname = "x4116c4s4b0n0", vpid = 153699, vtid = 153699, name = "aten::empty.memory_format", min = 15851, max = 304167, total = 320018, count = 2 }, { backend = 10, err_count = 0 }
