@@ -202,3 +202,108 @@ at::native::xpu::DistributionElementw[...]alTransformFunctor<float, float>, int>
 [Aggregations](02_1_no_code_changes/aggregations.txt)
 
 🔗 [Explore this trace in Perfetto](https://ui.perfetto.dev/#!/?url=https://raw.githubusercontent.com/DonAurelio/notes/main/slides/2026_iprof_showcase/02_1_no_code_changes/iprof_timeline.pftrace)
+
+#### 2.2 Programming-Model-Based Tracing
+
+THAPI hooks each programming model's own API (`ze*`, `cl*`, `aten::*`).
+The trace reads in the application's own vocabulary, not generic call
+stacks.
+
+```bash
+iprof --trace -- python model.py
+```
+
+```text
+13:35:43.811594697 - x4619c0s6b0n0 - vpid: 446330, vtid: 446330 - lttng_ust_ze_properties:device: {
+  hDriver: 0x0000558014c32e28,
+  hDevice: 0x0000558014c2e218,
+  pDeviceProperties_val: {
+    stype: ZE_STRUCTURE_TYPE_DEVICE_PROPERTIES,
+    pNext: 0x0000000000000000,
+    type: ZE_DEVICE_TYPE_GPU,
+    vendorId: 32902,
+    deviceId: 3030,
+    flags: [],
+    subdeviceId: 0,
+    coreClockRate: 1500,
+    maxMemAllocSize: 65267564544,
+    maxHardwareContexts: 65536,
+    maxCommandQueuePriority: 0,
+    numThreadsPerEU: 8,
+    physicalEUSimdWidth: 16,
+    numEUsPerSubslice: 8,
+    numSubslicesPerSlice: 56,
+    numSlices: 1,
+    timerResolution: 80,
+    timestampValidBits: 36,
+    kernelTimestampValidBits: 32,
+    uuid: { id: 01000000-0000-0000-ec8e-6e2d93f4a1ac },
+    name: Intel(R) Data Center GPU Max 1550
+  }
+}
+...
+13:35:44.048636859 - x4619c0s6b0n0 - vpid: 446330, vtid: 446330 - lttng_ust_pytorch:op_entry: {
+  name: "aten::randn",
+  overload_name: ""
+}
+...
+13:35:44.055134546 - x4619c0s6b0n0 - vpid: 446330, vtid: 446330 - lttng_ust_pytorch:op_exit: {
+  name: "aten::randn",
+  overload_name: ""
+}
+13:35:44.055211313 - x4619c0s6b0n0 - vpid: 446330, vtid: 446330 - lttng_ust_pytorch:op_entry: {
+  name: "aten::matmul",
+  overload_name: ""
+}
+...
+13:35:44.055241550 - x4619c0s6b0n0 - vpid: 446330, vtid: 446330 - lttng_ust_ze:zeMemAllocDevice_entry: {
+  hContext: 0x0000558016125158,
+  device_desc: 0x00007ffe909074d8,
+  size: 16777216,
+  alignment: 512,
+  hDevice: 0x0000558014c2e218,
+  pptr: 0x00007ffe90907580,
+  device_desc_val: {
+    stype: ZE_STRUCTURE_TYPE_DEVICE_MEM_ALLOC_DESC,
+    pNext: 0x0000000000000000,
+    flags: [],
+    ordinal: 0
+  }
+}
+13:35:44.055296755 - x4619c0s6b0n0 - vpid: 446330, vtid: 446330 - lttng_ust_ze:zeMemAllocDevice_exit: {
+  zeResult: ZE_RESULT_SUCCESS,
+  pptr_val: 0xff00000001200000
+}
+...
+13:35:44.120291133 - x4619c0s6b0n0 - vpid: 446330, vtid: 446330 - lttng_ust_pytorch:op_exit: {
+  name: "aten::matmul",
+  overload_name: ""
+}
+```
+
+The `hDevice` in `zeMemAllocDevice_entry` (`0x0000558014c2e218`) matches the
+`hDevice` the `device` properties event reported earlier for this same GPU,
+correlating the allocation to a specific device.
+
+📄 [Full raw trace](02_1_no_code_changes/raw_trace.txt)
+
+Because tracing happens at this level, a call that fails is still captured
+as-is. On the Aurora login node, with no XPU present, `zeInit` shows up
+returning an error instead of silently vanishing.
+
+```bash
+iprof --trace -- python3 -c "import torch; torch.zeros(1, device='xpu')"
+```
+
+```text
+13:46:47.480452608 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_ze:zeInit_entry: { flags: [ ZE_INIT_FLAG_GPU_ONLY ] }
+13:46:47.480464747 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_ze:zeInit_exit: { zeResult: ZE_RESULT_ERROR_UNINITIALIZED }
+```
+
+Useful for diagnosing where an application actually ran, not just what it
+called.
+
+📄 [Full raw trace (login node)](02_2_programming_model_based/login_trace.txt)
+
+_TODO: overhead discussion (LTTng/babeltrace, and the associated
+instrumentation cost) to be filled in._

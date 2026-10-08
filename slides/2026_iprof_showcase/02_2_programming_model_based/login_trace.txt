@@ -1,0 +1,35 @@
+/opt/aurora/26.26.0/frameworks/aurora_frameworks-2025.3.1/lib/python3.12/site-packages/torch/xpu/__init__.py:138: UserWarning: XPU device count is zero! (Triggered internally at /lus/tegu/projects/datasets/software/26.26.0/wheelforge/repositories/pytorch_2.10.0_01_27_2026/pytorch/c10/xpu/XPUFunctions.cpp:113.)
+  torch._C._xpu_init()
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/opt/aurora/26.26.0/frameworks/aurora_frameworks-2025.3.1/lib/python3.12/site-packages/torch/xpu/__init__.py", line 138, in _lazy_init
+    torch._C._xpu_init()
+RuntimeError: No XPU devices are available.
+THAPI: Trace location: /home/avivasmeza/thapi-traces/thapi--2026-10-08T13:46:50+00:00
+13:46:47.480452608 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_ze:zeInit_entry: { flags: [ ZE_INIT_FLAG_GPU_ONLY ] }
+13:46:47.480464747 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_ze:zeInit_exit: { zeResult: ZE_RESULT_ERROR_UNINITIALIZED }
+13:46:47.480585730 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_ze:zeInitDrivers_entry: { pCount: 0x00007ffe1da5e7b8, phDrivers: 0x0000000000000000, desc: 0x00005611428f5598, desc_val: { stype: ZE_STRUCTURE_TYPE_INIT_DRIVER_TYPE_DESC, pNext: 0x0000000000000000, flags: [ ZE_INIT_DRIVER_TYPE_FLAG_GPU ] }, pCount_val: 0 }
+13:46:47.480607769 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_ze:zeInitDrivers_exit: { zeResult: ZE_RESULT_ERROR_UNINITIALIZED, pCount_val: 0, phDrivers_vals: [  ] }
+13:46:47.480737014 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_ze:zeInit_entry: { flags: [ ZE_INIT_FLAG_GPU_ONLY ] }
+13:46:47.480737338 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_ze:zeInit_exit: { zeResult: ZE_RESULT_ERROR_UNINITIALIZED }
+13:46:47.480824442 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_ze:zeInitDrivers_entry: { pCount: 0x00007ffe1da5e798, phDrivers: 0x0000000000000000, desc: 0x000056114ab5e648, desc_val: { stype: ZE_STRUCTURE_TYPE_INIT_DRIVER_TYPE_DESC, pNext: 0x0000000000000000, flags: [ ZE_INIT_DRIVER_TYPE_FLAG_GPU ] }, pCount_val: 0 }
+13:46:47.480825431 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_ze:zeInitDrivers_exit: { zeResult: ZE_RESULT_ERROR_UNINITIALIZED, pCount_val: 0, phDrivers_vals: [  ] }
+13:46:47.536112998 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_opencl:clGetPlatformIDs_entry: num_entries: 0, platforms: 0x0, num_platforms: 0x7ffe1da5f514
+13:46:47.536118559 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_opencl:clGetPlatformIDs_exit: errcode_ret_val: CL_SUCCESS, num_platforms_val: 1, platforms_vals: []
+13:46:47.536120152 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_opencl:clGetPlatformIDs_entry: num_entries: 1, platforms: 0x56114bf2e8a0, num_platforms: 0x0
+13:46:47.536120619 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_opencl:clGetPlatformIDs_exit: errcode_ret_val: CL_SUCCESS, num_platforms_val: 0, platforms_vals: [0x5611486bb280]
+13:46:47.536124341 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_opencl:clGetDeviceIDs_entry: platform: 0x5611486bb280, device_type: [CL_DEVICE_TYPE_ALL], num_entries: 0, devices: 0x0, num_devices: 0x7ffe1da5f49c
+13:46:47.536132162 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_opencl:clGetDeviceIDs_exit: errcode_ret_val: CL_SUCCESS, num_devices_val: 1, devices_vals: []
+13:46:47.536132655 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_opencl:clGetDeviceIDs_entry: platform: 0x5611486bb280, device_type: [CL_DEVICE_TYPE_ALL], num_entries: 1, devices: 0x56114bf2eaf0, num_devices: 0x0
+13:46:47.536199164 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_opencl_devices:device_name: device: 0x56114acdd4d8, name: "Intel(R) Xeon(R) Gold 5320 CPU @ 2.20GHz\x00"
+13:46:47.536201163 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_opencl:clGetDeviceIDs_exit: errcode_ret_val: CL_SUCCESS, num_devices_val: 1, devices_vals: [0x56114acdd4d8]
+13:46:47.536204179 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_opencl:clGetDeviceInfo_entry: device: 0x56114acdd4d8, param_name: CL_DEVICE_TYPE, param_value_size: 8, param_value: 0x56114bf29a98, param_value_size_ret: 0x0
+13:46:47.536205235 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_opencl:clGetDeviceInfo_exit: errcode_ret_val: CL_SUCCESS, param_value_size_ret_val: 8, param_value_vals: [CL_DEVICE_TYPE_CPU]
+13:46:47.536215772 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_opencl:clGetPlatformInfo_entry: platform: 0x5611486bb280, param_name: CL_PLATFORM_NAME, param_value_size: 0, param_value: 0x0, param_value_size_ret: 0x7ffe1da5f740
+13:46:47.536218786 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_opencl:clGetPlatformInfo_exit: errcode_ret_val: CL_SUCCESS, param_value_size_ret_val: 16, param_value_vals: ""
+13:46:47.536219499 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_opencl:clGetPlatformInfo_entry: platform: 0x5611486bb280, param_name: CL_PLATFORM_NAME, param_value_size: 16, param_value: 0x7ffe1da5f7b8, param_value_size_ret: 0x0
+13:46:47.536220237 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_opencl:clGetPlatformInfo_exit: errcode_ret_val: CL_SUCCESS, param_value_size_ret_val: 16, param_value_vals: "Intel(R) OpenCL"
+13:46:47.536221759 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_opencl:clGetPlatformInfo_entry: platform: 0x5611486bb280, param_name: CL_PLATFORM_NAME, param_value_size: 0, param_value: 0x0, param_value_size_ret: 0x7ffe1da5f740
+13:46:47.536222326 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_opencl:clGetPlatformInfo_exit: errcode_ret_val: CL_SUCCESS, param_value_size_ret_val: 16, param_value_vals: ""
+13:46:47.536222749 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_opencl:clGetPlatformInfo_entry: platform: 0x5611486bb280, param_name: CL_PLATFORM_NAME, param_value_size: 16, param_value: 0x7ffe1da5f7b8, param_value_size_ret: 0x0
+13:46:47.536223168 - aurora-uan-0011 - vpid: 1915916, vtid: 1915916 - lttng_ust_opencl:clGetPlatformInfo_exit: errcode_ret_val: CL_SUCCESS, param_value_size_ret_val: 16, param_value_vals: "Intel(R) OpenCL"
