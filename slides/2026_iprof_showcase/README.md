@@ -521,6 +521,7 @@ BACKEND_OPENCL,BACKEND_ZE | 2 Hostnames | 2 Processes | 2 Threads |
 > The workload is a small, synthetic, Llama-inspired transformer ("TinyLlama"),
 taken from Nathan S. Nichols' THAPI/iprof AI/ML tracing exercise
 ([`intro-to-tracing-ai-ml-models-with-thapi-slides`](https://github.com/nscottnichols/intro-to-tracing-ai-ml-models-with-thapi-slides).
+> - `train_llama3_demo.py`: no application-level ITT markers.
 > - `train_llama3_demo_with_itt.py`: the same model and training loop, with
   named ITT regions (`Step.N`, `Forward`, `Layer.i`, `Attn.i`, `MLP.i`,
   `Backward`, `Optimizer.Step`, plus `Init.MPI`/`Init.ProcessGroup`/
