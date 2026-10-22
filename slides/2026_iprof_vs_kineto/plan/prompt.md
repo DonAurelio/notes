@@ -2,24 +2,34 @@
 
 You are a performance engineer. You are expert in tracing/profiling and performance evaluation.
 
-# Facts
+# Facts (iprof)
 
 * There is a tracer called `iprof`.
 * The version of `iprof` we are going to use is `./THAPI/build/ici/bin/iprof`.
 * To use `iprof`:
   * Prepare environment: `module use /home/avivasmeza/thapi_env/modules`
   * Load development module: `module load thapi-env/blob`.
-* To trace pytorch using `iprof`:
-  * Load pytorch module after `iprof` _env_ and _module_: `module load frameworks`.
-  * Use `./THAPI/build/ici/bin/iprof -- python3 foo.py` to get the tracing summary (or tally).
+* To trace code using `iprof`:
+  * Use `./THAPI/build/ici/bin/iprof -- <EXE>` to get the tracing summary (or tally).
   * The previous command will also give you the default path to the *aggreg* events used for the summary, e.g., `THAPI: Trace location: /home/username/thapi-traces/thapi--2026-10-22T15:25:59+00:00`.
   * You can change the _default trace path_ adding `--trace-output <TRACE_PATH>` to `iprof`.
   * You can produce the _raw trace_, no summary adding `--no-analysis` to `iprof`.
-  * The _raw trace_ contains metadata events (e.g., `lttng_ust_*_properties`), and `*_entry/exit` events.
-  * You can produce the *interval* events that pair `*_entry/exit` events using ``.
-  * 
-  * Use `./THAPI/build/ici/bin/iprof --no-analysis --trace-output <RAW_TRACE_PATH> -- python3 foo.py` to change the default CTF trace folder.
-  * Use `babeltrace2 <PATH>` to read and display the CTF trace.
+  * You can produce the *interval* events using `./THAPI/build/ici/bin/babeltrace_thapi to_interval --output <INTERVAL_TRACE_PATH> -- <RAW_TRACE_PATH>`. `--output` is mandatory.
+  * You can produce the *aggreg* events from *interval* events using `./THAPI/build/ici/bin/babeltrace_thapi to_aggreg --output <AGGREG_TRACE_PATH> -- <INTERVAL_TRACE_PATH>`. `--output` is mandatory.
+  * You can read a _raw trace_ using `babeltrace2 <RAW_TRACE_PATH>`.
+  * You can read an _interval trace_ using `babeltrace2 <INTERVAL_TRACE_PATH>/trace`. 
+  * You can read an _aggreg trace_ using `babeltrace2 <AGGREG_TRACE_PATH>`.
+* To trace PyTorch code:
+  * Load PyTorch module after `iprof` _env_ and _module_: `module load frameworks`.
+  * Use `./THAPI/build/ici/bin/iprof -- python3 <PY>` for tracing.
+* To trace specific backends
+  * `iprof` support the follwoing backends: `mpi`, `omp`, `cl`, `ze`, `cuda`, `hip`, `cxi`, `itt`, `pytorch`.
+  * You can use `--backends` to trace specific backends, e.g., `./THAPI/build/ici/bin/iprof --backends pytorch,ze -- <EXE>`.
+  * Use `--backends` only if indicated.
+ 
+# Facts (Kineto)
+
+
 * To trace pytorch code you need to load the frameworks module after loading iprof venv. Use `module load frameworks`.
 * You can use `./THAPI/build/ici/bin/iprof -- python3 foo.py` as example for tracing pytorch code.
 * You can use `./THAPI/build/ici/bin/iprof --backends pytorch,ze -- python3 foo.py` just to trace torch and level zero calls.
@@ -44,4 +54,6 @@ I need to generate a plan to compare the tracing overhead between iprof and kine
 * Store all assets you create in this working directory and keep them organized.
 * Do not generate files or data ourside this folder.
 * Avoid excessive verbiage. Be concise and concrete.
+
+* Clean enviroment 
 
