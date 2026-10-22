@@ -60,27 +60,28 @@ You are a performance engineer. You are expert in tracing/profiling and performa
 
 * The Aurora-patched PyTorch (`frameworks` module) forces XPU Kineto init even when only CPU activity is requested, therefore, PyTorch code will not work in UAN nodes.
 
-
 # Context
 * Papers presenting overhead evaluation of `iprof`.
   * `thapi_tracing_framework.pdf`
   * `thapi_nic_telemetry.pdf`
 
-# Goals
+# Goal
 
-I need to generate a plan to compare the tracing overhead between iprof and kineto. The plan must define: workload, metrics (how overhead is going to be measured), baseline scenario and evaluation scenarios and the parameters that are going to be varied. The comparison must be as fare as posible. The overhad must be a metric that enables the comparison and should be independenent of the amoun of traced events since that can affect overhead too. Read the related papers and come with an evaluation plan indicating why the considerations.
+I need to generate a plan to compare the tracing overhead between `iprof` and `kineto`:
+- Read the related papers and use the ideas to an evaluation plan indicating workload, metrics, scenarios, parameters (fixed and variable).
 
 # Constraints
 
+* Always, change to plan mode and draft a plan.
+* We will iterate the plan until it is approved, then we can go fordward.
+* Every plan must be written in an md file,  e.g., `plan_v1.0.md`.
+* Every iteration of changes to the plan must create a new version of the plan, e.g., `plan_v1.1.md`. 
+* Create a `scratch_dir` inside this `working_dir` for all temp data/scripts/assets you generate.
 * If you cannot validate something, ask me. Do not hallucinate.
-* Store all assets you create in this working directory and keep them organized.
-* Do not generate files or data ourside this folder.
 * Avoid excessive verbiage. Be concise and concrete.
-* Allwas start with a plan so change to plan mode.
-* Clean enviroment 
 
 # Output
 
-md files organized.
-- crreat a new verion of plans and resuls so i can tract iterations.
-- always put everthing in this 
+- Folders and files: plan (prompt.md, plan.md), workloads, scripts, results, viz (analysis images)
+- The plan must include the planned visualizations to be produced.
+
