@@ -6,7 +6,7 @@ You are a performance engineer. You are expert in tracing/profiling and performa
 
 * There is a tracer called THAPI/iprof.
 * The version of iprof we are going to use is `./THAPI/build/ici/bin/iprof`.
-* You need to prepare the enviroment to use iprof: `module use /home/avivasmeza/thapi_env/modules`, then `module load thapi_env/blob`.
+* You need to prepare the enviroment to use iprof: `module use /home/avivasmeza/thapi_env/modules`, then `module load thapi-env/blob`.
 * To trace pytorch code you need to load the frameworks module after loading iprof venv. Use `module load frameworks`.
 * You can use `./THAPI/build/ici/bin/iprof -- python3 foo.py` as example for tracing pytorch code.
 * You can use `./THAPI/build/ici/bin/iprof --backends pytorch,ze -- python3 foo.py` just to trace torch and level zero calls.
