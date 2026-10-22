@@ -41,10 +41,10 @@ The coefficient of variation (CV = σ/mean) is used below to assess data quality
 
 | S | N | IP CV | KN CV | Assessment |
 |---|---|---|---|---|
-| 256 | 10–1000 | 1.7–4.3% | 1.0–3.6% | **Consistent** — overhead signal is large, noise is a small fraction |
-| 1024 | 10–1000 | 1.0–2.4% | 1.1–2.9% | **Highly stable** — dedicated node, negligible run-to-run jitter |
-| 4096 | 10 | 15% | 8% | **Acceptable** — signal still detectable (mean/σ ≥ 6); overhead is small but real |
-| 4096 | 100 | 85% | 82% | **Below noise floor** — mean ≈ σ, some reps yield negative ratios; overhead is indistinguishable from timer noise at 667 ms wall time |
+| 256 | 10–1000 | 1.7–4.3% | 1.0–3.6% | **Consistent** |
+| 1024 | 10–1000 | 1.0–2.4% | 1.1–2.9% | **Highly stable** |
+| 4096 | 10 | 15% | 8% | **Acceptable** |
+| 4096 | 100 | 85% | 82% | **Below noise floor**; mean ≈ σ, some reps yield negative ratios; overhead is indistinguishable from timer noise at 667 ms wall time |
 
 ### Findings
 
