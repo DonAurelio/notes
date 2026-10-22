@@ -82,6 +82,7 @@ I need to generate a plan to compare the tracing overhead between `iprof` and `k
 
 # Output
 
-- Folders and files: plan (prompt.md, plan.md), workloads, scripts, results, viz (analysis images)
-- The plan must include the planned visualizations to be produced.
-
+- The main folder muts be `exp`.
+- `exp` must contain `plan` (`prompt.md`, `plan.md`), `workloads`, `scripts`, `results`, `viz`.
+- The plan must include the planned visualizations (viz) to be produced.
+- If an exaperiment was executed and there is a change, a new version of the experiments folder must be created, e.g., `exp_v1.1`.
