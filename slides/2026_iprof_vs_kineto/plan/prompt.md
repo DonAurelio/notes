@@ -29,20 +29,42 @@ You are a performance engineer. You are expert in tracing/profiling and performa
  
 # Facts (Kineto)
 
+* There is a tracer called `Kineto`.
+* `Kineto` only exists in PyTorch code.
+* `Kineto` is build-in in the torch lib.
+* To enable `Kineto` tracing:
+  * Import `from torch.profiler import profile, ProfilerActivity`.
+  * Wrap the code to be traced using a context manager`with profile(activities=[...]) as prof:`.
+  * Activities is the list of devices to be profiled, e.g., `[ProfilerActivity.CPU]` just for CPU activity and `[ProfilerActivity.CPU, ProfilerActivity.XPU]` for CPU+XPU activity.
+  * `prof` contains the traced information in a summary that can be printed.
 
-* To trace pytorch code you need to load the frameworks module after loading iprof venv. Use `module load frameworks`.
-* You can use `./THAPI/build/ici/bin/iprof -- python3 foo.py` as example for tracing pytorch code.
-* You can use `./THAPI/build/ici/bin/iprof --backends pytorch,ze -- python3 foo.py` just to trace torch and level zero calls.
-* When executing a command, you need to load the enviroment and send the execution in the same command since env variables do not propagate.
-* There is another tracer called Kineto.
-* Kineto is build-in in the torch lib.
-* To enable Kineto tracing/profiling, we need to anotate the code with a contex manager. `model_kineto.py` has an example.
-* We are in a UAN (user authentication node).
-* Kineto does not work in a UAN since the torch module provided has the xpu support bundled so event when you execute CPU code, the lib is loaded and UANs do not have XPU devices.
-* Compute nodes have XPU devices.
-* You can reserve a compute node for interactive sesion using `qsub -A Performance -q debug -l walltime=00:60:00 -l filesystems=home -I -l select=1`.
-* I recommend to reserve the node, get the node-s hostname, then send executions/commands via ssh. You can take a look on the pytorch-basic-tracing-node-run or thapi-tracer-run skills for information on how to run in compute nodes.
-* There are two papers describing, in particular, the evaluation of thapi, `thapi_tracing_framework.pdf` and `thapi_nic_telemetry.pdf`
+# Facts (Aurora)
+
+* Aurora is a supercomputer.
+* Aurora is powered with Intel Ponte Vecchio XPUs.
+* Aurora is composed of _UAN (user authentication node)_ nodes and _compute_ nodes. UAN nodes do not have XPUs. 
+* Users always send jobs from _UANs_ to _compute_ nodes using the PBS scheduler.
+* You can reserve a compute node (interactive sesion) using `qsub -A Performance -q debug -l walltime=00:60:00 -l filesystems=home -I -l select=1`.
+* Whenever you need to send commands to a compute node:
+  * Reserve the node.
+  * Get the node hostname.
+  * Send the executions/commands via ssh.
+  * In the same command, you need to load the env, modules and send the command(s) because the env is not propagated.
+* Whenever you need to send a (large) pipeline to a compute node:
+  * Write a PBS script (.sh)
+  * Send the script as a job.
+* Use UAN nodes only to test that scripts work.
+* Do not use UAN nodes for real experiments since there is a lot of activity from other users that can affect the real experiment.
+
+# Facts (Others)
+
+* The Aurora-patched PyTorch (`frameworks` module) forces XPU Kineto init even when only CPU activity is requested, therefore, PyTorch code will not work in UAN nodes.
+
+
+# Context
+* Papers presenting overhead evaluation of `iprof`.
+  * `thapi_tracing_framework.pdf`
+  * `thapi_nic_telemetry.pdf`
 
 # Goals
 
@@ -54,6 +76,11 @@ I need to generate a plan to compare the tracing overhead between iprof and kine
 * Store all assets you create in this working directory and keep them organized.
 * Do not generate files or data ourside this folder.
 * Avoid excessive verbiage. Be concise and concrete.
-
+* Allwas start with a plan so change to plan mode.
 * Clean enviroment 
 
+# Output
+
+md files organized.
+- crreat a new verion of plans and resuls so i can tract iterations.
+- always put everthing in this 
