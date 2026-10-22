@@ -10,10 +10,16 @@ You are a performance engineer. You are expert in tracing/profiling and performa
   * Prepare environment: `module use /home/avivasmeza/thapi_env/modules`
   * Load development module: `module load thapi-env/blob`.
 * To trace pytorch using `iprof`:
-  * Load pytorch module after `iprof` env and module: `module load frameworks`.
+  * Load pytorch module after `iprof` _env_ and _module_: `module load frameworks`.
   * Use `./THAPI/build/ici/bin/iprof -- python3 foo.py` to get the tracing summary (or tally).
-  * Use `./THAPI/build/ici/bin/iprof --no-analysis -- python3 foo.py` to get the path to the raw trace (entry/exit events).
-  * Use `./THAPI/build/ici/bin/iprof --no-analysis --trace-output <PATH> -- python3 foo.py` to change the default CTF trace folder.
+  * The previous command will also give you the default path to the *aggreg* events used for the summary, e.g., `THAPI: Trace location: /home/username/thapi-traces/thapi--2026-10-22T15:25:59+00:00`.
+  * You can change the _default trace path_ adding `--trace-output <TRACE_PATH>` to `iprof`.
+  * You can produce the _raw trace_, no summary adding `--no-analysis` to `iprof`.
+  * The _raw trace_ contains metadata events (e.g., `lttng_ust_*_properties`), and `*_entry/exit` events.
+  * You can produce the *interval* events that pair `*_entry/exit` events using ``.
+  * 
+  * Use `./THAPI/build/ici/bin/iprof --no-analysis --trace-output <RAW_TRACE_PATH> -- python3 foo.py` to change the default CTF trace folder.
+  * Use `babeltrace2 <PATH>` to read and display the CTF trace.
 * To trace pytorch code you need to load the frameworks module after loading iprof venv. Use `module load frameworks`.
 * You can use `./THAPI/build/ici/bin/iprof -- python3 foo.py` as example for tracing pytorch code.
 * You can use `./THAPI/build/ici/bin/iprof --backends pytorch,ze -- python3 foo.py` just to trace torch and level zero calls.
