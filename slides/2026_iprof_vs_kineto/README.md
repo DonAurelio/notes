@@ -3,6 +3,8 @@
 **Date:** 2026-10-22  
 **System:** Aurora (Intel Ponte Vecchio XPU), 1 compute node, debug queue
 
+---
+
 ### Setup
 
 | Item | Detail |
