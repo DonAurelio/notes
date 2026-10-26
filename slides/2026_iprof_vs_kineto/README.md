@@ -23,10 +23,10 @@
 
 ### T_hot overhead
 
-<img src="viz/overhead_ratio.png" width="100%">
-
 > [!NOTE]
 > iprof dominates (i.e., lower overhead) at low `S`, `N`.
+
+<img src="viz/overhead_ratio.png" width="100%">
 
 `T_hot` is the wall time of the hot loop (warmup excluded). Overhead is reported as
 `(T_hot_traced − T_hot_BL) / T_hot_BL × 100%`.
