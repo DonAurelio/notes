@@ -61,14 +61,21 @@ You are a performance engineer. You are expert in tracing/profiling and performa
 * The Aurora-patched PyTorch (`frameworks` module) forces XPU Kineto init even when only CPU activity is requested, therefore, PyTorch code will not work in UAN nodes.
 
 # Context
+
 * Papers presenting overhead evaluation of `iprof`.
   * `thapi_tracing_framework.pdf`
   * `thapi_nic_telemetry.pdf`
 
+* Folder `exp_v1.0`.
+
 # Goal
 
-I need to generate a plan to compare the tracing overhead between `iprof` and `kineto`:
-- Read the related papers and use the ideas to an evaluation plan indicating workload, metrics, scenarios, parameters (fixed and variable).
+I need to validate and correct the number of events traced by kineto and iprof in the expeirments I conducted. 
+
+The scripts used counted the iprof events bad. For pytorch tracing, iprof generate some metadata events and entry/exit events, both visible in the raw trace.
+On the other hand, kineto, via the `prof` object has intervals that came from entry/exit tensor ops matched (Need to validate that precisely). So I assume the number of events traced by kineto are the number of intervals by 2. So we need to understand the difference and came with a correct counting of events since that is relevant for the analysis of overhead conducted.
+
+At the end, we need to came with an updated version of the results/{raw,summary}.csv.
 
 # Constraints
 
