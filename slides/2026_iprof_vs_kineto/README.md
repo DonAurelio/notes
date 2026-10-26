@@ -25,6 +25,9 @@
 
 <img src="viz/overhead_ratio.png" width="100%">
 
+> [!NOTE]
+> iprof dominates (i.e., lower overhead) at low `S`, `N`.
+
 `T_hot` is the wall time of the hot loop (warmup excluded). Overhead is reported as
 `(T_hot_traced − T_hot_BL) / T_hot_BL × 100%`.
 
@@ -65,6 +68,9 @@
 
 ### Event counts
 
+> [!WARNING]
+> Kineto reach 1.5–2× more events than iprof for large `N`.
+
 <img src="viz/n_events_comparison.png" width="100%">
 
 `n_events` is deterministic across reps (std = 0 for all cells).
@@ -82,7 +88,8 @@
 
 ### Analysis cost
 
-> **Finding**: iprof analysis cost per event decreases with N.
+> [!NOTE]
+> iprof analysis cost per event decreases with N.
 
 <img src="viz/analysis_per_event.png" width="100%">
 
