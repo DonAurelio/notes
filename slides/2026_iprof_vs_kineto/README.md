@@ -82,11 +82,9 @@
 
 ### Analysis cost
 
-<img src="viz/analysis_per_event.png" width="100%">
+> **Finding**: iprof analysis cost per event decreases with N.
 
-> **Finding**: iprof analysis cost per event decreases with N (from ~155–190 µs/event at N=10
-> to ~28–31 µs/event at N=1000), as babeltrace2's fixed ~0.6 s replay cost amortizes over a
-> growing event count. Kineto scales linearly at a constant ~31–41 µs/event.
+<img src="viz/analysis_per_event.png" width="100%">
 
 `analysis_s` is the time to post-process the trace (`iprof --replay` for iprof,
 `prof.key_averages()` for Kineto).
