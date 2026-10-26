@@ -23,6 +23,8 @@
 
 ### T_hot overhead
 
+<img src="viz/overhead_ratio.png" width="100%">
+
 `T_hot` is the wall time of the hot loop (warmup excluded). Overhead is reported as
 `(T_hot_traced − T_hot_BL) / T_hot_BL × 100%`.
 
@@ -63,6 +65,8 @@
 
 ### Event counts
 
+<img src="viz/n_events_comparison.png" width="100%">
+
 `n_events` is deterministic across reps (std = 0 for all cells).
 
 | Tool | S | N=10 | N=100 | N=1000 | events/matmul |
@@ -77,6 +81,12 @@
 ---
 
 ### Analysis cost
+
+<img src="viz/analysis_per_event.png" width="100%">
+
+> **Finding**: iprof analysis cost per event decreases with N (from ~155–190 µs/event at N=10
+> to ~28–31 µs/event at N=1000), as babeltrace2's fixed ~0.6 s replay cost amortizes over a
+> growing event count. Kineto scales linearly at a constant ~31–41 µs/event.
 
 `analysis_s` is the time to post-process the trace (`iprof --replay` for iprof,
 `prof.key_averages()` for Kineto).
