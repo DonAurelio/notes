@@ -24,7 +24,7 @@
 ### T_hot overhead
 
 > [!NOTE]
-> iprof dominates (i.e., lower overhead) at low `S`, `N`.
+> iprof dominates (i.e., lower overhead) at low `S`, `N`. Then, overhead is negligible in both cases.
 
 <img src="viz/overhead_ratio.png" width="100%">
 
