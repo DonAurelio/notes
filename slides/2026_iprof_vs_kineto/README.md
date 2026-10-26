@@ -50,20 +50,26 @@ Kineto up to +198%. At S=1024 overhead falls below 10% for both. At S=4096 (hot 
 
 ---
 
-## 3. Process startup cost
+## 3. Process time
 
-T_process is total wall time including Python and tracer initialization (warmup included).
-The difference (T_process − T_hot) captures tracer startup cost.
+T_process is total wall time including Python startup, tracer initialization, warmup, and the hot loop.
 
-| Tool | T_process range (s) | Startup overhead vs BL |
-|---|---|---|
-| BL-XPU | 2.0 – 9.4 | — |
-| IP-XPU | 10.5 – 18.0 | **+8.5 – 9.5 s** (LTTng session setup) |
-| KN-XPU | 3.1 – 12.5 | **+1.0 – 3.1 s** (Kineto initialization) |
+| S | N | BL mean ± std (s) | iprof mean ± std (s) | Kineto mean ± std (s) |
+|---|---|---|---|---|
+| 256 | 10 | 2.039 ± 0.192 | 11.585 ± 2.022 | 3.059 ± 0.043 |
+| 256 | 100 | 1.996 ± 0.049 | 10.669 ± 0.589 | 3.165 ± 0.039 |
+| 256 | 1000 | 2.001 ± 0.010 | 10.859 ± 0.417 | 4.597 ± 0.029 |
+| 1024 | 10 | 2.065 ± 0.024 | 10.872 ± 0.628 | 3.127 ± 0.033 |
+| 1024 | 100 | 2.094 ± 0.030 | 11.377 ± 0.839 | 3.277 ± 0.038 |
+| 1024 | 1000 | 2.163 ± 0.028 | 11.211 ± 0.834 | 5.159 ± 0.056 |
+| 4096 | 10 | 2.171 ± 0.047 | 10.511 ± 0.284 | 3.222 ± 0.025 |
+| 4096 | 100 | 2.787 ± 0.011 | 11.025 ± 0.100 | 3.974 ± 0.027 |
+| 4096 | 1000 | 9.408 ± 0.169 | 17.987 ± 0.445 | 12.461 ± 0.061 |
 
-iprof carries a fixed ~9 s startup penalty from LTTng session creation regardless of
-workload size. Kineto startup is significantly cheaper and scales slightly with N
-(larger profiling buffers at higher iteration counts).
+iprof carries a fixed ~9 s overhead from LTTng session creation, visible across all cells
+(T_process_IP − T_process_BL ≈ 8.5–9.5 s). Kineto adds ~1.0–1.2 s at low N, growing to
+~3–3.5 s at N=1000 as profiling buffers fill. The high std for iprof at N=10 reflects
+occasional LTTng session setup variability.
 
 ---
 
