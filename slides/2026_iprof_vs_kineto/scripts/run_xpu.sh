@@ -42,7 +42,6 @@ echo "=== Collection + replay ==="
 for S in "${SIZES[@]}"; do
     for N in "${ITERS[@]}"; do
         echo "  S=$S N=$N"
-        [[ $S -eq 4096 && $N -eq 1000 ]] && continue
         for rep in $(seq 1 "$REPS"); do
 
             # BL
