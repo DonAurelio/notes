@@ -1,7 +1,5 @@
 # Investigation 1.0 — Kineto n_events decreases with wider profile() scope
 
-## Observation
-
 During smoke tests of the DDP iprof vs Kineto experiment, two successive runs with
 different `profile()` scopes produced contradictory event counts:
 
