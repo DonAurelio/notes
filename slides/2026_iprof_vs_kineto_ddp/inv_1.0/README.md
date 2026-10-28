@@ -5,7 +5,7 @@
 During smoke tests of the DDP iprof vs Kineto experiment, two successive runs with
 different `profile()` scopes produced contradictory event counts:
 
-### Smoke run 1 — narrow scope (profile wraps step loop only)
+**Smoke run 1 — narrow scope [(profile wraps step loop only)](https://github.com/DonAurelio/notes/blob/0445445e651cb9cc7343950019239334aee4b5a9/slides/2026_iprof_vs_kineto_ddp/inv_1.0/workloads/train_llama3_kineto_narrow.py#L104)**
 
 | Scenario | T_hot (s) | T_process (s) | n_events | analysis (s) |
 |---|---|---|---|---|
@@ -13,7 +13,7 @@ different `profile()` scopes produced contradictory event counts:
 | iprof | 0.768 | 22.11 | 114,042 | 2.53 |
 | Kineto | 0.714 | 6.01 | **20,596** | 0.838 |
 
-### Smoke run 2 — wide scope (profile opens after select_device, before DDP init)
+**Smoke run 2 — wide scope [(profile opens after select_device, before DDP init)](https://github.com/DonAurelio/notes/blob/0445445e651cb9cc7343950019239334aee4b5a9/slides/2026_iprof_vs_kineto_ddp/inv_1.0/workloads/train_llama3_kineto_wide.py#L45)**
 
 | Scenario | T_hot (s) | T_process (s) | n_events | analysis (s) |
 |---|---|---|---|---|
@@ -21,7 +21,6 @@ different `profile()` scopes produced contradictory event counts:
 | iprof | 0.763 | 19.37 | 114,038 | 1.22 |
 | Kineto | 0.675 | 5.93 | **7,625** | 0.308 |
 
----
 
 ## Question
 
@@ -31,9 +30,7 @@ The wider scope captures everything the narrow scope does, plus DDP init, model
 construction, and optimizer setup. Naively, more code under the profiler should mean
 more events — yet n_events drops from 20,596 to 7,625.
 
----
-
-## Background: what n_events measures
+### Background: what n_events measures
 
 From PyTorch source (`torch/autograd/profiler_util.py`):
 
@@ -43,8 +40,6 @@ From PyTorch source (`torch/autograd/profiler_util.py`):
 - `sum(e.count for e in prof.key_averages())` == total raw operator invocations == `len(prof.events())`.
 
 A wider scope should add more invocations, not remove them.
-
----
 
 ## Results
 
@@ -117,19 +112,4 @@ For the DDP experiment, `profile()` must open **after** `initialize_process_grou
 `synchronize(device)` to ensure the XPU activity listener attaches. The current
 `train_llama3_kineto.py` (wide scope, opening before DDP init) is wrong and must be
 fixed to match the narrow scope.
-
----
-
-## Method
-
-Run both variants back-to-back on the same 2-node allocation with identical args.
-Dump the full `key_averages()` breakdown (op name + count) for each.
-`diff_breakdown.py` identifies:
-- Ops present only in narrow (not in wide)
-- Ops present only in wide (not in narrow)
-- Ops in both with different counts
-
-The diff will show exactly which ops account for the 20,596 − 7,625 = **12,971 event gap**.
-
----
 
