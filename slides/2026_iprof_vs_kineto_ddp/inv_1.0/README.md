@@ -48,14 +48,36 @@ A wider scope should add more invocations, not remove them.
 
 ## Results
 
-### Event gap breakdown (narrow=20,597 − wide=7,625 = **12,972**)
+### Event counts
 
-| Category | Direction | ops | sum(count) |
-|---|---|---|---|
-| ZE/XPU device-level kernel dispatch | only in narrow | 95 | 10,973 |
-| ATen ops with higher counts in narrow | narrow > wide | 7 | ~2,375 |
-| ATen/ZE ops only in wide | only in wide | 20 | 75 |
-| ATen ops with higher counts in wide | wide > narrow | ~30 | ~450 |
+| Scope | n_events |
+|---|---|
+| Narrow (profile wraps step loop only) | 20,597 |
+| Wide (profile opens before DDP init) | 7,625 |
+| **Difference** | **−12,972** |
+
+### Where the 12,972 missing events went
+
+**Level Zero (ZE) GPU driver calls — most affected.** The wide scope loses nearly all of them because the XPU activity listener never attaches. For example, `zeKernelSetArgumentValue` drops from 5,512 to 0 — one call per kernel argument, per launch, across all 5 steps.
+
+| op | narrow | wide |
+|---|---|---|
+| `zeKernelSetArgumentValue` | 5,512 | 0 |
+| `zeCommandListAppendLaunchKernel` | 1,171 | 0 |
+| `zeKernelSetGroupSize` | 1,171 | 0 |
+| `zeDeviceGetRootDevice` | 864 | 0 |
+| `zeEventHostReset` | 1,057 | 11 |
+| `zeMemGetAllocProperties` | 924 | 12 |
+
+**ATen ops — essentially equal.** The Python-level operator counts are the same in both scopes because they are recorded by the CPU-side profiler hooks, which attach regardless of when the profiler opens. Minor differences (e.g. `aten::copy_` 300 narrow vs 330 wide) reflect one-time init copies captured only in the wider window.
+
+| op | narrow | wide |
+|---|---|---|
+| `aten::mm` | 90 | 90 |
+| `aten::linear` | 60 | 60 |
+| `c10d::allreduce_` | 6 | 6 |
+| `aten::copy_` | 300 | 330 |
+| `aten::empty` | 346 | 365 |
 
 The gap is dominated by **ZE-level GPU driver events absent from the wide scope**:
 
