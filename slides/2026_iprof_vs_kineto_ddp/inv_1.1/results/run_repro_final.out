@@ -1,0 +1,14 @@
+Host: x4102c6s3b0n0.hsn.cm.aurora.alcf.anl.gov (single node, ppn=2)
+Steps: 3
+
+=== [WIDE] profile before DDP init — expected ze_events ~ 0 ===
+2026:10:28-20:12:26:248992 |CCL_WARN| value of CCL_PROCESS_LAUNCHER changed to be pmix (default:hydra)
+2026:10:28-20:12:26:248992 |CCL_WARN| Could not initialize Sysman API using `zesInit`. Sysman API was probably initialized externally using legacy ZES_ENABLE_SYSMAN flag. oneCCL will falback to legacy behavior
+2026:10:28-20:12:26:248993 |CCL_WARN| Could not initialize Sysman API using `zesInit`. Sysman API was probably initialized externally using legacy ZES_ENABLE_SYSMAN flag. oneCCL will falback to legacy behavior
+scope=wide  n_events=239  ze_events=30
+
+=== [NARROW] profile after DDP init — expected ze_events > 0 ===
+2026:10:28-20:12:31:249090 |CCL_WARN| value of CCL_PROCESS_LAUNCHER changed to be pmix (default:hydra)
+2026:10:28-20:12:31:249090 |CCL_WARN| Could not initialize Sysman API using `zesInit`. Sysman API was probably initialized externally using legacy ZES_ENABLE_SYSMAN flag. oneCCL will falback to legacy behavior
+2026:10:28-20:12:31:249091 |CCL_WARN| Could not initialize Sysman API using `zesInit`. Sysman API was probably initialized externally using legacy ZES_ENABLE_SYSMAN flag. oneCCL will falback to legacy behavior
+scope=narrow  n_events=1497  ze_events=1416

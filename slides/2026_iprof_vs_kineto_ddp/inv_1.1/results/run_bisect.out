@@ -1,0 +1,40 @@
+Hosts: x4502c7s1b0n0.hsn.cm.aurora.alcf.anl.gov  x4502c7s6b0n0.hsn.cm.aurora.alcf.anl.gov
+Steps: 3
+
+Checkpoint meaning:
+  cp=0  before init_process_group  (expected: ze=0,  known broken)
+  cp=1  after  init_process_group
+  cp=2  after  DDP.__init__
+  cp=3  after  first all_reduce
+  cp=4  after  first matmul       (expected: ze>0,  known working)
+
+2026:10:28-18:31:20:2098901 |CCL_WARN| value of CCL_LOCAL_RANK changed to be 0 (default:-1)
+2026:10:28-18:31:20:2098901 |CCL_WARN| value of CCL_LOCAL_SIZE changed to be 1 (default:-1)
+2026:10:28-18:31:20:2098901 |CCL_WARN| value of CCL_PROCESS_LAUNCHER changed to be none (default:hydra)
+2026:10:28-18:31:20:3862066 |CCL_WARN| Could not initialize Sysman API using `zesInit`. Sysman API was probably initialized externally using legacy ZES_ENABLE_SYSMAN flag. oneCCL will falback to legacy behavior
+2026:10:28-18:31:20:2098901 |CCL_WARN| Could not initialize Sysman API using `zesInit`. Sysman API was probably initialized externally using legacy ZES_ENABLE_SYSMAN flag. oneCCL will falback to legacy behavior
+cp=0 (before init_process_group)  n_events=320  ze_events=30
+2026:10:28-18:31:25:2099043 |CCL_WARN| value of CCL_LOCAL_RANK changed to be 0 (default:-1)
+2026:10:28-18:31:25:2099043 |CCL_WARN| value of CCL_LOCAL_SIZE changed to be 1 (default:-1)
+2026:10:28-18:31:25:2099043 |CCL_WARN| value of CCL_PROCESS_LAUNCHER changed to be none (default:hydra)
+2026:10:28-18:31:25:2099043 |CCL_WARN| Could not initialize Sysman API using `zesInit`. Sysman API was probably initialized externally using legacy ZES_ENABLE_SYSMAN flag. oneCCL will falback to legacy behavior
+2026:10:28-18:31:25:3862163 |CCL_WARN| Could not initialize Sysman API using `zesInit`. Sysman API was probably initialized externally using legacy ZES_ENABLE_SYSMAN flag. oneCCL will falback to legacy behavior
+cp=1 (after  init_process_group)  n_events=320  ze_events=30
+2026:10:28-18:31:29:2099185 |CCL_WARN| value of CCL_LOCAL_RANK changed to be 0 (default:-1)
+2026:10:28-18:31:29:2099185 |CCL_WARN| value of CCL_LOCAL_SIZE changed to be 1 (default:-1)
+2026:10:28-18:31:29:2099185 |CCL_WARN| value of CCL_PROCESS_LAUNCHER changed to be none (default:hydra)
+2026:10:28-18:31:29:2099185 |CCL_WARN| Could not initialize Sysman API using `zesInit`. Sysman API was probably initialized externally using legacy ZES_ENABLE_SYSMAN flag. oneCCL will falback to legacy behavior
+2026:10:28-18:31:29:3862260 |CCL_WARN| Could not initialize Sysman API using `zesInit`. Sysman API was probably initialized externally using legacy ZES_ENABLE_SYSMAN flag. oneCCL will falback to legacy behavior
+cp=2 (after  DDP.__init__)  n_events=1710  ze_events=1516
+2026:10:28-18:31:33:2099327 |CCL_WARN| value of CCL_LOCAL_RANK changed to be 0 (default:-1)
+2026:10:28-18:31:33:2099327 |CCL_WARN| value of CCL_LOCAL_SIZE changed to be 1 (default:-1)
+2026:10:28-18:31:33:2099327 |CCL_WARN| value of CCL_PROCESS_LAUNCHER changed to be none (default:hydra)
+2026:10:28-18:31:33:3862357 |CCL_WARN| Could not initialize Sysman API using `zesInit`. Sysman API was probably initialized externally using legacy ZES_ENABLE_SYSMAN flag. oneCCL will falback to legacy behavior
+2026:10:28-18:31:34:2099327 |CCL_WARN| Could not initialize Sysman API using `zesInit`. Sysman API was probably initialized externally using legacy ZES_ENABLE_SYSMAN flag. oneCCL will falback to legacy behavior
+cp=3 (after  first all_reduce)  n_events=1635  ze_events=1467
+2026:10:28-18:31:38:2099469 |CCL_WARN| value of CCL_LOCAL_RANK changed to be 0 (default:-1)
+2026:10:28-18:31:38:2099469 |CCL_WARN| value of CCL_LOCAL_SIZE changed to be 1 (default:-1)
+2026:10:28-18:31:38:2099469 |CCL_WARN| value of CCL_PROCESS_LAUNCHER changed to be none (default:hydra)
+2026:10:28-18:31:38:3862454 |CCL_WARN| Could not initialize Sysman API using `zesInit`. Sysman API was probably initialized externally using legacy ZES_ENABLE_SYSMAN flag. oneCCL will falback to legacy behavior
+2026:10:28-18:31:38:2099469 |CCL_WARN| Could not initialize Sysman API using `zesInit`. Sysman API was probably initialized externally using legacy ZES_ENABLE_SYSMAN flag. oneCCL will falback to legacy behavior
+cp=4 (after  first matmul)  n_events=451  ze_events=308

@@ -1,0 +1,29 @@
+Host: x4112c7s7b0n0.hsn.cm.aurora.alcf.anl.gov (single node, ppn=2)
+Steps: 3
+
+cp=0  before init_process_group  (expected: ze~0 if bug present)
+cp=1  after  init_process_group
+cp=2  after  DDP.__init__        (expected: ze>0 if bug present)
+cp=3  after  first all_reduce
+cp=4  after  first matmul
+
+2026:10:28-18:49:09:1446931 |CCL_WARN| value of CCL_PROCESS_LAUNCHER changed to be pmix (default:hydra)
+2026:10:28-18:49:09:1446931 |CCL_WARN| Could not initialize Sysman API using `zesInit`. Sysman API was probably initialized externally using legacy ZES_ENABLE_SYSMAN flag. oneCCL will falback to legacy behavior
+2026:10:28-18:49:09:1446932 |CCL_WARN| Could not initialize Sysman API using `zesInit`. Sysman API was probably initialized externally using legacy ZES_ENABLE_SYSMAN flag. oneCCL will falback to legacy behavior
+cp=0 (before init_process_group)  n_events=256  ze_events=30
+2026:10:28-18:49:13:1447032 |CCL_WARN| value of CCL_PROCESS_LAUNCHER changed to be pmix (default:hydra)
+2026:10:28-18:49:13:1447033 |CCL_WARN| Could not initialize Sysman API using `zesInit`. Sysman API was probably initialized externally using legacy ZES_ENABLE_SYSMAN flag. oneCCL will falback to legacy behavior
+2026:10:28-18:49:13:1447032 |CCL_WARN| Could not initialize Sysman API using `zesInit`. Sysman API was probably initialized externally using legacy ZES_ENABLE_SYSMAN flag. oneCCL will falback to legacy behavior
+cp=1 (after  init_process_group)  n_events=256  ze_events=30
+2026:10:28-18:49:18:1447133 |CCL_WARN| value of CCL_PROCESS_LAUNCHER changed to be pmix (default:hydra)
+2026:10:28-18:49:18:1447133 |CCL_WARN| Could not initialize Sysman API using `zesInit`. Sysman API was probably initialized externally using legacy ZES_ENABLE_SYSMAN flag. oneCCL will falback to legacy behavior
+2026:10:28-18:49:18:1447134 |CCL_WARN| Could not initialize Sysman API using `zesInit`. Sysman API was probably initialized externally using legacy ZES_ENABLE_SYSMAN flag. oneCCL will falback to legacy behavior
+cp=2 (after  DDP.__init__)  n_events=1582  ze_events=1480
+2026:10:28-18:49:23:1447234 |CCL_WARN| value of CCL_PROCESS_LAUNCHER changed to be pmix (default:hydra)
+2026:10:28-18:49:23:1447234 |CCL_WARN| Could not initialize Sysman API using `zesInit`. Sysman API was probably initialized externally using legacy ZES_ENABLE_SYSMAN flag. oneCCL will falback to legacy behavior
+2026:10:28-18:49:23:1447235 |CCL_WARN| Could not initialize Sysman API using `zesInit`. Sysman API was probably initialized externally using legacy ZES_ENABLE_SYSMAN flag. oneCCL will falback to legacy behavior
+cp=3 (after  first all_reduce)  n_events=1434  ze_events=1342
+2026:10:28-18:49:27:1447335 |CCL_WARN| value of CCL_PROCESS_LAUNCHER changed to be pmix (default:hydra)
+2026:10:28-18:49:27:1447336 |CCL_WARN| Could not initialize Sysman API using `zesInit`. Sysman API was probably initialized externally using legacy ZES_ENABLE_SYSMAN flag. oneCCL will falback to legacy behavior
+2026:10:28-18:49:27:1447335 |CCL_WARN| Could not initialize Sysman API using `zesInit`. Sysman API was probably initialized externally using legacy ZES_ENABLE_SYSMAN flag. oneCCL will falback to legacy behavior
+cp=4 (after  first matmul)  n_events=290  ze_events=209
