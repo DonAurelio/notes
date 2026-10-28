@@ -28,7 +28,7 @@ The wider scope captures everything the narrow scope does, plus DDP init, model
 construction, and optimizer setup. Naively, more code under the profiler should mean
 more events — yet n_events drops from 20,596 to 7,625.
 
-### Background: what n_events measures
+## Background: what n_events measures
 
 From PyTorch source (`torch/autograd/profiler_util.py`):
 
