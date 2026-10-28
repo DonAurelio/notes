@@ -1,0 +1,74 @@
+/opt/aurora/26.181.0/frameworks/aurora_frameworks-2026.1.0/lib/python3.12/site-packages/torch/library.py:505: UserWarning: Warning only once for all operators,  other operators may also be overridden.
+  Overriding a previously registered kernel for the same operator and the same dispatch key
+  operator: aten::topk(Tensor self, SymInt k, int dim=-1, bool largest=True, bool sorted=True) -> (Tensor values, Tensor indices)
+    registered at /lus/tegu/projects/datasets/software/26.181.0/wheelforge/repositories/pytorch_2.13.0_patched_08_02_2026/pytorch/build/aten/src/ATen/RegisterSchema.cpp:6
+  dispatch key: XPU
+  previous kernel: registered at /lus/tegu/projects/datasets/software/26.181.0/wheelforge/repositories/pytorch_2.13.0_patched_08_02_2026/pytorch/build/aten/src/ATen/RegisterCPU_1.cpp:9289
+       new kernel: registered at /opt/aurora/26.181.0/frameworks/aurora_frameworks-2026.1.0/lib/python3.12/site-packages/torch/__init__.py:3095 (Triggered internally at /lus/tegu/projects/datasets/software/26.181.0/wheelforge/repositories/pytorch_2.13.0_patched_08_02_2026/pytorch/aten/src/ATen/core/dispatch/OperatorEntry.cpp:208.)
+  self.m.impl(
+/opt/aurora/26.181.0/frameworks/aurora_frameworks-2026.1.0/lib/python3.12/site-packages/torch/library.py:505: UserWarning: Warning only once for all operators,  other operators may also be overridden.
+  Overriding a previously registered kernel for the same operator and the same dispatch key
+  operator: aten::topk(Tensor self, SymInt k, int dim=-1, bool largest=True, bool sorted=True) -> (Tensor values, Tensor indices)
+    registered at /lus/tegu/projects/datasets/software/26.181.0/wheelforge/repositories/pytorch_2.13.0_patched_08_02_2026/pytorch/build/aten/src/ATen/RegisterSchema.cpp:6
+  dispatch key: XPU
+  previous kernel: registered at /lus/tegu/projects/datasets/software/26.181.0/wheelforge/repositories/pytorch_2.13.0_patched_08_02_2026/pytorch/build/aten/src/ATen/RegisterCPU_1.cpp:9289
+       new kernel: registered at /opt/aurora/26.181.0/frameworks/aurora_frameworks-2026.1.0/lib/python3.12/site-packages/torch/__init__.py:3095 (Triggered internally at /lus/tegu/projects/datasets/software/26.181.0/wheelforge/repositories/pytorch_2.13.0_patched_08_02_2026/pytorch/aten/src/ATen/core/dispatch/OperatorEntry.cpp:208.)
+  self.m.impl(
+/opt/aurora/26.181.0/frameworks/aurora_frameworks-2026.1.0/lib/python3.12/site-packages/torch/library.py:505: UserWarning: Warning only once for all operators,  other operators may also be overridden.
+  Overriding a previously registered kernel for the same operator and the same dispatch key
+  operator: aten::topk(Tensor self, SymInt k, int dim=-1, bool largest=True, bool sorted=True) -> (Tensor values, Tensor indices)
+    registered at /lus/tegu/projects/datasets/software/26.181.0/wheelforge/repositories/pytorch_2.13.0_patched_08_02_2026/pytorch/build/aten/src/ATen/RegisterSchema.cpp:6
+  dispatch key: XPU
+  previous kernel: registered at /lus/tegu/projects/datasets/software/26.181.0/wheelforge/repositories/pytorch_2.13.0_patched_08_02_2026/pytorch/build/aten/src/ATen/RegisterCPU_1.cpp:9289
+       new kernel: registered at /opt/aurora/26.181.0/frameworks/aurora_frameworks-2026.1.0/lib/python3.12/site-packages/torch/__init__.py:3095 (Triggered internally at /lus/tegu/projects/datasets/software/26.181.0/wheelforge/repositories/pytorch_2.13.0_patched_08_02_2026/pytorch/aten/src/ATen/core/dispatch/OperatorEntry.cpp:208.)
+  self.m.impl(
+USDT:2026-10-28 16:04:53 3484707:3484707 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-10-28 16:04:53 3484706:3484706 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-10-28 16:04:54 3484706:3484706 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-10-28 16:04:54 3484707:3484707 SyncActivityProfilerHandler.cpp:59] profiler_stop
+/opt/aurora/26.181.0/frameworks/aurora_frameworks-2026.1.0/lib/python3.12/site-packages/torch/library.py:505: UserWarning: Warning only once for all operators,  other operators may also be overridden.
+  Overriding a previously registered kernel for the same operator and the same dispatch key
+  operator: aten::topk(Tensor self, SymInt k, int dim=-1, bool largest=True, bool sorted=True) -> (Tensor values, Tensor indices)
+    registered at /lus/tegu/projects/datasets/software/26.181.0/wheelforge/repositories/pytorch_2.13.0_patched_08_02_2026/pytorch/build/aten/src/ATen/RegisterSchema.cpp:6
+  dispatch key: XPU
+  previous kernel: registered at /lus/tegu/projects/datasets/software/26.181.0/wheelforge/repositories/pytorch_2.13.0_patched_08_02_2026/pytorch/build/aten/src/ATen/RegisterCPU_1.cpp:9289
+       new kernel: registered at /opt/aurora/26.181.0/frameworks/aurora_frameworks-2026.1.0/lib/python3.12/site-packages/torch/__init__.py:3095 (Triggered internally at /lus/tegu/projects/datasets/software/26.181.0/wheelforge/repositories/pytorch_2.13.0_patched_08_02_2026/pytorch/aten/src/ATen/core/dispatch/OperatorEntry.cpp:208.)
+  self.m.impl(
+/opt/aurora/26.181.0/frameworks/aurora_frameworks-2026.1.0/lib/python3.12/site-packages/torch/library.py:505: UserWarning: Warning only once for all operators,  other operators may also be overridden.
+  Overriding a previously registered kernel for the same operator and the same dispatch key
+  operator: aten::topk(Tensor self, SymInt k, int dim=-1, bool largest=True, bool sorted=True) -> (Tensor values, Tensor indices)
+    registered at /lus/tegu/projects/datasets/software/26.181.0/wheelforge/repositories/pytorch_2.13.0_patched_08_02_2026/pytorch/build/aten/src/ATen/RegisterSchema.cpp:6
+  dispatch key: XPU
+  previous kernel: registered at /lus/tegu/projects/datasets/software/26.181.0/wheelforge/repositories/pytorch_2.13.0_patched_08_02_2026/pytorch/build/aten/src/ATen/RegisterCPU_1.cpp:9289
+       new kernel: registered at /opt/aurora/26.181.0/frameworks/aurora_frameworks-2026.1.0/lib/python3.12/site-packages/torch/__init__.py:3095 (Triggered internally at /lus/tegu/projects/datasets/software/26.181.0/wheelforge/repositories/pytorch_2.13.0_patched_08_02_2026/pytorch/aten/src/ATen/core/dispatch/OperatorEntry.cpp:208.)
+  self.m.impl(
+/opt/aurora/26.181.0/frameworks/aurora_frameworks-2026.1.0/lib/python3.12/site-packages/torch/library.py:505: UserWarning: Warning only once for all operators,  other operators may also be overridden.
+  Overriding a previously registered kernel for the same operator and the same dispatch key
+  operator: aten::topk(Tensor self, SymInt k, int dim=-1, bool largest=True, bool sorted=True) -> (Tensor values, Tensor indices)
+    registered at /lus/tegu/projects/datasets/software/26.181.0/wheelforge/repositories/pytorch_2.13.0_patched_08_02_2026/pytorch/build/aten/src/ATen/RegisterSchema.cpp:6
+  dispatch key: XPU
+  previous kernel: registered at /lus/tegu/projects/datasets/software/26.181.0/wheelforge/repositories/pytorch_2.13.0_patched_08_02_2026/pytorch/build/aten/src/ATen/RegisterCPU_1.cpp:9289
+       new kernel: registered at /opt/aurora/26.181.0/frameworks/aurora_frameworks-2026.1.0/lib/python3.12/site-packages/torch/__init__.py:3095 (Triggered internally at /lus/tegu/projects/datasets/software/26.181.0/wheelforge/repositories/pytorch_2.13.0_patched_08_02_2026/pytorch/aten/src/ATen/core/dispatch/OperatorEntry.cpp:208.)
+  self.m.impl(
+USDT:2026-10-28 16:04:59 3484954:3484954 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-10-28 16:04:59 3484953:3484953 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-10-28 16:05:00 3484953:3484953 SyncActivityProfilerHandler.cpp:59] profiler_stop
+USDT:2026-10-28 16:05:00 3484954:3484954 SyncActivityProfilerHandler.cpp:59] profiler_stop
+/opt/aurora/26.181.0/frameworks/aurora_frameworks-2026.1.0/lib/python3.12/site-packages/torch/library.py:505: UserWarning: Warning only once for all operators,  other operators may also be overridden.
+  Overriding a previously registered kernel for the same operator and the same dispatch key
+  operator: aten::topk(Tensor self, SymInt k, int dim=-1, bool largest=True, bool sorted=True) -> (Tensor values, Tensor indices)
+    registered at /lus/tegu/projects/datasets/software/26.181.0/wheelforge/repositories/pytorch_2.13.0_patched_08_02_2026/pytorch/build/aten/src/ATen/RegisterSchema.cpp:6
+  dispatch key: XPU
+  previous kernel: registered at /lus/tegu/projects/datasets/software/26.181.0/wheelforge/repositories/pytorch_2.13.0_patched_08_02_2026/pytorch/build/aten/src/ATen/RegisterCPU_1.cpp:9289
+       new kernel: registered at /opt/aurora/26.181.0/frameworks/aurora_frameworks-2026.1.0/lib/python3.12/site-packages/torch/__init__.py:3095 (Triggered internally at /lus/tegu/projects/datasets/software/26.181.0/wheelforge/repositories/pytorch_2.13.0_patched_08_02_2026/pytorch/aten/src/ATen/core/dispatch/OperatorEntry.cpp:208.)
+  self.m.impl(
+Traceback (most recent call last):
+  File "/home/avivasmeza/dev/iprof_vs_kineto/notes/slides/2026_iprof_vs_kineto_ddp/inv_1.0/workloads/repro_kineto_ze.py", line 64, in <module>
+    main()
+  File "/home/avivasmeza/dev/iprof_vs_kineto/notes/slides/2026_iprof_vs_kineto_ddp/inv_1.0/workloads/repro_kineto_ze.py", line 30, in main
+    rank       = int(os.environ["RANK"])
+                     ~~~~~~~~~~^^^^^^^^
+  File "<frozen os>", line 714, in __getitem__
+KeyError: 'RANK'
+x4406c3s2b0n0.hsn.cm.aurora.alcf.anl.gov: rank 0 exited with code 1
+x4406c3s5b0n0.hsn.cm.aurora.alcf.anl.gov: rank 1 died from signal 15

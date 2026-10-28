@@ -1,0 +1,4 @@
+Hosts: x4406c3s3b0n0.hsn.cm.aurora.alcf.anl.gov  x4406c3s4b0n0.hsn.cm.aurora.alcf.anl.gov
+Steps: 3
+
+=== [WIDE] profile opens before dist.init_process_group ===

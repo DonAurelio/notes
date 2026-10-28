@@ -1,0 +1,30 @@
+Hosts: x4406c3s2b0n0.hsn.cm.aurora.alcf.anl.gov 
+Steps: 3
+
+=== [WIDE] profile opens before dist.init_process_group ===
+2026:10:28-16:04:53:3484707 |CCL_WARN| did not find MPI-launcher specific variables, switch to ATL/OFI, to force enable ATL/MPI set CCL_ATL_TRANSPORT=mpi
+2026:10:28-16:04:53:3484707 |CCL_WARN| PMIx_Init failed: PMIX_ERR_UNREACH
+2026:10:28-16:04:53:3484707 |CCL_WARN| could not get local_idx/count from environment variables, trying to get them from ATL
+2026:10:28-16:04:53:3484707 |CCL_WARN| Could not initialize Sysman API using `zesInit`. Sysman API was probably initialized externally using legacy ZES_ENABLE_SYSMAN flag. oneCCL will falback to legacy behavior
+2026:10:28-16:04:53:3484706 |CCL_WARN| did not find MPI-launcher specific variables, switch to ATL/OFI, to force enable ATL/MPI set CCL_ATL_TRANSPORT=mpi
+2026:10:28-16:04:53:3484706 |CCL_WARN| value of CCL_PROCESS_LAUNCHER changed to be pmix (default:hydra)
+2026:10:28-16:04:53:3484706 |CCL_WARN| PMIx_Init failed: PMIX_ERR_UNREACH
+2026:10:28-16:04:53:3484706 |CCL_WARN| could not get local_idx/count from environment variables, trying to get them from ATL
+2026:10:28-16:04:53:3484706 |CCL_WARN| Could not initialize Sysman API using `zesInit`. Sysman API was probably initialized externally using legacy ZES_ENABLE_SYSMAN flag. oneCCL will falback to legacy behavior
+scope=wide  n_events=1258  ze_events=1169
+
+=== [NARROW] profile opens after dist.init_process_group ===
+2026:10:28-16:04:59:3484954 |CCL_WARN| did not find MPI-launcher specific variables, switch to ATL/OFI, to force enable ATL/MPI set CCL_ATL_TRANSPORT=mpi
+2026:10:28-16:04:59:3484953 |CCL_WARN| did not find MPI-launcher specific variables, switch to ATL/OFI, to force enable ATL/MPI set CCL_ATL_TRANSPORT=mpi
+2026:10:28-16:04:59:3484953 |CCL_WARN| value of CCL_PROCESS_LAUNCHER changed to be pmix (default:hydra)
+2026:10:28-16:04:59:3484954 |CCL_WARN| PMIx_Init failed: PMIX_ERR_UNREACH2026:10:28-16:04:59:3484953 |CCL_WARN| PMIx_Init failed: PMIX_ERR_UNREACH
+
+2026:10:28-16:04:59:3484954 |CCL_WARN| could not get local_idx/count from environment variables, trying to get them from ATL2026:10:28-16:04:59:3484953 |CCL_WARN| could not get local_idx/count from environment variables, trying to get them from ATL
+
+2026:10:28-16:04:59:3484954 |CCL_WARN| Could not initialize Sysman API using `zesInit`. Sysman API was probably initialized externally using legacy ZES_ENABLE_SYSMAN flag. oneCCL will falback to legacy behavior2026:10:28-16:04:59:3484953 |CCL_WARN| Could not initialize Sysman API using `zesInit`. Sysman API was probably initialized externally using legacy ZES_ENABLE_SYSMAN flag. oneCCL will falback to legacy behavior
+
+scope=narrow  n_events=1258  ze_events=1169
+Hosts: x4406c3s2b0n0.hsn.cm.aurora.alcf.anl.gov  x4406c3s5b0n0.hsn.cm.aurora.alcf.anl.gov
+Steps: 3
+
+=== [WIDE] profile opens before dist.init_process_group ===
