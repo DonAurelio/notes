@@ -72,19 +72,6 @@ A wider scope should add more invocations, not remove them.
 | `aten::copy_` | 300 | 330 |
 | `aten::empty` | 346 | 365 |
 
-The gap is dominated by **ZE-level GPU driver events absent from the wide scope**:
-
-| count (narrow) | op |
-|---|---|
-| 5,512 | `zeKernelSetArgumentValue` |
-| 1,171 | `zeCommandListAppendLaunchKernel` |
-| 1,171 | `zeKernelSetGroupSize` |
-| 864 | `zeDeviceGetRootDevice` |
-| 162 | `zeKernelGetProperties` |
-| … | + 90 more XPU kernel/driver ops |
-
-The 125 ATen-level ops (forward/backward passes, optimizer, collectives) are **identical or nearly identical** in count between narrow and wide — confirming the training logic itself was captured correctly in both scopes.
-
 ### Root cause
 
 **Opening the Kineto profiler before ZE device initialization prevents the XPU activity listener from attaching.**
