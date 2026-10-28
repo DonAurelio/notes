@@ -1,0 +1,188 @@
+=== key_averages breakdown ===
+  count=  1187  key=urEnqueueKernelLaunchWithArgsExp
+  count=   485  key=aten::as_strided
+  count=   365  key=aten::empty
+  count=   330  key=aten::copy_
+  count=   279  key=aten::empty_strided
+  count=   250  key=aten::to
+  count=   220  key=aten::transpose
+  count=   208  key=aten::view
+  count=   207  key=aten::mul
+  count=   198  key=aten::_to_copy
+  count=   170  key=aten::reshape
+  count=   150  key=aten::t
+  count=   138  key=urEnqueueUSMMemcpy
+  count=   132  key=aten::resize_
+  count=   108  key=aten::item
+  count=   108  key=aten::_local_scalar_dense
+  count=   102  key=aten::div
+  count=   100  key=aten::add_
+  count=    94  key=aten::slice
+  count=    90  key=aten::mm
+  count=    80  key=aten::empty_like
+  count=    75  key=autograd::engine::evaluate_function: ToCopyBackward0
+  count=    75  key=ToCopyBackward0
+  count=    65  key=aten::detach
+  count=    65  key=detach
+  count=    65  key=aten::expand
+  count=    63  key=aten::fill_
+  count=    60  key=aten::linear
+  count=    60  key=autograd::engine::evaluate_function: ViewBackward0
+  count=    60  key=ViewBackward0
+  count=    55  key=aten::_unsafe_view
+  count=    50  key=aten::zero_
+  count=    50  key=aten::matmul
+  count=    45  key=autograd::engine::evaluate_function: torch::autograd::AccumulateGrad
+  count=    45  key=torch::autograd::AccumulateGrad
+  count=    45  key=torch::distributed::reducer::mul_out
+  count=    45  key=torch.distributed.ddp.reducer::copy_bucket_to_grad
+  count=    44  key=aten::narrow
+  count=    40  key=autograd::engine::evaluate_function: UnsafeViewBackward0
+  count=    40  key=UnsafeViewBackward0
+  count=    40  key=autograd::engine::evaluate_function: MulBackward0
+  count=    40  key=MulBackward0
+  count=    35  key=aten::add
+  count=    35  key=aten::neg
+  count=    35  key=autograd::engine::evaluate_function: AddBackward0
+  count=    35  key=AddBackward0
+  count=    32  key=aten::pow
+  count=    31  key=aten::result_type
+  count=    31  key=aten::clone
+  count=    30  key=aten::bmm
+  count=    30  key=autograd::engine::evaluate_function: MmBackward0
+  count=    30  key=MmBackward0
+  count=    30  key=autograd::engine::evaluate_function: TBackward0
+  count=    30  key=TBackward0
+  count=    30  key=aten::sum
+  count=    27  key=aten::zeros
+  count=    25  key=autograd::engine::evaluate_function: TransposeBackward0
+  count=    25  key=TransposeBackward0
+  count=    22  key=aten::unsqueeze
+  count=    20  key=aten::_has_compatible_shallow_copy_type
+  count=    20  key=aten::_reshape_alias
+  count=    20  key=autograd::engine::evaluate_function: DivBackward0
+  count=    20  key=DivBackward0
+  count=    20  key=autograd::engine::evaluate_function: ExpandBackward0
+  count=    20  key=ExpandBackward0
+  count=    20  key=autograd::engine::evaluate_function: SliceBackward0
+  count=    20  key=SliceBackward0
+  count=    20  key=aten::slice_backward
+  count=    19  key=aten::select
+  count=    18  key=aten::zeros_like
+  count=    17  key=aten::cat
+  count=    15  key=aten::mean
+  count=    15  key=aten::sqrt
+  count=    15  key=autograd::engine::evaluate_function: SqrtBackward0
+  count=    15  key=SqrtBackward0
+  count=    15  key=autograd::engine::evaluate_function: MeanBackward1
+  count=    15  key=MeanBackward1
+  count=    15  key=autograd::engine::evaluate_function: PowBackward0
+  count=    15  key=PowBackward0
+  count=    15  key=autograd::engine::evaluate_function: ReshapeAliasBackward0
+  count=    15  key=ReshapeAliasBackward0
+  count=    14  key=record_param_comms
+  count=    14  key=aten::lift_fresh
+  count=    14  key=aten::detach_
+  count=    14  key=detach_
+  count=    12  key=zeContextMakeMemoryResident
+  count=    12  key=zeMemGetAllocProperties
+  count=    12  key=zeCommandListAppendMemoryCopy
+  count=    12  key=Memcpy M2D (MEMORY(Unknown) -> DEVICE)
+  count=    12  key=zeEventHostSynchronize
+  count=    11  key=urUSMDeviceAlloc
+  count=    11  key=zeEventHostReset
+  count=    10  key=aten::masked_fill
+  count=    10  key=aten::masked_fill_
+  count=    10  key=aten::nll_loss
+  count=    10  key=autograd::engine::evaluate_function: BmmBackward0
+  count=    10  key=BmmBackward0
+  count=    10  key=autograd::engine::evaluate_function: CatBackward0
+  count=    10  key=CatBackward0
+  count=    10  key=autograd::engine::evaluate_function: NegBackward0
+  count=    10  key=NegBackward0
+  count=    10  key=itoa_xpu
+  count=    10  key=aten::_foreach_add_
+  count=    10  key=aten::_foreach_mul_
+  count=     8  key=aten::ones
+  count=     6  key=aten::uniform_
+  count=     6  key=c10d::allreduce_
+  count=     6  key=xccl:all_reduce
+  count=     5  key=urEnqueueUSMFill
+  count=     5  key=aten::randint
+  count=     5  key=aten::random_
+  count=     5  key=aten::roll
+  count=     5  key=Optimizer.zero_grad#AdamW.zero_grad
+  count=     5  key=DistributedDataParallel.forward
+  count=     5  key=aten::embedding
+  count=     5  key=aten::index_select
+  count=     5  key=aten::chunk
+  count=     5  key=aten::split
+  count=     5  key=aten::triu
+  count=     5  key=aten::softmax
+  count=     5  key=aten::_softmax
+  count=     5  key=aten::contiguous
+  count=     5  key=aten::silu
+  count=     5  key=aten::cross_entropy_loss
+  count=     5  key=aten::log_softmax
+  count=     5  key=aten::_log_softmax
+  count=     5  key=aten::nll_loss_nd
+  count=     5  key=aten::nll_loss_forward
+  count=     5  key=aten::ones_like
+  count=     5  key=autograd::engine::evaluate_function: NllLossBackward0
+  count=     5  key=NllLossBackward0
+  count=     5  key=aten::nll_loss_backward
+  count=     5  key=autograd::engine::evaluate_function: LogSoftmaxBackward0
+  count=     5  key=LogSoftmaxBackward0
+  count=     5  key=aten::_log_softmax_backward_data
+  count=     5  key=autograd::engine::evaluate_function: SiluBackward0
+  count=     5  key=SiluBackward0
+  count=     5  key=aten::silu_backward
+  count=     5  key=autograd::engine::evaluate_function: CloneBackward0
+  count=     5  key=CloneBackward0
+  count=     5  key=autograd::engine::evaluate_function: SoftmaxBackward0
+  count=     5  key=SoftmaxBackward0
+  count=     5  key=aten::_softmax_backward_data
+  count=     5  key=autograd::engine::evaluate_function: MaskedFillBackward0
+  count=     5  key=MaskedFillBackward0
+  count=     5  key=autograd::engine::evaluate_function: SplitBackward0
+  count=     5  key=SplitBackward0
+  count=     5  key=autograd::engine::evaluate_function: EmbeddingBackward0
+  count=     5  key=EmbeddingBackward0
+  count=     5  key=aten::embedding_backward
+  count=     5  key=aten::embedding_dense_backward
+  count=     5  key=pstl::sort
+  count=     5  key=adjacent_difference
+  count=     5  key=transform_first_true
+  count=     5  key=copy_if_xpu
+  count=     5  key=inclusive_scan_xpu
+  count=     5  key=exclusive_scan_xpu
+  count=     5  key=Optimizer.step#AdamW.step
+  count=     5  key=urUSMHostAlloc
+  count=     5  key=aten::_foreach_lerp_
+  count=     5  key=aten::_foreach_addcmul_
+  count=     5  key=aten::_foreach_sqrt
+  count=     5  key=aten::_foreach_div_
+  count=     5  key=aten::_foreach_addcdiv_
+  count=     4  key=aten::arange
+  count=     4  key=c10d::broadcast_
+  count=     4  key=xccl:broadcast
+  count=     2  key=aten::permute
+  count=     2  key=aten::is_same_size
+  count=     2  key=zeDriverGet
+  count=     2  key=c10d::barrier
+  count=     2  key=xccl:all_reduce_barrier
+  count=     1  key=aten::normal_
+  count=     1  key=aten::reciprocal
+  count=     1  key=aten::einsum
+  count=     1  key=aten::cos
+  count=     1  key=aten::sin
+  count=     1  key=zeDeviceGetMemoryAccessProperties
+  count=     1  key=zeMemAllocDevice
+  count=     1  key=zeCommandListCreateImmediate
+  count=     1  key=zeEventPoolCreate
+  count=     1  key=zeEventCreate
+  count=     1  key=c10d::allgather_
+  count=     1  key=xccl:all_gather
+  count=     1  key=aten::flatten_dense_tensors
+  count=     1  key=aten::unflatten_dense_tensors
+=== end breakdown ===

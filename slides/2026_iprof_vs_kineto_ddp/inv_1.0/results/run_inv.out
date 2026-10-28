@@ -1,0 +1,12 @@
+Hosts: x4406c3s3b0n0.hsn.cm.aurora.alcf.anl.gov  x4406c3s4b0n0.hsn.cm.aurora.alcf.anl.gov
+Steps: 5
+
+=== [NARROW] profile wraps step loop only ===
+n_events=20597
+  Written: narrow_breakdown.txt (263 lines)
+
+=== [WIDE] profile wraps from after select_device ===
+n_events=7625
+  Written: wide_breakdown.txt (188 lines)
+
+=== Diff analysis ===

@@ -1,0 +1,4 @@
+scenario,rep,T_hot_s,T_process_s,n_events,analysis_s
+BL,1,0.646931,4.95,,
+IP,1,0.762663,19.37,114038,1.22
+KN,1,0.674678,5.93,7625,0.307931
